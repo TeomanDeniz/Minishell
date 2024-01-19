@@ -77,7 +77,7 @@ static bool
 		if (!shell->variable->name)
 			error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), "ft_strdup()");
 		shell->variable->value = ft_strdup(value);
-		if (!shell->variable->value)
+		if (!shell->variable->value && !!value)
 			error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), "ft_strdup()");
 		shell->variable->next = NULL;
 		return (true);
@@ -97,6 +97,8 @@ static bool
 		if (ft_strboolcmp(temp->name, name))
 		{
 			ft_safe_free(&temp->value);
+			if (!value)
+				return (true);
 			temp->value = ft_strdup(value);
 			if (!temp->value)
 				error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), "ft_strdup()");

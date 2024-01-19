@@ -33,10 +33,10 @@ char
 	register int	index;
 
 	if (!string)
-		return (NULL);
+		return ((void *)0);
 	result = (char *) malloc(sizeof(char) * (ft_strlen(string) + 1));
 	if (!result)
-		return (NULL);
+		return ((void *)0);
 	index = -1;
 	while (++index, string[index])
 		result[index] = string[index];

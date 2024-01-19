@@ -20,6 +20,7 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "libft.h" /*
 #    int ft_strlen(char *);
+#   char *ft_strdup(char *);
 */
 #include <stdlib.h> /*
 #   void *malloc(size_t);
@@ -29,10 +30,14 @@
 char
 	*ft_strjoin(char const *s1, char const *s2)
 {
-	char				*result;
-	register int		index;
-	register int		s1_len;
+	char			*result;
+	register int	index;
+	register int	s1_len;
 
+	if (!s2)
+		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
 	s1_len = ft_strlen(s1);
 	result = (char *) malloc(sizeof(char) * (s1_len + ft_strlen(s2) + 1));
 	if (!result)

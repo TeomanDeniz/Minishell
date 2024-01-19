@@ -23,9 +23,13 @@
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
 #*/
+#include <stdbool.h> /*
+# define true;
+#typedef bool;
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
-void
+bool
 	command_pwd(t_shell shell)
 {
 	char	dir[PATH_MAX];
@@ -34,4 +38,5 @@ void
 	write(STDOUT_FILENO, dir, ft_strlen(dir));
 	write(STDOUT_FILENO, "\n", 1);
 	shell->errorlevel = 0U;
+	return (true);
 }

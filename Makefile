@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# https://nafuka11.github.io/philosophers-visualizer/
-
 CC			=	gcc
 # [COMPILER]
 
@@ -23,7 +21,8 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 
 # [LIBFT]
 
-	LIBFT_SRC	=	./libft/ft_atoi.c \
+	LIBFT_SRC	=	./libft/get_next_line/get_next_line.c\
+					./libft/ft_atoi.c \
 					./libft/ft_bzero.c \
 					./libft/ft_calloc.c \
 					./libft/ft_free_matrix.c \
@@ -129,6 +128,7 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 					./main/free/reset_content_pipe.c \
 					./main/free/reset_pipe.c \
 					./main/free/free_shell.c \
+					./main/history/set_readline_history.c \
 					./main/prompt/prompt_preparer.c \
 					./main/prompt/prompt_size_detector.c \
 					./main/prompt/prompt_tilda.c \
@@ -138,6 +138,7 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 					./main/prompt/set_term_name_prompt.c \
 					./main/setup/signals_setup.c \
 					./main/setup/shell_setup.c \
+					./main/setup/get_certain_home.c \
 					./main/signals/ignore_sigint_for_child.c \
 					./main/signals/just_handle_signal.c \
 					./main/signals/update_row_and_col_variables.c \
@@ -257,12 +258,6 @@ fclean: clean
 		rm -f $(MAIN_EXE) ; \
 		echo "" ; \
 		echo " $(shell tput setab 1)$(shell tput setaf 11)$(MAIN_EXE)$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
-	@if [ -a $(BONUS_EXE) ]; then \
-		rm -f $(BONUS_EXE) ; \
-		echo "" ; \
-		echo " $(shell tput setab 1)$(shell tput setaf 11)$(BONUS_EXE)$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
 		echo "" ; \
 	fi;
 

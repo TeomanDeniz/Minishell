@@ -74,6 +74,7 @@ the background via 'ps' or '/bin/ps'!"
 unexisting HOME variable. Whops -\\_(\"/)_/-"
 # define IS_A_DIRECTORY "is a directory."
 # define FILE_NAME_LONG "File name too long! (PATH_MAX)"
+# define HOME_FAILED "WARNING: Failed to fix the corrupted HOME variable"
 /* ************************* [^] ERROR MESSAGES [^] ************************* */
 
 /* ************************* [v] EXPORT OUTPUTS [v] ************************* */
@@ -96,6 +97,8 @@ unexisting HOME variable. Whops -\\_(\"/)_/-"
 # define CMD42_PATH "/bin"
 # define TERM_ROW "TERM_ROW"
 # define TERM_COL "TERM_COL"
+# define CMD42_HISFILE ".cmd42_history"
+# define HISTFILE_LIMIT 500
 /* *********************** [^] BUILT IN VARIABLES [^] *********************** */
 
 /* **************************** [v] INCLUDES [v] **************************** */
@@ -162,6 +165,7 @@ typedef struct s_shell
 	char				*org_input;
 	char				*prompt;
 	char				*quote_here_doc;
+	char				*home;
 	unsigned int		index;
 	unsigned int		errorlevel;
 	int					history_number_of_commands;
@@ -229,6 +233,7 @@ extern void	reset_content_pipe(int arg_pipe[2]);
 /* **************************** [v] ./setup [v] ***************************** */
 extern void	signals_setup(void);
 extern void	shell_setup(t_shell shell, char **env);
+extern char	*get_certain_home(t_shell shell);
 /* **************************** [^] ./setup [^] ***************************** */
 
 /* *************************** [v] ./signals [v] **************************** */
@@ -270,7 +275,7 @@ extern bool	check_equal_valid_true(t_shell shell, char *command);
 extern void	command_echo(t_shell shell);
 extern void	command_exit(t_shell shell);
 extern void	command_cd(t_shell shell);
-extern void	command_pwd(t_shell shell);
+extern bool	command_pwd(t_shell shell);
 extern void	command_env(t_shell shell);
 extern void	command_export(t_shell shell);
 extern void	command_unset(t_shell shell);
@@ -347,5 +352,9 @@ extern bool	check_heredoc_syntax(const char *const input);
 extern bool	there_is_slash_on_command(const char *const command);
 extern bool	file_checker(char *command, bool debug, t_shell shell);
 /* **************************** [^] ./syntax [^] **************************** */
+
+/* *************************** [v] ./history [v] **************************** */
+extern void	set_readline_history(t_shell shell);
+/* *************************** [^] ./history [^] **************************** */
 
 #endif /* MAIN_H */

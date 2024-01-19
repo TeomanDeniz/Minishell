@@ -11,9 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-# define LIBFT_H 20240106
+# define LIBFT_H 202401
 
 # define END_OF_NUMBER_INDEX 47 /* 48 - 1 */
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif /* BUFFER_SIZE */
 
 /* **************************** [v] INCLUDES [v] **************************** */
 # include <stdbool.h> /*
@@ -46,6 +49,7 @@ register int character);
 extern char				*ft_substr(char const *string, \
 unsigned int start, unsigned int len);
 extern char				**ft_split(char const *string, register char character);
+extern char				*get_next_line(int fd);
 /* *************************** [^] FUNCTIONS [^] **************************** */
 
 #endif /* LIBFT_H */

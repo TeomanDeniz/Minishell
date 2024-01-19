@@ -19,6 +19,7 @@
 #   bool dollar_is_valid(char *);
 #*/
 #include "../../libft/libft.h" /*
+# define END_OF_NUMBER_INDEX;
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
 #   bool ft_safe_free(char **);
@@ -104,16 +105,16 @@ static int
 static char
 	*get_return_value(unsigned int errorlevel, char result[4])
 {
-	char			number;
+	register char	number;
 	register int	index;
 
 	index = 0;
 	while (1)
 	{
-		number = ft_numindex(errorlevel, index);
-		if (number == -1)
+		number = 48 + ft_numindex(errorlevel, index);
+		if (number == END_OF_NUMBER_INDEX)
 			break ;
-		result[index] = 48 + number;
+		result[index] = number;
 		++index;
 	}
 	result[index] = 0;

@@ -37,6 +37,8 @@
 #   void free_shell(t_shell);
 */
 #include <stdio.h> /*
+#typedef FILE;
+^------> <readline/readline.h>
 #    int printf(char *, ...);
 */
 #include <stdlib.h> /*

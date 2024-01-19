@@ -21,6 +21,7 @@
 #   void werror_shell(t_shell, char *, int, char *);
 #   void perror_shell(t_shell, char *, int, char *);
 #   char *get_variable(char *, t_shell);
+#   bool command_pwd(t_shell);
 #*/
 #include "../../libft/libft.h" /*
 #   void ft_bzero(char *, int);
@@ -43,8 +44,7 @@
 /* *************************** [v] PROTOTYPES [v] *************************** */
 static bool	cd_home(t_shell shell);
 static void	set_new_dir(char new_dir[PATH_MAX], char *other_char);
-static void	change_dir(char new_dir[PATH_MAX], t_shell shell);
-static void	cd_error(t_shell shell, char *file);
+static bool	cd_error(t_shell shell, char *file);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -54,7 +54,9 @@ void
 
 	shell->errorlevel = (shell->index++, 0U);
 	(skip_docs(shell), ft_bzero(new_dir, PATH_MAX));
-	if (shell->arg[shell->index].this == NULL && cd_home(shell))
+	if ((shell->arg[shell->index].this == NULL && cd_home(shell)) || \
+		(ft_strboolcmp(shell->arg[shell->index].this, "-") && \
+		command_pwd(shell)))
 		return ;
 	if (ft_strlen(shell->arg[shell->index].this) >= PATH_MAX)
 	{
@@ -65,15 +67,13 @@ void
 		set_new_dir(new_dir, shell->arg[shell->index].this);
 	else
 	{
-		getcwd(new_dir, PATH_MAX);
-		set_new_dir(new_dir, "/");
+		(getcwd(new_dir, PATH_MAX), set_new_dir(new_dir, "/"));
 		set_new_dir(new_dir, shell->arg[shell->index].this);
 	}
-	if (ft_strboolcmp(shell->arg[shell->index].this, "..") == 0 || \
-		access(new_dir, F_OK) != -1)
-		change_dir(new_dir, shell);
-	else
-		cd_error(shell, shell->arg[shell->index].this);
+	if ((access(new_dir, F_OK) < 0 || chdir(new_dir) != 0) && \
+		cd_error(shell, shell->arg[shell->index].this))
+		return ;
+	set_variable("OLDPWD", shell->pwd, shell);
 	(getcwd(shell->pwd, PATH_MAX), set_variable("PWD", shell->pwd, shell));
 }
 
@@ -117,14 +117,7 @@ static void
 	new_dir[len] = 0;
 }
 
-static void
-	change_dir(char new_dir[PATH_MAX], t_shell shell)
-{
-	if (chdir(new_dir) != 0)
-		cd_error(shell, shell->arg[shell->index].this);
-}
-
-static void
+static bool
 	cd_error(t_shell shell, char *file)
 {
 	char	*cmd42_name;
@@ -141,4 +134,5 @@ static void
 		write(shell->std_out_fd, "'", 1);
 	}
 	perror("");
+	return (true);
 }

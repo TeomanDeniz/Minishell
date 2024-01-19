@@ -26,6 +26,7 @@
 #    int variable_name_len(char *, int);
 #*/
 #include "../../libft/libft.h" /*
+# define END_OF_NUMBER_INDEX;
 #   char ft_numindex(long long , Ushort);
 #*/
 /* **************************** [^] INCLUDES [^] **************************** */
@@ -99,17 +100,17 @@ static int
 static int
 	put_exit_status(t_shell shell, char **this, int *string_index)
 {
-	char			value;
+	register char	value;
 	register int	variable_index;
 
 	variable_index = 0;
 	value = 0;
 	while (1)
 	{
-		value = ft_numindex(shell->errorlevel, variable_index);
-		if (value == -1)
+		value = 48 + ft_numindex(shell->errorlevel, variable_index);
+		if (value == END_OF_NUMBER_INDEX)
 			return (2);
-		(*this)[*string_index] = value + '0';
+		(*this)[*string_index] = value;
 		++variable_index;
 		*string_index += 1;
 	}

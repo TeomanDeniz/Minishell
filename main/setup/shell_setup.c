@@ -35,6 +35,9 @@
 #   char *get_variable(char *, t_shell);
 #   void set_variable(char *, char *, t_shell);
 #   void handle_sigint(int);
+#   void set_readline_history(t_shell);
+#   char *get_certain_home(t_shell);
+#   void remove_variable(char *, t_shell);
 #*/
 #include <unistd.h> /*
 # define STDOUT_FILENO;
@@ -100,6 +103,7 @@ void
 static void
 	shell_setup_env(t_shell shell, char **env)
 {
+	shell->home = get_certain_home(shell);
 	variable_setup(shell);
 	env_to_variable(shell, env);
 	if (!!get_variable_direct_value("SHLVL", shell))
@@ -116,6 +120,8 @@ static void
 	if (ft_strboolcmp(get_variable("PATH", shell), ""))
 		check_and_set("PATH", CMD42_PATH, shell);
 	check_and_set("PWD", shell->pwd, shell);
+	set_readline_history(shell);
+	set_variable("OLDPWD", NULL, shell);
 }
 
 static void

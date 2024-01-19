@@ -16,7 +16,7 @@
 #   void command_echo(t_shell);
 #   void command_exit(t_shell);
 #   void command_cd(t_shell);
-#   void command_pwd(t_shell);
+#   bool command_pwd(t_shell);
 #   void command_env(t_shell);
 #   void command_export(t_shell);
 #   void command_unset(t_shell);

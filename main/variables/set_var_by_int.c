@@ -15,26 +15,27 @@
 #typedef t_shell;
 #   void set_variable(char *, char *, t_shell);
 #*/
+#include "../../libft/libft.h" /*
+# define END_OF_NUMBER_INDEX;
+#   char ft_numindex(long long, short);
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
 	set_var_by_int(char *name, int x, t_shell shell)
 {
-	char	result[5];
+	register int	number;
+	register short	index;
+	char			result[16];
 
-	result[0] = '0' + !!(x / 1000) * (x / 1000) + \
-		!!((x / 100) % 10) * !(x / 1000) * ((x / 100) % 10) + \
-		!!((x / 10) % 10) * !((x / 100) % 10) * ((x / 10) % 10) + \
-		!!(x % 10) * !((x / 10) % 10) * (x % 10);
-	result[1] = !!(x / 10) * ('0' + !!(x / 1000) * !!((x / 100) % 10) * \
-		((x / 100) % 10) + !!((x / 100) % 10) * !(x / 1000) * !!((x / 10) \
-		% 10) * ((x / 10) % 10) + !!((x / 10) % 10) * !((x / 100) % 10) * \
-		!!(x % 10) * (x % 10));
-	result[2] = !!(x / 100) * ('0' + !!((x / 100) % 10) * !!(x / 1000) * \
-		!!((x / 10) % 10) * ((x / 10) % 10) + !!((x / 10) % 10) * !(x / 1000) \
-		* !!(x % 10) * (x % 10));
-	result[3] = !!(x / 1000) * ('0' + !!((x / 10) % 10) * !!(x / 1000) * \
-		!!(x % 10) * (x % 10));
-	result[4] = 0;
+	index = -1;
+	while (++index, index < 16)
+	{
+		number = 48 + ft_numindex(x, index);
+		if (number == END_OF_NUMBER_INDEX)
+			break ;
+		result[index] = number;
+	}
+	result[index] = 0;
 	set_variable(name, result, shell);
 }

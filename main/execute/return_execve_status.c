@@ -40,6 +40,7 @@
 /* *************************** [v] PROTOTYPES [v] *************************** */
 static void	handle_return_status(t_shell shell, int wait_status);
 static void	warn_segmentation_error(t_shell shell);
+static void	warn_interrupt_error(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -83,8 +84,10 @@ static void
 	}
 	else
 		shell->errorlevel = 0X80 + wait_status;
-	if (shell->errorlevel == 139)
+	if (wait_status == 11)
 		warn_segmentation_error(shell);
+	if (wait_status == 2)
+		warn_interrupt_error(shell);
 }
 
 static void
@@ -98,5 +101,19 @@ static void
 	write(shell->std_out_fd, ": segmentation fault `", 22);
 	write(shell->std_out_fd, shell->execute_program, \
 		ft_strlen(shell->execute_program));
-	write(shell->std_out_fd, "'", 1);
+	write(shell->std_out_fd, "' [11]", 6);
+}
+
+static void
+	warn_interrupt_error(t_shell shell)
+{
+	char	*cmd42_name;
+
+	cmd42_name = get_variable("CMD42_NAME", shell);
+	write(shell->std_out_fd, "\n-", 2);
+	write(shell->std_out_fd, cmd42_name, ft_strlen(cmd42_name));
+	write(shell->std_out_fd, ": process interrupted `", 23);
+	write(shell->std_out_fd, shell->execute_program, \
+		ft_strlen(shell->execute_program));
+	write(shell->std_out_fd, "' [2]", 5);
 }
