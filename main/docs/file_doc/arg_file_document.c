@@ -13,15 +13,14 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
 #typedef t_shell;
-
+#   char *get_variable(char *, t_shell);
+#   void error_shell(t_shell, char *, int, char *);
+#   void prepare_filedoc(char **, int, char *, t_shell);
 #*/
 #include "../../../libft/libft.h" /*
 #   char *ft_strdup(char *);
 #   bool ft_safe_free(char **);
 #    int ft_strlen(char *);
-#   char *get_variable(char *, t_shell);
-#   void error_shell(t_shell, char *, int, char *);
-#   void prepare_filedoc(char **, int, char *, t_shell);
 #*/
 #include <unistd.h> /*
 # define F_OK;

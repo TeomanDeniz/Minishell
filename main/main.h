@@ -168,6 +168,7 @@ typedef struct s_shell
 	char				*home;
 	unsigned int		index;
 	unsigned int		errorlevel;
+	int					history_number_of_commands_in_file;
 	int					history_number_of_commands;
 	int					std_out_fd;
 	bool				status_actknowledge;

@@ -129,6 +129,7 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 					./main/free/reset_pipe.c \
 					./main/free/free_shell.c \
 					./main/history/set_readline_history.c \
+					./main/history/set_history.c \
 					./main/prompt/prompt_preparer.c \
 					./main/prompt/prompt_size_detector.c \
 					./main/prompt/prompt_tilda.c \

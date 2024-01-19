@@ -14,13 +14,13 @@
 #include "../print_header.h" /*
 # define COLOR_A;
 #   void write_color_f(int, char *, char *);
-*/
+#*/
 #include "../../main.h" /*
 #typedef t_shell;
-*/
+#*/
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-*/
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

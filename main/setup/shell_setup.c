@@ -88,6 +88,7 @@ void
 	shell->errorlevel = 0U;
 	shell->last_pid = 0;
 	shell->history_number_of_commands = 0;
+	shell->history_number_of_commands_in_file = 0;
 	shell->std_out_fd = dup(STDOUT_FILENO);
 	if (shell->std_out_fd < 0)
 		error_shell(shell, NULL, (__LINE__ - 2), "dup()");

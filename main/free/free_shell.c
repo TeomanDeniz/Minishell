@@ -22,7 +22,7 @@
 #*/
 #include <unistd.h> /*
 #    int close(int);
-*/
+#*/
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>

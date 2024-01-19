@@ -21,10 +21,10 @@
 #*/
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-*/
+#*/
 #include <stdio.h> /*
 #   void perror(char *);
-*/
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

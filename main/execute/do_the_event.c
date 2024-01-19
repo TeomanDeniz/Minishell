@@ -26,7 +26,7 @@
 #typedef bool;
 # define true;
 # define false;
-*/
+#*/
 #include "../main.h" /*
 # define PIPE_READ;
 # define PIPE_WRITE;

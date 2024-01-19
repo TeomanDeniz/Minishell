@@ -13,7 +13,7 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../libft/libft.h" /*
 #   bool ft_strboolcmp(char *, char *);
-*/
+#*/
 #include "../main.h" /*
 #typedef t_shell;
 #   bool check_if_semicolon(t_shell);

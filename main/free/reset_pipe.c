@@ -18,7 +18,7 @@
 #include <unistd.h> /*
 #    int close(int);
 #    int pipe(int [2]);
-*/
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

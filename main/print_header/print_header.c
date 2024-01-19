@@ -19,7 +19,7 @@
 
 #include "../main.h" /*
 #typedef t_shell;
-*/
+#*/
 #include "print_header.h" /*
 #   void a(t_shell, int);
 #   void b(t_shell, int);
@@ -27,10 +27,10 @@
 #   void d(t_shell, int);
 #   void e(t_shell, int);
 #   void f(t_shell, int);
-*/
+#*/
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-*/
+#*/
 
 static void
 	send_to_terminal_screen(t_shell shell, void (**x)(t_shell, int), int *len)

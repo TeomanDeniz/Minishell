@@ -34,7 +34,7 @@
 #typedef bool;
 # define false;
 # define true;
-*/
+#*/
 #include "../../libft/libft.h" /*
 #   char *get_next_line(int);
 #   void *ft_calloc(uint, uint);
@@ -48,7 +48,7 @@
 #typedef FILE;
 ^------> <readline/readline.h>
 #    int printf(char *, ...);
-*/
+#*/
 #include <readline/history.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
@@ -98,6 +98,7 @@ static void
 	line = get_next_line(fd);
 	while (!!line)
 	{
+		shell->history_number_of_commands_in_file++;
 		line[ft_strlen(line) - 1] = 0;
 		add_history(line);
 		ft_safe_free(&line);

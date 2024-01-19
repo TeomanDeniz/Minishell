@@ -13,10 +13,10 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-*/
+#*/
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-*/
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

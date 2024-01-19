@@ -13,10 +13,10 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
 #typedef t_shell;
-*/
+#*/
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-*/
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

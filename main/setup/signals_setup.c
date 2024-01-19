@@ -25,7 +25,7 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include <stdbool.h> /*
 # define false;
-*/
+#*/
 #include "../main.h" /*
 #   void suppress_cat_io(bool);
 #   void update_row_and_col_variables(int);

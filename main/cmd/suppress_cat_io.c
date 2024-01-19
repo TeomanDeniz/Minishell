@@ -25,7 +25,7 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include <stdbool.h> /*
 #typedef bool;
-*/
+#*/
 #include <termios.h> /*
 # define ECHOCTL;
 # define TCSANOW;

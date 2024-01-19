@@ -14,7 +14,7 @@
 #include "../libft/libft.h" /*
 #   bool ft_strcasecmp(char *, char *);
 #   bool ft_safe_free(char **);
-*/
+#*/
 #include "main.h" /*
 #GLOBAL# sig_atomic_t g_signal;
 # struct s_shell;
@@ -35,29 +35,30 @@
 #   void command_exit(t_shell);
 #   void execute(t_shell);
 #   void free_shell(t_shell);
-*/
+#   void set_history(t_shell);
+#*/
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>
 #    int printf(char *, ...);
-*/
+#*/
 #include <stdlib.h> /*
 #   void exit(int);
-*/
+#*/
 #include <readline/readline.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
 @ |FLAG| | -lreadline |
 @ +----+ +------------+
 #   char *readline(char *);
-*/
+#*/
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-*/
+#*/
 #include <stdbool.h> /*
 #typedef bool;
 # define false;
-*/
+#*/
 #include <readline/history.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
@@ -111,7 +112,7 @@ static void
 	shell->org_input = shell->input;
 	if (check_quate_here_doc(shell))
 		quote_here_doc(shell);
-	add_history(shell->input);
+	set_history(shell);
 	shell->history_number_of_commands++;
 	if (g_signal == SIGINT)
 		return ;

@@ -22,7 +22,7 @@
 #typedef bool;
 # define true;
 # define false;
-*/
+#*/
 #include <term.h> /*
 @ +----+ +-----------+
 @ |FLAG| | -lncurses |

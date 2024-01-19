@@ -14,10 +14,10 @@
 #include "../print_header.h" /*
 # define COLOR_B;
 #   void write_color_f(int, char *, char *);
-*/
+#*/
 #include "../../main.h" /*
 #typedef t_shell;
-*/
+#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
