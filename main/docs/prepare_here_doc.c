@@ -34,9 +34,6 @@
 @ +----+ +------------+
 #typedef rl_getc_function();
 #*/
-#include <stdbool.h> /*
-# define false;
-#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 char
@@ -46,10 +43,7 @@ char
 	rl_getc_function = rd_input_ctrl_c_bypass;
 	reset_here_doc_operator(shell->input, operator);
 	if (operator->pipe)
-	{
-		operator->pipe = false;
 		return (get_variable("PS5", shell));
-	}
 	if (operator->double_quote)
 		return (get_variable("PS2", shell));
 	if (operator->single_quote)

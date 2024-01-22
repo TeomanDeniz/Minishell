@@ -36,6 +36,7 @@
 #   void execute(t_shell);
 #   void free_shell(t_shell);
 #   void set_history(t_shell);
+#   void set_variable(char *, char *, t_shell);
 #*/
 #include <stdio.h> /*
 #typedef FILE;
@@ -118,6 +119,7 @@ static void
 	prepare_arg_file_doc(shell);
 	if (!!shell->arg && !!shell->arg[0].this)
 		argument_while(shell);
+	set_variable("_", shell->arg[0].this, shell);
 	if (shell->command_not_found)
 	{
 		if (check_term_env_exist())

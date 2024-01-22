@@ -22,6 +22,7 @@
 # struct s_arg;
 #typedef t_shell;
 #   char *get_variable(char *, t_shell);
+#   bool check_next_syntax(char *);
 #*/
 #include <stdio.h> /*
 #    int printf(char *, ...);
@@ -95,7 +96,10 @@ static bool
 		ft_strmorecmp(this, "|") || ft_strmorecmp(this, ";") || \
 		ft_strmorecmp(this, "<<") || ft_strmorecmp(this, ">>") || \
 		(ft_strboolcmp(this, ";") && past_is_operator) || \
-		(ft_strboolcmp(this, "|") && next_is_operator) || \
+		(ft_strboolcmp(this, "|") && next_is_operator && \
+		check_next_syntax(arg[*index + 1].this)) || \
+		(ft_strboolcmp(this, ";") && next_is_operator && \
+		check_next_syntax(arg[*index + 1].this)) || \
 		(ft_strboolcmp(this, ">>") && next_is_operator && ++*index) || \
 		(ft_strboolcmp(this, ">") && next_is_operator && ++*index) || \
 		(ft_strboolcmp(this, "<<") && next_is_operator && ++*index) || \

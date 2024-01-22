@@ -32,6 +32,8 @@ void
 {
 	char	*org_input;
 
+	if (!!input && !!*input && operator->pipe)
+		operator->pipe = false;
 	org_input = input;
 	while (!!*input)
 	{
@@ -52,8 +54,8 @@ static void
 {
 	char	*check_input;
 
-	check_input = input + 1;
-	while (!!*check_input)
+	check_input = input;
+	while (++check_input, !!*check_input)
 	{
 		if (char_whitespace(*check_input))
 			continue ;

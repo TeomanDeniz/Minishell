@@ -13,6 +13,7 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
 # define MALLOC_ERROR;
+# define UNEX_TOKEN;
 # struct s_operator;
 #typedef t_shell;
 #   void here_doc_just_newline(t_shell, bool);
@@ -24,6 +25,8 @@
 #   void set_here_doc_operator(char *, t_operator);
 #   void handle_sigint(int);
 #   void error_shell(t_shell, char *, int, char *);
+#   bool char_whitespace(char);
+#   void werror_shell(t_shell, char *, int, char *);
 #*/
 #include <stdio.h> /*
 #typedef FILE;
@@ -42,44 +45,47 @@
 #   char *ft_strdup(char *);
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
+#   char *ft_strjoinfree(char *, char *);
 #*/
 #include <signal.h> /*
 # define SIGINT;
 #sigh... signal(int, sighandler_t); ((sighandler_t))
 #*/
 #include <stdbool.h> /*
+# define true;
 #typedef bool;
 #*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
 static void	join_here_doc(t_shell shell, struct s_operator operator);
+static bool	input_err(t_shell shell, struct s_operator operator);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
 	quote_here_doc(t_shell shell)
 {
-	struct s_operator	operator;
+	struct s_operator	o;
 
-	reset_here_doc_operator(shell->input, &operator);
-	here_doc_just_newline(shell, operator.pipe);
-	while (operator.double_quote || operator.single_quote || operator.pipe)
+	reset_here_doc_operator(shell->input, &o);
+	here_doc_just_newline(shell, o.pipe);
+	while (o.double_quote || o.single_quote || o.pipe)
 	{
-		prompt_preparer(shell, prepare_here_doc(shell, &operator));
+		prompt_preparer(shell, prepare_here_doc(shell, &o));
 		shell->quote_here_doc = readline(shell->prompt);
-		if (!shell->quote_here_doc || g_signal == SIGINT)
+		if (!shell->quote_here_doc || g_signal == SIGINT || input_err(shell, o))
 		{
 			ft_safe_free(&shell->quote_here_doc);
-			cancel_here_doc(shell, operator);
+			cancel_here_doc(shell, o);
 			return ;
 		}
-		if (!operator.single_quote && dollar_is_valid(shell->quote_here_doc))
+		if (!o.single_quote && dollar_is_valid(shell->quote_here_doc))
 			replace_dollar_with_value(&shell->quote_here_doc, shell);
-		set_here_doc_operator(shell->quote_here_doc, &operator);
+		set_here_doc_operator(shell->quote_here_doc, &o);
 		if (*shell->quote_here_doc == 0)
-			here_doc_just_newline(shell, operator.pipe);
+			here_doc_just_newline(shell, o.pipe);
 		else
-			shell->org_input = (join_here_doc(shell, operator), shell->input);
+			shell->org_input = (join_here_doc(shell, o), shell->input);
 		ft_safe_free(&shell->quote_here_doc);
 	}
 	rl_getc_function = shell->original_rl_getc_function;
@@ -113,4 +119,30 @@ static void
 	shell->input[input_index] = '\n';
 	shell->input[input_index + any_operator] = 0;
 	shell->org_input = shell->input;
+}
+
+static bool
+	input_err(t_shell shell, struct s_operator operator)
+{
+	register int	index;
+
+	if (!shell->quote_here_doc)
+		return (false);
+	index = -1;
+	while (++index, !!shell->quote_here_doc[index])
+	{
+		if (shell->quote_here_doc[index] == '|' || \
+			shell->quote_here_doc[index] == ';')
+		{
+			shell->input = ft_strjoinfree(shell->input, " ");
+			if (!shell->input && ft_safe_free(&shell->quote_here_doc))
+				error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), \
+					"ft_strfreejoin()");
+			shell->org_input = (join_here_doc(shell, operator), shell->input);
+			return (true);
+		}
+		if (!char_whitespace(shell->quote_here_doc[index]))
+			return (false);
+	}
+	return (false);
 }
