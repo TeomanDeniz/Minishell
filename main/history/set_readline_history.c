@@ -22,7 +22,7 @@
 #   char *get_variable_direct_value(char *, t_shell);
 #   char *get_variable(char *, t_shell);
 #   void set_variable(char *, char *, t_shell);
-#   void set_readline_history(t_shell);
+#   void set_history(t_shell);
 #*/
 #include <unistd.h> /*
 # define F_OK;
@@ -62,47 +62,48 @@
 static char	*prepare_cmd42_histfile(char *home);
 static bool	fix_home_variable(t_shell shell);
 static void	ft_stradd(char *string, const char *add);
-static void	prepare_history(t_shell shell, char *cmd42_histfile);
+static void	prepare_history(t_shell shell, char *histfile);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
-void
+bool
 	set_readline_history(t_shell shell)
 {
-	char	*cmd42_histfile;
-
+	shell->histfile = NULL;
 	if (!get_variable_direct_value("HOME", shell) || \
 		access(get_variable("HOME", shell), F_OK | X_OK | R_OK) != 0)
 		if (!fix_home_variable(shell))
-			return ;
-	cmd42_histfile = prepare_cmd42_histfile(get_variable("HOME", shell));
-	if (!cmd42_histfile)
+			return (false);
+	shell->histfile = prepare_cmd42_histfile(get_variable("HOME", shell));
+	if (!shell->histfile)
 		error_shell(shell, MALLOC_ERROR, 2, "prepare_cmd42_histfile()");
-	if (access(cmd42_histfile, F_OK) != 0)
-		close(open(cmd42_histfile, O_RDWR | O_CREAT | O_TRUNC, 0600));
-	prepare_history(shell, cmd42_histfile);
-	ft_safe_free(&cmd42_histfile);
+	if (access(shell->histfile, F_OK) != 0)
+		close(open(shell->histfile, O_RDWR | O_CREAT | O_TRUNC, 0600));
+	prepare_history(shell, shell->histfile);
+	return (true);
 }
 
 static void
-	prepare_history(t_shell shell, char *cmd42_histfile)
+	prepare_history(t_shell shell, char *histfile)
 {
-	char			*line;
-	register int	fd;
+	char	*line;
 
-	fd = open(cmd42_histfile, O_RDWR);
-	if (!fd || fd < 0)
+	shell->histfile_fd = open(histfile, O_RDWR);
+	if (!shell->histfile_fd || shell->histfile_fd < 0)
 	{
-		werror_shell(shell, "Failed to open history file", 0, cmd42_histfile);
+		werror_shell(shell, "Failed to open history file", 0, histfile);
 		return ;
 	}
-	line = get_next_line(fd);
+	line = get_next_line(shell->histfile_fd);
 	while (!!line)
 	{
-		shell->history_number_of_commands_in_file++;
-		line[ft_strlen(line) - 1] = 0;
-		add_history(line);
+		if (*line != '\n' && !!*line)
+		{
+			shell->history_number_of_commands_in_file++;
+			line[ft_strlen(line) - 1] = 0;
+			add_history(line);
+		}
 		ft_safe_free(&line);
-		line = get_next_line(fd);
+		line = get_next_line(shell->histfile_fd);
 	}
 }
 

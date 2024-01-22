@@ -75,6 +75,8 @@ unexisting HOME variable. Whops -\\_(\"/)_/-"
 # define IS_A_DIRECTORY "is a directory."
 # define FILE_NAME_LONG "File name too long! (PATH_MAX)"
 # define HOME_FAILED "WARNING: Failed to fix the corrupted HOME variable"
+# define HOW_THE_FUCK_CD_FAILED "cd: error retrieving current directory: \
+getcwd: cannot access parent directories"
 /* ************************* [^] ERROR MESSAGES [^] ************************* */
 
 /* ************************* [v] EXPORT OUTPUTS [v] ************************* */
@@ -92,6 +94,7 @@ unexisting HOME variable. Whops -\\_(\"/)_/-"
 # define CMD42_PS2 "dquote> "
 # define CMD42_PS3 "quote> "
 # define CMD42_PS4 "heredoc> "
+# define CMD42_PS5 "pipe> "
 # define CMD42_VERSION "4.2"
 # define CMD42_NAME "CMD_42"
 # define CMD42_PATH "/bin"
@@ -144,6 +147,7 @@ typedef struct s_operator
 {
 	bool	double_quote;
 	bool	single_quote;
+	bool	pipe;
 }	*t_operator;
 
 struct s_arg
@@ -166,23 +170,25 @@ typedef struct s_shell
 	char				*prompt;
 	char				*quote_here_doc;
 	char				*home;
-	unsigned int		index;
-	unsigned int		errorlevel;
-	int					history_number_of_commands_in_file;
-	int					history_number_of_commands;
-	int					std_out_fd;
-	bool				status_actknowledge;
-	bool				i_am_a_fork;
-	bool				fork_job;
-	bool				fix_extra_fucking_newline;
-	bool				command_not_found;
-	bool				fucking_filedock_happend;
+	char				*histfile;
 	char				**env;
 	char				*execute_program;
 	char				pwd[PATH_MAX];
 	char				path_command[PATH_MAX];
 	int					ws_row;
 	int					ws_col;
+	int					history_number_of_commands_in_file;
+	int					history_number_of_commands;
+	int					std_out_fd;
+	int					histfile_fd;
+	unsigned int		index;
+	unsigned int		errorlevel;
+	bool				status_actknowledge;
+	bool				i_am_a_fork;
+	bool				fork_job;
+	bool				fix_extra_fucking_newline;
+	bool				command_not_found;
+	bool				fucking_filedock_happend;
 	pid_t				last_pid;
 	t_variable			variable;
 	struct s_arg		*arg;
@@ -320,7 +326,7 @@ extern void	prepare_arg_here_doc(t_shell shell);
 /* ************************ [^] ./docs/here_doc [^] ************************* */
 /* ************************ [v] ./docs/quate_doc [v] ************************ */
 extern void	quote_here_doc(t_shell shell);
-extern void	here_doc_just_newline(t_shell shell);
+extern void	here_doc_just_newline(t_shell shell, bool pipe);
 extern bool	check_quate_here_doc(t_shell shell);
 /* ************************ [^] ./docs/quate_doc [^] ************************ */
 /* ***************************** [^] ./docs [^] ***************************** */
@@ -355,7 +361,9 @@ extern bool	file_checker(char *command, bool debug, t_shell shell);
 /* **************************** [^] ./syntax [^] **************************** */
 
 /* *************************** [v] ./history [v] **************************** */
-extern void	set_readline_history(t_shell shell);
+extern bool	set_readline_history(t_shell shell);
+extern void	set_history(t_shell shell);
+extern void	edit_history_file(t_shell shell);
 /* *************************** [^] ./history [^] **************************** */
 
 #endif /* MAIN_H */

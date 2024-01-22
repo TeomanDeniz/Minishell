@@ -59,13 +59,6 @@
 #typedef bool;
 # define false;
 #*/
-#include <readline/history.h> /*
-@ <----- <stdio.h> REQUIRED
-@ +----+ +------------+
-@ |FLAG| | -lreadline |
-@ +----+ +------------+
-#   void add_history(char *);
-#*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
 volatile sig_atomic_t	g_signal = 0;
@@ -113,7 +106,6 @@ static void
 	if (check_quate_here_doc(shell))
 		quote_here_doc(shell);
 	set_history(shell);
-	shell->history_number_of_commands++;
 	if (g_signal == SIGINT)
 		return ;
 	free_arg(shell);

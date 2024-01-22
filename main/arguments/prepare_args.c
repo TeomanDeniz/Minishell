@@ -44,7 +44,7 @@ void
 	shell->arg = (struct s_arg *) malloc(sizeof(struct s_arg) * (arg_len + 2));
 	if (!shell->arg)
 		error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), "malloc()");
-	shell->operator = (struct s_operator){false, false};
+	shell->operator = (struct s_operator){false, false, false};
 	index = 0;
 	while (index < arg_len)
 	{

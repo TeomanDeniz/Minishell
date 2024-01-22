@@ -25,11 +25,13 @@
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
-	here_doc_just_newline(t_shell shell)
+	here_doc_just_newline(t_shell shell, bool pipe)
 {
 	char			*temp;
 	register int	index;
 
+	if (pipe)
+		return ;
 	temp = ft_strdup(shell->input);
 	if (!temp)
 		error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), "ft_strdup()");

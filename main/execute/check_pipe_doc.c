@@ -34,6 +34,7 @@
 # define STDOUT_FILENO;
 #    int dup2(int, int);
 #ssize_t write(int, void *, size_t);
+#    int close(int);
 #*/
 #include <fcntl.h> /*
 # define O_RDWR;

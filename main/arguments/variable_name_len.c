@@ -13,8 +13,8 @@
 int
 	variable_name_len(char *input, int index)
 {
-	char	save_char;
-	int		result;
+	register char	save_char;
+	int				result;
 
 	result = 0;
 	while (input[index + result])

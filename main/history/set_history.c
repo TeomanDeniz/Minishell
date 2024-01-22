@@ -12,40 +12,18 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define MALLOC_ERROR;
 #typedef t_shell;
-#   void error_shell(t_shell, char *, int, char *);
-#   void werror_shell(t_shell, char *, int, char *);
-#   void env_to_variable(t_shell, char **);
-#   char *get_variable_direct_value(char *, t_shell);
-#   char *get_variable(char *, t_shell);
-#   void set_variable(char *, char *, t_shell);
-#   void set_readline_history(t_shell);
-#*/
-#include <unistd.h> /*
-# define F_OK;
-# define R_OK;
-# define X_OK;
-#    int access(char *, int);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define false;
-# define true;
 #*/
 #include "../../libft/libft.h" /*
-#   char *get_next_line(int);
-#   void *ft_calloc(uint, uint);
 #    int ft_strlen(char *);
 #*/
-#include <fcntl.h> /*
-# define O_RDONLY;
-#    int open(char *, int, ...);
+#include <unistd.h> /*
+#ssize_t write(int, void *, size_t);
 #*/
 #include <stdio.h> /*
 #typedef FILE;
-^------> <readline/readline.h>
-*/
+^------> <readline/history.h>
+#*/
 #include <readline/history.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
@@ -58,5 +36,12 @@
 void
 	set_history(t_shell shell)
 {
-
+	if (!shell->input)
+		return ;
+	add_history(shell->input);
+	if (shell->histfile_fd < 0)
+		return ;
+	write(shell->histfile_fd, shell->input, ft_strlen(shell->input));
+	write(shell->histfile_fd, "\n", 1);
+	shell->history_number_of_commands++;
 }

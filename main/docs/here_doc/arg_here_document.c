@@ -113,11 +113,11 @@ static bool
 	char	*input;
 
 	prompt_preparer(shell, prepare_here_doc(shell, \
-		&(struct s_operator){false, false}));
+		&(struct s_operator){false, false, false}));
 	input = readline(shell->prompt);
 	if (!input || g_signal == SIGINT)
 	{
-		cancel_here_doc(shell, (struct s_operator){false, false});
+		cancel_here_doc(shell, (struct s_operator){false, false, false});
 		return (!ft_safe_free(&input));
 	}
 	if (ft_strboolcmp(input, *heredoc))

@@ -117,7 +117,6 @@ static bool
 	if (!arg[index + 1].this)
 		next_is_null = true;
 	if (arg[index].operator && (\
-		(ft_strboolcmp(this, "|") && next_is_null) || \
 		(ft_strboolcmp(this, "<<") && next_is_null) || \
 		(ft_strboolcmp(this, ">>") && next_is_null) || \
 		(ft_strboolcmp(this, "<") && next_is_null) || \

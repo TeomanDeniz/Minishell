@@ -41,9 +41,12 @@ void
 {
 	if (!(shell->std_out_fd < 0))
 		close(shell->std_out_fd);
+	if (!(shell->histfile_fd < 0))
+		close(shell->histfile_fd);
 	rl_clear_history();
 	shell->input = shell->org_input;
 	ft_free_matrix(&shell->env);
+	ft_safe_free(&shell->histfile);
 	ft_safe_free(&shell->home);
 	ft_safe_free(&shell->prompt);
 	ft_safe_free(&shell->execute_program);

@@ -44,7 +44,7 @@ int
 
 	index = 0;
 	result = 0;
-	operator = (struct s_operator){false, false};
+	operator = (struct s_operator){false, false, false};
 	while (!!shell->input[index])
 	{
 		if (char_whitespace_o(shell->input[index], &operator))

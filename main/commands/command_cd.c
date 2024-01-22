@@ -45,6 +45,7 @@
 static bool	cd_home(t_shell shell);
 static void	set_new_dir(char new_dir[PATH_MAX], char *other_char);
 static bool	cd_error(t_shell shell, char *file);
+static bool	check_currenct_dir(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -56,7 +57,7 @@ void
 	(skip_docs(shell), ft_bzero(new_dir, PATH_MAX));
 	if ((shell->arg[shell->index].this == NULL && cd_home(shell)) || \
 		(ft_strboolcmp(shell->arg[shell->index].this, "-") && \
-		command_pwd(shell)))
+		command_pwd(shell)) || !check_currenct_dir(shell))
 		return ;
 	if (ft_strlen(shell->arg[shell->index].this) >= PATH_MAX)
 	{
@@ -75,6 +76,28 @@ void
 		return ;
 	set_variable("OLDPWD", shell->pwd, shell);
 	(getcwd(shell->pwd, PATH_MAX), set_variable("PWD", shell->pwd, shell));
+}
+
+static bool
+	check_currenct_dir(t_shell shell)
+{
+	char	current_dir[PATH_MAX];
+
+	ft_bzero(current_dir, PATH_MAX);
+	if (!getcwd(current_dir, PATH_MAX))
+	{
+		perror_shell(shell, NULL, 0, HOW_THE_FUCK_CD_FAILED);
+		if (chdir("/") != 0)
+		{
+			cd_error(shell, "/");
+			return (false);
+		}
+		getcwd(shell->pwd, PATH_MAX);
+		set_variable("OLDPWD", NULL, shell);
+		set_variable("PWD", shell->pwd, shell);
+		return (false);
+	}
+	return (true);
 }
 
 static bool

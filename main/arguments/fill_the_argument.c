@@ -33,7 +33,7 @@ void
 	struct s_operator	operator;
 
 	string_index = 0;
-	operator = (struct s_operator){false, false};
+	operator = (struct s_operator){false, false, false};
 	skip_whitespaces(&shell->input, &operator);
 	while (!!*shell->input && !char_whitespace_o(*shell->input, &operator))
 	{

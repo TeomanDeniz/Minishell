@@ -15,7 +15,7 @@
 # define MALLOC_ERROR;
 # struct s_operator;
 #typedef t_shell;
-#   void here_doc_just_newline(t_shell);
+#   void here_doc_just_newline(t_shell, bool);
 #   void reset_here_doc_operator(char *, t_operator);
 #   void prompt_preparer(t_shell, char *);
 #   void cancel_here_doc(t_shell, struct s_operator);
@@ -61,9 +61,9 @@ void
 {
 	struct s_operator	operator;
 
-	here_doc_just_newline(shell);
 	reset_here_doc_operator(shell->input, &operator);
-	while (operator.double_quote || operator.single_quote)
+	here_doc_just_newline(shell, operator.pipe);
+	while (operator.double_quote || operator.single_quote || operator.pipe)
 	{
 		prompt_preparer(shell, prepare_here_doc(shell, &operator));
 		shell->quote_here_doc = readline(shell->prompt);
@@ -77,7 +77,7 @@ void
 			replace_dollar_with_value(&shell->quote_here_doc, shell);
 		set_here_doc_operator(shell->quote_here_doc, &operator);
 		if (*shell->quote_here_doc == 0)
-			here_doc_just_newline(shell);
+			here_doc_just_newline(shell, operator.pipe);
 		else
 			shell->org_input = (join_here_doc(shell, operator), shell->input);
 		ft_safe_free(&shell->quote_here_doc);

@@ -25,5 +25,6 @@ void
 {
 	operator->double_quote = false;
 	operator->single_quote = false;
+	operator->pipe = false;
 	set_here_doc_operator(input, operator);
 }

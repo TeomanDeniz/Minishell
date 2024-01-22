@@ -27,5 +27,5 @@ bool
 	struct s_operator	operator;
 
 	reset_here_doc_operator(shell->input, &operator);
-	return ((bool)(operator.double_quote || operator.single_quote));
+	return (operator.double_quote || operator.single_quote || operator.pipe);
 }

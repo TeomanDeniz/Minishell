@@ -35,9 +35,10 @@
 #   char *get_variable(char *, t_shell);
 #   void set_variable(char *, char *, t_shell);
 #   void handle_sigint(int);
-#   void set_readline_history(t_shell);
+#   bool set_readline_history(t_shell);
 #   char *get_certain_home(t_shell);
 #   void remove_variable(char *, t_shell);
+#   void edit_history_file(t_shell);
 #*/
 #include <unistd.h> /*
 # define STDOUT_FILENO;
@@ -67,7 +68,6 @@
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
 static void	check_and_set(const char *name, const char *value, t_shell shell);
-static void	prepare_home(t_shell shell);
 static void	shell_setup_env(t_shell shell, char **env);
 static void	send_t_shell_address(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
@@ -96,7 +96,7 @@ void
 	shell->fork_job = false;
 	shell->command_not_found = false;
 	shell->fix_extra_fucking_newline = false;
-	shell->operator = (struct s_operator){false, false};
+	shell->operator = (struct s_operator){false, false, false};
 	shell_setup_env(shell, env);
 	update_row_and_col_variables(0);
 }
@@ -114,15 +114,17 @@ static void
 	set_variable("PS2", CMD42_PS2, shell);
 	set_variable("PS3", CMD42_PS3, shell);
 	set_variable("PS4", CMD42_PS4, shell);
+	set_variable("PS5", CMD42_PS5, shell);
 	set_variable("CMD42_NAME", CMD42_NAME, shell);
 	set_variable("CMD42_VERSION", CMD42_VERSION, shell);
+	set_variable("OLDPWD", NULL, shell);
 	check_and_set("SHLVL", "1", shell);
-	prepare_home(shell);
+	check_and_set("HOME", shell->home, shell);
 	if (ft_strboolcmp(get_variable("PATH", shell), ""))
 		check_and_set("PATH", CMD42_PATH, shell);
 	check_and_set("PWD", shell->pwd, shell);
-	set_readline_history(shell);
-	set_variable("OLDPWD", NULL, shell);
+	if (set_readline_history(shell))
+		edit_history_file(shell);
 }
 
 static void
@@ -138,24 +140,6 @@ static void
 		event_variable = event_variable->next;
 	}
 	set_variable(name, value, shell);
-}
-
-static void
-	prepare_home(t_shell shell)
-{
-	char	result_home[PATH_MAX];
-	char	old_dir[PATH_MAX];
-
-	if (!get_variable_direct_value("HOME", shell))
-	{
-		getcwd(old_dir, PATH_MAX);
-		if (chdir("/") == -1)
-			error_shell(shell, FAILED_HOME, (__LINE__ - 1), "chdir()");
-		getcwd(result_home, PATH_MAX);
-		set_variable("HOME", result_home, shell);
-		if (chdir(old_dir) == -1)
-			error_shell(shell, FAILED_TO_BACK, (__LINE__ - 1), "chdir()");
-	}
 }
 
 static void

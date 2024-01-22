@@ -74,7 +74,7 @@ static int
 	int					result;
 	struct s_operator	operator;
 
-	operator = (struct s_operator){false, false};
+	operator = (struct s_operator){false, false, false};
 	result = 1;
 	index = 0;
 	while (input[index])
