@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dollar_job.c                                       :+:      :+:    :+:   */
+/*   operate_job.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -38,7 +38,7 @@ static int	put_exit_status(t_shell shell, char **this, int *string_index);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 bool
-	dollar_job(t_shell shell, int arg_index, int *string_index, t_operator op)
+	operate_job(t_shell shell, int arg_index, int *string_index, t_operator op)
 {
 	char	*this;
 

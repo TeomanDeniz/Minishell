@@ -301,7 +301,7 @@ extern bool	not_a_valid_identifier(t_shell shell, char *command);
 extern void	prepare_args(t_shell shell);
 extern void	fill_the_operator(t_shell shell, int index);
 extern void	fill_the_argument(t_shell shell, int arg_index);
-extern bool	dollar_job(t_shell shell, int arg_index, int *string_index, \
+extern bool	operate_job(t_shell shell, int arg_index, int *string_index, \
 t_operator op);
 extern int	arg_strlen(t_shell shell, char *org_input);
 extern char	*get_varaible_by_name(char *input, t_shell shell, int index);

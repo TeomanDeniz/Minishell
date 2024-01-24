@@ -61,7 +61,7 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 					./main/arguments/arg_set_quote.c \
 					./main/arguments/arg_strlen.c \
 					./main/arguments/char_quote_o.c \
-					./main/arguments/dollar_job.c \
+					./main/arguments/operate_job.c \
 					./main/arguments/dollar_valid.c \
 					./main/arguments/fill_the_argument.c \
 					./main/arguments/fill_the_operator.c \
@@ -232,6 +232,10 @@ $(NAME): files_n_calculator $(OBJ) $(LIBFT_OBJ) $(OBJ_READLINE) $(SRC_NCURSES)
 	fi;
 	@echo ""
 
+b: bonus
+bonus:
+	@ecno "Not yet"
+
 c: clean
 clear: clear
 clean:
@@ -275,4 +279,4 @@ files_n_calculator:
 r: fclean all
 re: fclean all
 
-.PHONY: all a clean clear c fclean fclear fc re r norminette norm n
+.PHONY: all a clean clear c fclean fclear fc re r norminette norm n b bonus
