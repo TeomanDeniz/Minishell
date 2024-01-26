@@ -3,25 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/20 10:48:13 by hdeniz            #+#    #+#              #
-#    Updated: 2023/10/20 10:48:15 by hdeniz           ###   ########.fr        #
+#    Created: 2022/10/24 10:48:13 by hdeniz            #+#    #+#              #
+#    Updated: 2024/10/26 16:31:01 by hdeniz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC			=	gcc
-# [COMPILER]
-
-FLAGS		:=	-Wall -Werror -Wextra # -g
-# [COMPILER FLAGS]
-
-MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
-# [COMPILER FLAGS]
-
-# [LIBFT]
-
-	LIBFT_SRC	=	./libft/get_next_line/get_next_line.c\
+# *************************** [v] MAIN SOURCES [v] *************************** #
+LIBFT_SRC	=	./libft/get_next_line/get_next_line.c\
 					./libft/ft_atoi.c \
 					./libft/ft_bzero.c \
 					./libft/ft_calloc.c \
@@ -41,23 +31,8 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 					./libft/ft_strjoinfree.c \
 					./libft/ft_strlen.c \
 					./libft/ft_substr.c
-	# [FILES TO COMPILE]
 
-	LIBFT_OBJ	=	$(eval LIBFT_OBJ := $$(LIBFT_SRC:.c=.o))$(LIBFT_OBJ)
-	# [.c FILE NAMES TO .o]
-# [LIBFT]
-
-# [MAIN]
-	MAIN_EXE	=	"minishell"
-	# [EXECUTABLE PROGRAM NAME]
-
-	NAME		=	./main/main.a
-	# [COMPILED LIBRARY FILE'S NAME (STATIC LINK LIBRARY)]
-
-	MAIN		=	./main/main.c
-	# [MAIN PRODUCT TO COMPILE]
-
-	SRC			=	./main/arguments/arg_counter.c \
+MAIN_SRC	=	./main/arguments/arg_counter.c \
 					./main/arguments/arg_set_quote.c \
 					./main/arguments/arg_strlen.c \
 					./main/arguments/char_quote_o.c \
@@ -178,105 +153,131 @@ MAIN_FLAGS	=	-Wall -Werror -Wextra -lreadline -lncurses # -g
 					./main/print_header/header_elemans/d.c \
 					./main/print_header/header_elemans/e.c \
 					./main/print_header/header_elemans/f.c
-	# [FILES TO COMPILE]
+# *************************** [^] MAIN SOURCES [^] *************************** #
 
-	OBJ				=	$(eval OBJ := $$(SRC:.c=.o))$(OBJ)
-	# [.c FILE NAMES TO .o]
-# [MAIN]
+# ************************** [v] BONUS SOURCES [v] *************************** #
+BONUS_SRC	=	
+# ************************** [^] BONUS SOURCES [^] *************************** #
 
-# ANIMATION VARIABLES
-	N_FILES		:=	0
-	FILES_N		:=	0
-# ANIMATION VARIABLES
+# **************************** [v] VARIABLES [v] ***************************** #
+	# [COMPILER]
+		CC			=	gcc
+	# [COMPILER]
+	# [EXE]
+		MAIN_EXE	=	"minishell"
+		MAIN		=	./main/main.c
+	# [EXE]
+	# [ARCHIVE AND OVERLINKING CHECKER]
+		NAME		=	./main.a
+	# [ARCHIVE AND OVERLINKING CHECKER]
+	# [COMPILER FLAGS]
+		CFLAGS		=	-Wall -Wextra -Werror # -g
+		MAIN_FLAGS	=	$(CFLAGS) -lreadline -lncurses
+	# [COMPILER FLAGS]
+	# [.c STRINGS TO .o]
+		MAIN_OBJ	=	$(eval MAIN_OBJ := $$(MAIN_SRC:.c=.o))$(MAIN_OBJ)
+		BONUS_OBJ	=	$(eval BONUS_OBJ := $$(BONUS_SRC:.c=.o))$(BONUS_OBJ)
+		LIBFT_OBJ	=	$(eval LIBFT_OBJ := $$(LIBFT_SRC:.c=.o))$(LIBFT_OBJ)
+	# [.c STRINGS TO .o]
+	# [ARCHIVE OBJECTS]
+		OBJECTS		=
+	# [ARCHIVE OBJECTS]
+	# ANIMATION VARIABLES
+		TERMINAL_LEN	:=	\
+			$(eval TERMINAL_LEN := $(shell tput cols))$(TERMINAL_LEN)
+		NUMBER_OF_FILES	:=	0
+		FILE_COUNTER	:=	0
+	# ANIMATION VARIABLES
+# **************************** [^] VARIABLES [^] ***************************** #
 
-# ANIMATION
+# ****************************** [v] COLORS [v] ****************************** #
+	C_RESET	=	$(shell tput sgr0)
+	C_BLINK	=	$(shell tput blink)
+	F15		=	$(shell tput setaf 15)
+	B1F11	=	$(shell tput setab 1)$(shell tput setaf 11)
+	B12F15	=	$(shell tput setab 12)$(shell tput setaf 15)
+	B1F15	=	$(shell tput setab 1)$(shell tput setaf 15)
+	B2F15	=	$(shell tput setab 2)$(shell tput setaf 15)
+	F11		=	$(shell tput setaf 11)
+	F13		=	$(shell tput setaf 13)
+	F14		=	$(shell tput setaf 14)
+	F10		=	$(shell tput setaf 10)
+# ****************************** [^] COLORS [^] ****************************** #
+
+# ***************************#* [v] FUNCIONS [v] ***************************** #
 define progress_bar
 	$(eval PBAR := $(shell echo $(1)*100/$(2)*100/100 | bc))
-	$(eval PDONE := $(shell echo $(PBAR)*4/10 | bc))
-	$(eval PLEFT := $(shell echo 40-$(PDONE) | bc))
+	$(eval PDONE := $(shell echo $(PBAR)*3/10 | bc))
+	$(eval PLEFT := $(shell echo 30-$(PDONE) | bc))
 	$(eval PSEQ := $(shell seq 0 1 $(PLEFT) 2>/dev/null))
-	$(eval PEMPTY := $(shell if [ "$(1)" -ne "$(2)" ]; then printf "░%.0s" $(PSEQ); fi))
-	$(eval PFILL := $(shell printf "█%.0s" $(shell seq 1 $(PDONE))))
-	@printf "\r $(shell tput setaf 11)[$(shell tput setaf 14)$(PFILL)$(PEMPTY)$(shell tput setaf 11)] $(PBAR)%% - $(shell tput setaf 10)[$(1)/$(2)]$(shell tput setaf 11) [$(shell tput setaf 13)$(3)$(shell tput setaf 11)]                                    "
+	$(eval PEMPTY := $(shell if [ "$(1)" -ne "$(2)" ]; \
+		then printf ".%.0s" $(PSEQ); fi))
+	$(eval PFILL := $(shell printf "\#%.0s" $(shell seq 1 $(PDONE))))
+	@printf "\r%*s\r $(F11)[$(F14)$(PFILL)$(PEMPTY)$(F11)] $(PBAR)%% - \
+		$(F10)[$(1)/$(2)]$(F11) [$(F13)$(3)$(F11)$(C_RESET)]" \
+		$(TERMINAL_LEN) " "
 endef
-# ANIMATION
 
-a: all
-all: $(NAME)
+define strjoin
+    $(eval $(1) := $($(1)) $(2))
+endef
+# ***************************#* [^] FUNCIONS [^] ***************************** #
 
 %.o: %.c
-	$(eval FILES_N := $(shell echo $(FILES_N) + 1 | bc))
-	$(call progress_bar,$(FILES_N),$(N_FILES),$<)
-	@$(CC) $(FLAGS) -c $< -o $@
-	@if [ -a $(NAME) ]; then \
-		rm -f $(NAME) ; \
-	fi;
-	@if [ -a $(MAIN_EXE) ]; then \
-		rm -f $(MAIN_EXE) ; \
-	fi;
+	$(call strjoin,OBJECTS,$@)
+	$(eval FILE_COUNTER := $(shell echo $(FILE_COUNTER) + 1 | bc))
+	$(call progress_bar,$(FILE_COUNTER),$(NUMBER_OF_FILES),$<)
+	@rm -f $(NAME) 2>/dev/null
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): files_n_calculator $(OBJ) $(LIBFT_OBJ) $(OBJ_READLINE) $(SRC_NCURSES)
-	@ar -rcs $(NAME) $(OBJ)
-	@ar -rcs "./libft.a" $(LIBFT_OBJ)
-	@if [ -a $(MAIN) ]; then \
-		if [ -a "./$(MAIN_EXE)" ]; then \
-			echo " $(shell tput setab 12)$(shell tput setaf 15)$(MAIN) is up to date !$(shell tput sgr0)" ; \
-		else \
-			$(CC) $(FLAGS) $(MAIN) $(NAME) "libft.a" $(MAIN_FLAGS) -o $(MAIN:.c=); \
-			mv "$(MAIN:.c=)" "./$(MAIN_EXE)"; \
-			echo "" ; \
-			echo "" ; \
-			echo "" ; \
-			echo " $(shell tput setab 2)$(shell tput setaf 15)$(MAIN) Done !$(shell tput sgr0)" ; \
-		fi; \
-	fi;
-	@echo ""
+all: files_n_calculator $(NAME)
+
+$(NAME): $(LIBFT_OBJ) $(MAIN_OBJ)
+	@ar rc $(NAME) $(OBJECTS) 2>/dev/null && \
+	echo "\n\n $(C_BLINK)$(B2F15) $(NAME) is ready! $(C_RESET)\n"
+	@$(CC) $(MAIN_FLAGS) $(MAIN) $(NAME) -o $(MAIN:.c=) && \
+	echo "\n\n $(C_BLINK)$(B2F15) $(MAIN) is ready! $(C_RESET)\n"
+	@mv "$(MAIN:.c=)" "./$(MAIN_EXE)"
 
 b: bonus
-bonus:
-	@ecno "Not yet"
+bonus: bonus_files_n_calculator $(BONUS_OBJ) $(NAME)
 
 c: clean
-clear: clear
+clear: clean
 clean:
-	@rm -f $(OBJ)
-	@rm -f $(LIBFT_OBJ)
-	@echo ""
-	@echo " $(shell tput setaf 15)$(shell tput setab 1)Clearing Objective Files$(shell tput sgr0)"
-	@echo ""
+	@rm $(MAIN_OBJ) $(BONUS_OBJ) $(LIBFT_OBJ) 2>/dev/null && \
+		echo "\n $(B1F15) Objects are cleared! $(C_RESET)\n" || \
+		echo "\n $(B12F15) Nothing to clear! $(C_RESET)\n"
 
 fc: fclean
-fclear: fclean
 fclean: clean
-	@if [ -a $(NAME) ]; then \
-		rm -f $(NAME) ; \
-		echo "" ; \
-		echo " $(shell tput setab 1)$(shell tput setaf 11)$(NAME)$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
-	@if [ -a "libft.a" ]; then \
-		rm -f "libft.a" ; \
-		echo "" ; \
-		echo " $(shell tput setab 1)$(shell tput setaf 11)"libft.a"$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
-	@if [ -a $(MAIN_EXE) ]; then \
-		rm -f $(MAIN_EXE) ; \
-		echo "" ; \
-		echo " $(shell tput setab 1)$(shell tput setaf 11)$(MAIN_EXE)$(shell tput setaf 15) deleted$(shell tput sgr0)" ; \
-		echo "" ; \
-	fi;
+	@rm $(NAME) 2>/dev/null && \
+	echo "\n $(B1F11) $(NAME) $(F15)deleted! $(C_RESET)\n" || \
+	echo "\n $(B12F15) $(NAME) is not exist already! $(C_RESET)\n"
+	@rm $(MAIN_EXE) 2>/dev/null && \
+	echo "\n $(B1F11) $(MAIN_EXE) $(F15)deleted! $(C_RESET)\n" || \
+	echo "\n $(B12F15) $(MAIN_EXE) is not exist already! $(C_RESET)\n"
+
+re: fc all
 
 files_n_calculator:
-	@echo "$(shell tput sgr0)"
 	@echo ""
-	$(eval FILES_N := 0)
-	$(eval N_FILES := $(shell echo $(SRC) $(LIBFT_SRC) | wc -w | sed "s/ //g" | bc))
-	$(eval N_OBJ := $(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
-	$(eval N_FILES := $(shell echo $(N_FILES) - $(N_OBJ) | bc))
-	$(if $(filter 0,$(N_FILES)), $(eval N_FILES := 1))
+	$(eval FILE_COUNTER := 0)
+	$(eval NUMBER_OF_FILES := $(shell echo $(MAIN_SRC) $(LIBFT_SRC) \
+		| wc -w | sed "s/ //g" | bc))
+	$(eval N_OBJ := \
+		$(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
+	$(eval NUMBER_OF_FILES := $(shell echo $(NUMBER_OF_FILES) - $(N_OBJ) | bc))
+	$(if $(filter 0,$(NUMBER_OF_FILES)), $(eval NUMBER_OF_FILES := 1))
 
-r: fclean all
-re: fclean all
+bonus_files_n_calculator:
+	@echo ""
+	$(eval FILE_COUNTER := 0)
+	$(eval NUMBER_OF_FILES := $(shell echo $(MAIN_SRC) $(LIBFT_SRC) \
+		$(BONUS_OBJ) | wc -w | sed "s/ //g" | bc))
+	$(eval N_OBJ := \
+		$(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
+	$(eval NUMBER_OF_FILES := $(shell echo $(NUMBER_OF_FILES) - $(N_OBJ) | bc))
+	$(if $(filter 0,$(NUMBER_OF_FILES)), $(eval NUMBER_OF_FILES := 1))
 
-.PHONY: all a clean clear c fclean fclear fc re r norminette norm n b bonus
+.PHONY: all fclean fc clean clear c bonus b
