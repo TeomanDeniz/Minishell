@@ -32,7 +32,8 @@
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	overwrite_this(char *overwrite, char *copy, int *string_index);
+static bool	overwrite_this(t_shell shell, char *this, char *copy, int \
+*string_index);
 static bool	put_dollar(t_shell shell, char **this, int *string_index);
 static bool	put_exit_status(t_shell shell, char **this, int *string_index);
 /* *************************** [^] PROTOTYPES [^] *************************** */
@@ -46,7 +47,7 @@ bool
 		return (false);
 	this = shell->arg[arg_index].this;
 	if (*shell->input == '~' && tilda_valid(shell, op, 0))
-		return (overwrite_this(this, get_variable("HOME", shell), \
+		return (overwrite_this(shell, this, get_variable("HOME", shell), \
 			string_index));
 	if (*shell->input == '$' && *(shell->input + 1) == '?')
 		return (put_exit_status(shell, &this, string_index));
@@ -56,7 +57,7 @@ bool
 }
 
 static bool
-	overwrite_this(char *overwrite, char *copy, int *string_index)
+	overwrite_this(t_shell shell, char *this, char *copy, int *string_index)
 {
 	register int	index;
 
@@ -66,7 +67,7 @@ static bool
 	index = -1;
 	while (++index, !!copy[index])
 	{
-		overwrite[*string_index] = copy[index];
+		this[*string_index] = copy[index];
 		++(*string_index);
 	}
 	return (true);

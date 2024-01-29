@@ -32,7 +32,8 @@ LIBFT_SRC	=	./libft/get_next_line/get_next_line.c\
 					./libft/ft_strlen.c \
 					./libft/ft_substr.c
 
-MAIN_SRC	=	./main/arguments/arg_counter.c \
+MAIN_SRC	=	$(LIBFT_SRC) \
+					./main/arguments/arg_counter.c \
 					./main/arguments/arg_set_quote.c \
 					./main/arguments/arg_strlen.c \
 					./main/arguments/char_quote_o.c \
@@ -177,7 +178,6 @@ BONUS_SRC	=
 	# [.c STRINGS TO .o]
 		MAIN_OBJ	=	$(eval MAIN_OBJ := $$(MAIN_SRC:.c=.o))$(MAIN_OBJ)
 		BONUS_OBJ	=	$(eval BONUS_OBJ := $$(BONUS_SRC:.c=.o))$(BONUS_OBJ)
-		LIBFT_OBJ	=	$(eval LIBFT_OBJ := $$(LIBFT_SRC:.c=.o))$(LIBFT_OBJ)
 	# [.c STRINGS TO .o]
 	# [ARCHIVE OBJECTS]
 		OBJECTS		=
@@ -232,7 +232,7 @@ endef
 
 all: files_n_calculator $(NAME)
 
-$(NAME): $(LIBFT_OBJ) $(MAIN_OBJ)
+$(NAME): $(MAIN_OBJ)
 	@ar rc $(NAME) $(OBJECTS) 2>/dev/null && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(NAME) is ready! $(C_RESET)\n"
 	@$(CC) $(MAIN_FLAGS) $(MAIN) $(NAME) -o $(MAIN:.c=) && \
@@ -245,7 +245,7 @@ bonus: bonus_files_n_calculator $(BONUS_OBJ) $(NAME)
 c: clean
 clear: clean
 clean:
-	@rm $(MAIN_OBJ) $(BONUS_OBJ) $(LIBFT_OBJ) 2>/dev/null && \
+	@rm $(MAIN_OBJ) $(BONUS_OBJ) 2>/dev/null && \
 		echo "\n $(B1F15) Objects are cleared! $(C_RESET)\n" || \
 		echo "\n $(B12F15) Nothing to clear! $(C_RESET)\n"
 

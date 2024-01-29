@@ -47,7 +47,7 @@ char
 	signal(SIGINT, just_handle_signal);
 	rl_getc_function = rd_input_ctrl_c_bypass;
 	reset_here_doc_operator(shell->input, operator);
-	return (return_prompt(shell, operator));
+	return (return_prompt(shell, *operator));
 }
 
 static char

@@ -160,9 +160,9 @@ static bool
 static char
 	next_doc(struct s_operator operator)
 {
-	if (o.pipe)
+	if (operator.pipe)
 		return (0);
-	if (o.double_quote || o.single_quote)
+	if (operator.double_quote || operator.single_quote)
 		return ('\n');
 	return (0);
 }
