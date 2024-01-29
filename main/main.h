@@ -331,7 +331,7 @@ extern void	prepare_arg_here_doc(t_shell shell);
 /* ************************ [^] ./docs/here_doc [^] ************************* */
 /* ************************ [v] ./docs/quate_doc [v] ************************ */
 extern void	quote_here_doc(t_shell shell);
-extern void	here_doc_just_newline(t_shell shell, bool pipe);
+extern void	here_doc_just_one_char(t_shell shell, char character);
 extern bool	check_quate_here_doc(t_shell shell);
 /* ************************ [^] ./docs/quate_doc [^] ************************ */
 /* ***************************** [^] ./docs [^] ***************************** */

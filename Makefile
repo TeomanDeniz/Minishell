@@ -75,7 +75,7 @@ MAIN_SRC	=	./main/arguments/arg_counter.c \
 					./main/docs/file_doc/prepare_filedoc.c \
 					./main/docs/here_doc/prepare_arg_here_doc.c \
 					./main/docs/quate_doc/check_quate_here_doc.c \
-					./main/docs/quate_doc/here_doc_just_newline.c \
+					./main/docs/quate_doc/here_doc_just_one_char.c \
 					./main/docs/quate_doc/quote_here_doc.c \
 					./main/docs/here_doc/arg_here_document.c \
 					./main/docs/cancel_here_doc.c \

@@ -12,6 +12,7 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
+# struct s_operator;
 #typedef t_shell;
 #typedef t_operator;
 #   void just_handle_signal(int);
@@ -36,17 +37,27 @@
 #*/
 /* **************************** [^] INCLUDES [^] **************************** */
 
+/* *************************** [v] PROTOTYPES [v] *************************** */
+static char	*return_prompt(t_shell shell, struct s_operator operator);
+/* *************************** [^] PROTOTYPES [^] *************************** */
+
 char
 	*prepare_here_doc(t_shell shell, t_operator operator)
 {
 	signal(SIGINT, just_handle_signal);
 	rl_getc_function = rd_input_ctrl_c_bypass;
 	reset_here_doc_operator(shell->input, operator);
-	if (operator->pipe)
+	return (return_prompt(shell, operator));
+}
+
+static char
+	*return_prompt(t_shell shell, struct s_operator operator)
+{
+	if (operator.pipe)
 		return (get_variable("PS5", shell));
-	if (operator->double_quote)
+	if (operator.double_quote)
 		return (get_variable("PS2", shell));
-	if (operator->single_quote)
+	if (operator.single_quote)
 		return (get_variable("PS3", shell));
 	return (get_variable("PS4", shell));
 }

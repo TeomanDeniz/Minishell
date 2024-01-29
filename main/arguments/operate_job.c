@@ -32,9 +32,9 @@
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	overwrite_this(char *overwrite, char *copy, int *string_index);
-static int	put_dollar(t_shell shell, char **this, int *string_index);
-static int	put_exit_status(t_shell shell, char **this, int *string_index);
+static bool	overwrite_this(char *overwrite, char *copy, int *string_index);
+static bool	put_dollar(t_shell shell, char **this, int *string_index);
+static bool	put_exit_status(t_shell shell, char **this, int *string_index);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 bool
@@ -46,41 +46,33 @@ bool
 		return (false);
 	this = shell->arg[arg_index].this;
 	if (*shell->input == '~' && tilda_valid(shell, op, 0))
-	{
-		shell->input += \
-			overwrite_this(this, get_variable("HOME", shell), string_index);
-		return (true);
-	}
+		return (overwrite_this(this, get_variable("HOME", shell), \
+			string_index));
 	if (*shell->input == '$' && *(shell->input + 1) == '?')
-	{
-		shell->input += put_exit_status(shell, &this, string_index);
-		return (true);
-	}
+		return (put_exit_status(shell, &this, string_index));
 	else if (*shell->input == '$' && dollar_valid(shell, 0))
-	{
-		shell->input += put_dollar(shell, &this, string_index);
-		return (true);
-	}
+		return (put_dollar(shell, &this, string_index));
 	return (false);
 }
 
-static int
+static bool
 	overwrite_this(char *overwrite, char *copy, int *string_index)
 {
 	register int	index;
 
+	shell->input++;
 	if (!copy)
-		return (1);
+		return (true);
 	index = -1;
 	while (++index, !!copy[index])
 	{
 		overwrite[*string_index] = copy[index];
 		++(*string_index);
 	}
-	return (1);
+	return (true);
 }
 
-static int
+static bool
 	put_dollar(t_shell shell, char **this, int *string_index)
 {
 	char			*variable;
@@ -94,10 +86,11 @@ static int
 		++variable_index;
 		*string_index += 1;
 	}
-	return (variable_name_len(shell->input + 1, 0));
+	shell->input += variable_name_len(shell->input + 1, 0);
+	return (true);
 }
 
-static int
+static bool
 	put_exit_status(t_shell shell, char **this, int *string_index)
 {
 	register char	value;
@@ -109,9 +102,13 @@ static int
 	{
 		value = 48 + ft_numindex(shell->errorlevel, variable_index);
 		if (value == END_OF_NUMBER_INDEX)
-			return (2);
+		{
+			shell->input += 2;
+			return (true);
+		}
 		(*this)[*string_index] = value;
 		++variable_index;
 		*string_index += 1;
 	}
+	return (false);
 }

@@ -31,7 +31,8 @@
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	check_prev_arg_is_hereodc(t_shell shell, int arg_index);
+static bool	check_prev_arg_is_hereodc(t_shell shell, register int arg_index);
+static bool	check_sub_operator(char *input);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -44,8 +45,8 @@ void
 	string_index = (skip_whitespaces(&shell->input, &operator), 0);
 	while (!!*shell->input && !char_whitespace_o(*shell->input, &operator))
 	{
-		if ((*shell->input == '~' || *shell->input == '$') && \
-			(!check_prev_arg_is_hereodc(shell, arg_index)))
+		if (check_sub_operator(shell->input) && \
+			!check_prev_arg_is_hereodc(shell, arg_index))
 			if (operate_job(shell, arg_index, &string_index, &operator))
 				continue ;
 		if (char_quote_o(*shell->input, operator))
@@ -63,7 +64,7 @@ void
 }
 
 static bool
-	check_prev_arg_is_hereodc(t_shell shell, int arg_index)
+	check_prev_arg_is_hereodc(t_shell shell, register int arg_index)
 {
 	if (!!shell->arg && !!arg_index)
 	{
@@ -71,5 +72,13 @@ static bool
 			shell->arg[arg_index - 1].operator)
 			return (true);
 	}
+	return (false);
+}
+
+static bool
+	check_sub_operator(char *input)
+{
+	if (*input == '~' || *input == '$')
+		return (true);
 	return (false);
 }

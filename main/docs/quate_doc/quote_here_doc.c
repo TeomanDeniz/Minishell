@@ -16,7 +16,7 @@
 # define UNEX_TOKEN;
 # struct s_operator;
 #typedef t_shell;
-#   void here_doc_just_newline(t_shell, bool);
+#   void here_doc_just_one_char(t_shell, char);
 #   void reset_here_doc_operator(char *, t_operator);
 #   void prompt_preparer(t_shell, char *);
 #   void cancel_here_doc(t_shell, struct s_operator);
@@ -60,6 +60,8 @@
 /* *************************** [v] PROTOTYPES [v] *************************** */
 static void	join_here_doc(t_shell shell, struct s_operator operator);
 static bool	input_err(t_shell shell, struct s_operator operator);
+static bool	if_loop(struct s_operator operator);
+static char	next_doc(struct s_operator operator);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -68,8 +70,8 @@ void
 	struct s_operator	o;
 
 	reset_here_doc_operator(shell->input, &o);
-	here_doc_just_newline(shell, o.pipe);
-	while (o.double_quote || o.single_quote || o.pipe)
+	here_doc_just_one_char(shell, next_doc(o));
+	while (if_loop(o))
 	{
 		prompt_preparer(shell, prepare_here_doc(shell, &o));
 		shell->quote_here_doc = readline(shell->prompt);
@@ -83,7 +85,7 @@ void
 			replace_dollar_with_value(&shell->quote_here_doc, shell);
 		set_here_doc_operator(shell->quote_here_doc, &o);
 		if (*shell->quote_here_doc == 0)
-			here_doc_just_newline(shell, o.pipe);
+			here_doc_just_one_char(shell, next_doc(o));
 		else
 			shell->org_input = (join_here_doc(shell, o), shell->input);
 		ft_safe_free(&shell->quote_here_doc);
@@ -145,4 +147,22 @@ static bool
 			return (false);
 	}
 	return (false);
+}
+
+static bool
+	if_loop(struct s_operator operator)
+{
+	if (operator.pipe || operator.single_quote || operator.double_quote)
+		return (true);
+	return (false);
+}
+
+static char
+	next_doc(struct s_operator operator)
+{
+	if (o.pipe)
+		return (0);
+	if (o.double_quote || o.single_quote)
+		return ('\n');
+	return (0);
 }
