@@ -75,9 +75,9 @@ MAIN_SRC	=	$(LIBFT_SRC) \
 					./main/docs/file_doc/prepare_arg_file_doc.c \
 					./main/docs/file_doc/prepare_filedoc.c \
 					./main/docs/here_doc/prepare_arg_here_doc.c \
-					./main/docs/quate_doc/check_quate_here_doc.c \
-					./main/docs/quate_doc/here_doc_just_one_char.c \
-					./main/docs/quate_doc/quote_here_doc.c \
+					./main/docs/operate_doc/check_operate_doc.c \
+					./main/docs/operate_doc/add_just_one_char.c \
+					./main/docs/operate_doc/operate_doc.c \
 					./main/docs/here_doc/arg_here_document.c \
 					./main/docs/cancel_here_doc.c \
 					./main/docs/prepare_here_doc.c \
@@ -157,8 +157,143 @@ MAIN_SRC	=	$(LIBFT_SRC) \
 # *************************** [^] MAIN SOURCES [^] *************************** #
 
 # ************************** [v] BONUS SOURCES [v] *************************** #
-BONUS_SRC	=	
+BONUS_SRC	=	$(LIBFT_SRC) \
+					./bonus/arguments/arg_counter.c \
+					./bonus/arguments/arg_set_quote.c \
+					./bonus/arguments/arg_strlen.c \
+					./bonus/arguments/char_quote_o.c \
+					./bonus/arguments/operate_job.c \
+					./bonus/arguments/dollar_valid.c \
+					./bonus/arguments/fill_the_argument.c \
+					./bonus/arguments/fill_the_operator.c \
+					./bonus/arguments/get_varaible_by_name.c \
+					./bonus/arguments/prepare_args.c \
+					./bonus/arguments/tilda_valid.c \
+					./bonus/arguments/variable_name_len.c \
+					./bonus/cmd/check_syntax_error.c \
+					./bonus/cmd/rd_input_ctrl_c_bypass.c \
+					./bonus/cmd/suppress_cat_io.c \
+					./bonus/cmd/check_term_env_exist.c \
+					./bonus/cmd/move_cursor_up.c \
+					./bonus/commands/check_direct_variable_creation.c \
+					./bonus/commands/check_equal_valid.c \
+					./bonus/commands/check_equal_valid_true.c \
+					./bonus/commands/command_cd.c \
+					./bonus/commands/command_echo.c \
+					./bonus/commands/command_env.c \
+					./bonus/commands/command_exit.c \
+					./bonus/commands/command_export.c \
+					./bonus/commands/command_if_builtin.c \
+					./bonus/commands/command_not_found.c \
+					./bonus/commands/command_pwd.c \
+					./bonus/commands/command_set_varible.c \
+					./bonus/commands/command_unset.c \
+					./bonus/commands/direct_variable_creation.c \
+					./bonus/commands/process_command.c \
+					./bonus/commands/skip_docs.c \
+					./bonus/commands/not_a_valid_identifier.c \
+					./bonus/docs/dollar_is_valid.c \
+					./bonus/docs/replace_dollar_with_value.c \
+					./bonus/docs/reset_here_doc_operator.c \
+					./bonus/docs/set_here_doc_operator.c \
+					./bonus/docs/file_doc/arg_file_document.c \
+					./bonus/docs/file_doc/prepare_arg_file_doc.c \
+					./bonus/docs/file_doc/prepare_filedoc.c \
+					./bonus/docs/here_doc/prepare_arg_here_doc.c \
+					./bonus/docs/quate_doc/check_quate_here_doc.c \
+					./bonus/docs/quate_doc/here_doc_just_one_char.c \
+					./bonus/docs/quate_doc/quote_here_doc.c \
+					./bonus/docs/here_doc/arg_here_document.c \
+					./bonus/docs/cancel_here_doc.c \
+					./bonus/docs/prepare_here_doc.c \
+					./bonus/error/error_shell.c \
+					./bonus/error/perror_shell.c \
+					./bonus/error/werror_shell.c \
+					./bonus/execute/check_command_found_in_path.c \
+					./bonus/execute/check_if_semicolon.c \
+					./bonus/execute/check_next_pipe.c \
+					./bonus/execute/check_pipe_doc.c \
+					./bonus/execute/child_process.c \
+					./bonus/execute/do_the_event.c \
+					./bonus/execute/execute.c \
+					./bonus/execute/execute_recursive.c \
+					./bonus/execute/fork_job.c \
+					./bonus/execute/is_executable.c \
+					./bonus/execute/normal_job.c \
+					./bonus/execute/parent_process.c \
+					./bonus/execute/prepare_execute_arguments.c \
+					./bonus/execute/prepare_execute_program.c \
+					./bonus/execute/return_execve_status.c \
+					./bonus/free/free_all_variables.c \
+					./bonus/free/free_arg.c \
+					./bonus/free/reset_content_pipe.c \
+					./bonus/free/reset_pipe.c \
+					./bonus/free/free_shell.c \
+					./bonus/history/set_readline_history.c \
+					./bonus/history/set_history.c \
+					./bonus/history/edit_history_file.c \
+					./bonus/prompt/prompt_preparer.c \
+					./bonus/prompt/prompt_size_detector.c \
+					./bonus/prompt/prompt_tilda.c \
+					./bonus/prompt/set_base_pwd.c \
+					./bonus/prompt/set_history_prompt.c \
+					./bonus/prompt/set_return_status_prompt.c \
+					./bonus/prompt/set_term_name_prompt.c \
+					./bonus/setup/signals_setup.c \
+					./bonus/setup/shell_setup.c \
+					./bonus/setup/get_certain_home.c \
+					./bonus/signals/ignore_sigint_for_child.c \
+					./bonus/signals/just_handle_signal.c \
+					./bonus/signals/update_row_and_col_variables.c \
+					./bonus/signals/handle_sigint.c \
+					./bonus/syntax/arg_operator.c \
+					./bonus/syntax/char_operator.c \
+					./bonus/syntax/char_operator_o.c \
+					./bonus/syntax/char_whitespace.c \
+					./bonus/syntax/char_whitespace_o.c \
+					./bonus/syntax/check_arrow_syntax.c \
+					./bonus/syntax/check_heredoc_syntax.c \
+					./bonus/syntax/check_next_syntax.c \
+					./bonus/syntax/check_outpend_syntax.c \
+					./bonus/syntax/file_checker.c \
+					./bonus/syntax/set_double_quote.c \
+					./bonus/syntax/set_single_quote.c \
+					./bonus/syntax/skip_whitespaces.c \
+					./bonus/syntax/there_is_slash_on_command.c \
+					./bonus/syntax/check_brackets.c \
+					./bonus/variables/env_to_variable.c \
+					./bonus/variables/get_variable.c \
+					./bonus/variables/get_variable_direct_value.c \
+					./bonus/variables/get_variable_len.c \
+					./bonus/variables/remove_variable.c \
+					./bonus/variables/set_var_by_int.c \
+					./bonus/variables/set_variable.c \
+					./bonus/variables/sort_variables.c \
+					./bonus/variables/variable_setup.c \
+					./bonus/variables/variable_to_env.c \
+					./bonus/variables/set_and_free_variable.c \
+					./bonus/print_header/print_header.c \
+					./bonus/print_header/write_color_f.c \
+					./bonus/print_header/header_elemans/a.c \
+					./bonus/print_header/header_elemans/b.c \
+					./bonus/print_header/header_elemans/c.c \
+					./bonus/print_header/header_elemans/d.c \
+					./bonus/print_header/header_elemans/e.c \
+					./bonus/print_header/header_elemans/f.c
 # ************************** [^] BONUS SOURCES [^] *************************** #
+
+# ****************************** [v] BONUS [v] ******************************* #
+	# [EXE]
+		BONUS_EXE	=	"minishell_bonus"
+		BONUS		=	./bonus/main.c
+	# [EXE]
+	# [ARCHIVE AND OVERLINKING CHECKER]
+		BONUS_NAME		=	./main_bonus.a
+	# [ARCHIVE AND OVERLINKING CHECKER]
+	# [.c STRINGS TO .o]
+		BONUS_OBJ	=	$(eval BONUS_OBJ := $$(BONUS_SRC:.c=.o))$(BONUS_OBJ)
+	# [.c STRINGS TO .o]
+# ****************************** [^] BONUS [^] ******************************* #
 
 # **************************** [v] VARIABLES [v] ***************************** #
 	# [COMPILER]
@@ -177,7 +312,6 @@ BONUS_SRC	=
 	# [COMPILER FLAGS]
 	# [.c STRINGS TO .o]
 		MAIN_OBJ	=	$(eval MAIN_OBJ := $$(MAIN_SRC:.c=.o))$(MAIN_OBJ)
-		BONUS_OBJ	=	$(eval BONUS_OBJ := $$(BONUS_SRC:.c=.o))$(BONUS_OBJ)
 	# [.c STRINGS TO .o]
 	# [ARCHIVE OBJECTS]
 		OBJECTS		=
@@ -232,15 +366,20 @@ endef
 
 all: files_n_calculator $(NAME)
 
-$(NAME): $(MAIN_OBJ)
+$(MAIN_EXE): $(MAIN_OBJ)
 	@ar rc $(NAME) $(OBJECTS) 2>/dev/null && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(NAME) is ready! $(C_RESET)\n"
-	@$(CC) $(MAIN_FLAGS) $(MAIN) $(NAME) -o $(MAIN:.c=) && \
-	echo "\n\n $(C_BLINK)$(B2F15) $(MAIN) is ready! $(C_RESET)\n"
-	@mv "$(MAIN:.c=)" "./$(MAIN_EXE)"
+	@$(CC) $(MAIN_FLAGS) $(MAIN) $(NAME) -o "./$(MAIN_EXE)" && \
+	echo "\n\n $(C_BLINK)$(B2F15) $(MAIN_EXE) is ready! $(C_RESET)\n"
+
+$(BONUS_NAME): $(BONUS_OBJ)
+	@ar rc $(BONUS_NAME) $(OBJECTS) 2>/dev/null && \
+	echo "\n\n $(C_BLINK)$(B2F15) $(BONUS_NAME) is ready! $(C_RESET)\n"
+	@$(CC) $(MAIN_FLAGS) $(BONUS) $(BONUS_NAME) -o "./$(BONUS_EXE)" && \
+	echo "\n\n $(C_BLINK)$(B2F15) $(BONUS_EXE) is ready! $(C_RESET)\n"
 
 b: bonus
-bonus: bonus_files_n_calculator $(BONUS_OBJ) $(NAME)
+bonus: bonus_files_n_calculator $(BONUS_NAME)
 
 c: clean
 clear: clean
@@ -263,7 +402,7 @@ re: fc all
 files_n_calculator:
 	@echo ""
 	$(eval FILE_COUNTER := 0)
-	$(eval NUMBER_OF_FILES := $(shell echo $(MAIN_SRC) $(LIBFT_SRC) \
+	$(eval NUMBER_OF_FILES := $(shell echo $(MAIN_SRC) \
 		| wc -w | sed "s/ //g" | bc))
 	$(eval N_OBJ := \
 		$(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
@@ -273,8 +412,8 @@ files_n_calculator:
 bonus_files_n_calculator:
 	@echo ""
 	$(eval FILE_COUNTER := 0)
-	$(eval NUMBER_OF_FILES := $(shell echo $(MAIN_SRC) $(LIBFT_SRC) \
-		$(BONUS_OBJ) | wc -w | sed "s/ //g" | bc))
+	$(eval NUMBER_OF_FILES := $(shell echo $(BONUS_OBJ) \
+		| wc -w | sed "s/ //g" | bc))
 	$(eval N_OBJ := \
 		$(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
 	$(eval NUMBER_OF_FILES := $(shell echo $(NUMBER_OF_FILES) - $(N_OBJ) | bc))
