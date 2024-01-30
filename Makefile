@@ -75,9 +75,9 @@ MAIN_SRC	=	$(LIBFT_SRC) \
 					./main/docs/file_doc/prepare_arg_file_doc.c \
 					./main/docs/file_doc/prepare_filedoc.c \
 					./main/docs/here_doc/prepare_arg_here_doc.c \
-					./main/docs/operate_doc/check_operate_doc.c \
-					./main/docs/operate_doc/add_just_one_char.c \
-					./main/docs/operate_doc/operate_doc.c \
+					./main/docs/quate_doc/check_quate_here_doc.c \
+					./main/docs/quate_doc/here_doc_just_one_char.c \
+					./main/docs/quate_doc/quote_here_doc.c \
 					./main/docs/here_doc/arg_here_document.c \
 					./main/docs/cancel_here_doc.c \
 					./main/docs/prepare_here_doc.c \
@@ -200,9 +200,9 @@ BONUS_SRC	=	$(LIBFT_SRC) \
 					./bonus/docs/file_doc/prepare_arg_file_doc.c \
 					./bonus/docs/file_doc/prepare_filedoc.c \
 					./bonus/docs/here_doc/prepare_arg_here_doc.c \
-					./bonus/docs/quate_doc/check_quate_here_doc.c \
-					./bonus/docs/quate_doc/here_doc_just_one_char.c \
-					./bonus/docs/quate_doc/quote_here_doc.c \
+					./bonus/docs/operate_doc/check_operate_doc.c \
+					./bonus/docs/operate_doc/add_just_one_char.c \
+					./bonus/docs/operate_doc/operate_doc.c \
 					./bonus/docs/here_doc/arg_here_document.c \
 					./bonus/docs/cancel_here_doc.c \
 					./bonus/docs/prepare_here_doc.c \
@@ -313,9 +313,6 @@ BONUS_SRC	=	$(LIBFT_SRC) \
 	# [.c STRINGS TO .o]
 		MAIN_OBJ	=	$(eval MAIN_OBJ := $$(MAIN_SRC:.c=.o))$(MAIN_OBJ)
 	# [.c STRINGS TO .o]
-	# [ARCHIVE OBJECTS]
-		OBJECTS		=
-	# [ARCHIVE OBJECTS]
 	# ANIMATION VARIABLES
 		TERMINAL_LEN	:=	\
 			$(eval TERMINAL_LEN := $(shell tput cols))$(TERMINAL_LEN)
@@ -351,29 +348,25 @@ define progress_bar
 		$(F10)[$(1)/$(2)]$(F11) [$(F13)$(3)$(F11)$(C_RESET)]" \
 		$(TERMINAL_LEN) " "
 endef
-
-define strjoin
-    $(eval $(1) := $($(1)) $(2))
-endef
 # ***************************#* [^] FUNCIONS [^] ***************************** #
 
 %.o: %.c
-	$(call strjoin,OBJECTS,$@)
 	$(eval FILE_COUNTER := $(shell echo $(FILE_COUNTER) + 1 | bc))
 	$(call progress_bar,$(FILE_COUNTER),$(NUMBER_OF_FILES),$<)
-	@rm -f $(NAME) 2>/dev/null
+	@rm -f $(MAIN_EXE) 2>/dev/null
+	@rm -f $(BONUS_EXE) 2>/dev/null
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: files_n_calculator $(NAME)
 
-$(MAIN_EXE): $(MAIN_OBJ)
-	@ar rc $(NAME) $(OBJECTS) 2>/dev/null && \
+$(NAME): $(MAIN) $(MAIN_OBJ)
+	@ar rc $(NAME) $(MAIN_OBJ) 2>/dev/null && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(NAME) is ready! $(C_RESET)\n"
 	@$(CC) $(MAIN_FLAGS) $(MAIN) $(NAME) -o "./$(MAIN_EXE)" && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(MAIN_EXE) is ready! $(C_RESET)\n"
 
-$(BONUS_NAME): $(BONUS_OBJ)
-	@ar rc $(BONUS_NAME) $(OBJECTS) 2>/dev/null && \
+$(BONUS_NAME): $(BONUS) $(BONUS_OBJ)
+	@ar rc $(BONUS_NAME) $(BONUS_OBJ) 2>/dev/null && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(BONUS_NAME) is ready! $(C_RESET)\n"
 	@$(CC) $(MAIN_FLAGS) $(BONUS) $(BONUS_NAME) -o "./$(BONUS_EXE)" && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(BONUS_EXE) is ready! $(C_RESET)\n"
@@ -390,10 +383,10 @@ clean:
 
 fc: fclean
 fclean: clean
-	@rm $(NAME) 2>/dev/null && \
+	@rm $(NAME) $(BONUS_NAME) 2>/dev/null && \
 	echo "\n $(B1F11) $(NAME) $(F15)deleted! $(C_RESET)\n" || \
 	echo "\n $(B12F15) $(NAME) is not exist already! $(C_RESET)\n"
-	@rm $(MAIN_EXE) 2>/dev/null && \
+	@rm $(MAIN_EXE) $(BONUS_EXE) 2>/dev/null && \
 	echo "\n $(B1F11) $(MAIN_EXE) $(F15)deleted! $(C_RESET)\n" || \
 	echo "\n $(B12F15) $(MAIN_EXE) is not exist already! $(C_RESET)\n"
 
@@ -405,17 +398,19 @@ files_n_calculator:
 	$(eval NUMBER_OF_FILES := $(shell echo $(MAIN_SRC) \
 		| wc -w | sed "s/ //g" | bc))
 	$(eval N_OBJ := \
-		$(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
+		$(shell find "./main" "./libft" \
+		-name '*.o' -type f | wc -w | sed "s/ //g" | bc))
 	$(eval NUMBER_OF_FILES := $(shell echo $(NUMBER_OF_FILES) - $(N_OBJ) | bc))
 	$(if $(filter 0,$(NUMBER_OF_FILES)), $(eval NUMBER_OF_FILES := 1))
 
 bonus_files_n_calculator:
 	@echo ""
 	$(eval FILE_COUNTER := 0)
-	$(eval NUMBER_OF_FILES := $(shell echo $(BONUS_OBJ) \
+	$(eval NUMBER_OF_FILES := $(shell echo $(BONUS_SRC) \
 		| wc -w | sed "s/ //g" | bc))
 	$(eval N_OBJ := \
-		$(shell find . -name '*.o' -type f | wc -w | sed "s/ //g" | bc))
+		$(shell find "./bonus" "./libft" \
+		-name '*.o' -type f | wc -w | sed "s/ //g" | bc))
 	$(eval NUMBER_OF_FILES := $(shell echo $(NUMBER_OF_FILES) - $(N_OBJ) | bc))
 	$(if $(filter 0,$(NUMBER_OF_FILES)), $(eval NUMBER_OF_FILES := 1))
 

@@ -77,13 +77,13 @@ void
 		shell->operate_doc = readline(shell->prompt);
 		if (!shell->operate_doc || g_signal == SIGINT || input_err(shell, o))
 		{
-			ft_safe_free(&shell->operate_doc);
-			cancel_here_doc(shell, o);
+			(ft_safe_free(&shell->operate_doc), cancel_here_doc(shell, o));
 			return ;
 		}
 		if (!o.single_quote && dollar_is_valid(shell->operate_doc))
 			replace_dollar_with_value(&shell->operate_doc, shell);
-		set_here_doc_operator(shell->operate_doc, &o);
+		shell->number_of_parentheses += \
+			set_here_doc_operator(shell->operate_doc, &o);
 		if (*shell->operate_doc == 0)
 			add_just_one_char(shell, next_doc(o));
 		else
@@ -154,7 +154,7 @@ static bool
 	if_loop(struct s_operator operator, t_shell shell)
 {
 	if (operator.pipe || operator.single_quote || operator.double_quote || \
-		!!shell.number_of_parentheses)
+		shell->number_of_parentheses > 0)
 		return (true);
 	return (false);
 }

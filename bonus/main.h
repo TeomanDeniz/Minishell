@@ -100,6 +100,9 @@ getcwd: cannot access parent directories"
 # define CMD42_PS3 "quote> "
 # define CMD42_PS4 "heredoc> "
 # define CMD42_PS5 "pipe> "
+# define CMD42_PS6 "subsh> "
+# define CMD42_PS7 "cmdor> "
+# define CMD42_PS8 "cmdand> "
 # define CMD42_VERSION "4.2"
 # define CMD42_NAME "CMD_42"
 # define CMD42_PATH "/bin"
@@ -315,8 +318,8 @@ extern bool	char_quote_o(register char character, struct s_operator operator);
 /* ************************** [^] ./arguments [^] *************************** */
 
 /* ***************************** [v] ./docs [v] ***************************** */
-extern void	set_here_doc_operator(char *input, t_operator operator);
-extern void	reset_here_doc_operator(char *input, t_operator operator);
+extern int	set_here_doc_operator(char *input, t_operator operator);
+extern int	reset_here_doc_operator(char *input, t_operator operator);
 extern char	*prepare_here_doc(t_shell shell, t_operator operator);
 extern void	cancel_here_doc(t_shell shell, struct s_operator operator);
 extern bool	dollar_is_valid(char *input);

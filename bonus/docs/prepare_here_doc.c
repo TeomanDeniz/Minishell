@@ -59,5 +59,7 @@ static char
 		return (get_variable("PS2", shell));
 	if (operator.single_quote)
 		return (get_variable("PS3", shell));
+	if (!!shell->number_of_parentheses)
+		return (get_variable("PS6", shell));
 	return (get_variable("PS4", shell));
 }

@@ -36,6 +36,7 @@
 static bool	ft_strmorecmp(const char *string, const char *compare);
 static bool	if_check_syntax_error(struct s_arg *arg, int *index);
 static bool	if_check_newline_syntax(struct s_arg *arg, register int index);
+static bool	unexpected_parentheses(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 bool
@@ -44,7 +45,9 @@ bool
 	int	index;
 
 	index = 0;
-	while (!!shell->arg[index].this)
+	if (shell->number_of_parentheses < 0)
+		return (unexpected_parentheses(shell));
+	while (!!shell->arg[index].this && !shell->number_of_parentheses)
 	{
 		if (shell->arg[index].operator && \
 			if_check_syntax_error(shell->arg, &index))
@@ -64,6 +67,14 @@ bool
 		++index;
 	}
 	return (false);
+}
+
+static bool
+	unexpected_parentheses(t_shell shell)
+{
+	printf(UNEX_TOKEN, get_variable("CMD42_NAME", shell), ")");
+	shell->errorlevel = 258U;
+	return (true);
 }
 
 static bool

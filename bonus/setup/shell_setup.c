@@ -116,6 +116,9 @@ static void
 	set_variable("PS3", CMD42_PS3, shell);
 	set_variable("PS4", CMD42_PS4, shell);
 	set_variable("PS5", CMD42_PS5, shell);
+	set_variable("PS6", CMD42_PS6, shell);
+	set_variable("PS7", CMD42_PS7, shell);
+	set_variable("PS8", CMD42_PS8, shell);
 	set_variable("CMD42_NAME", CMD42_NAME, shell);
 	set_variable("CMD42_VERSION", CMD42_VERSION, shell);
 	set_variable("OLDPWD", NULL, shell);
