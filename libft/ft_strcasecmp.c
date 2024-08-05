@@ -3,41 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcasecmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:19:41 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 22:19:43 by hdeniz           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* **************************** [v] INCLUDES [v] **************************** */
-#include <stdbool.h> /*
-#typedef bool;
-# define false;
-# define true;
-*/
-/* **************************** [^] INCLUDES [^] **************************** */
+/* *************************** [v] PROTOTYPES [v] *************************** */
+extern __inline__ char	detect_case(register char compare, register \
+char command);
+/* *************************** [^] PROTOTYPES [^] *************************** */
 
-static char
-	detect_case(register char compare, register char command)
-{
-	if (command == 'l' && compare >= 'A' && compare <= 'Z')
-		return (32);
-	if (command == 'U' && compare >= 'a' && compare <= 'z')
-		return (-32);
-	return (0);
-}
-
-bool
+int
 	ft_strcasecmp(const char *const string, const char *const compare)
 {
 	register unsigned int	index;
 
 	if (string == compare)
-		return (true);
+		return (1);
 	if (!string || !compare)
-		return (false);
-	index = 0U;
+		return (0);
+	index = (unsigned int)0;
 	while (!!string[index] && !!compare[index] && \
 		(string[index] == (compare[index] + \
 		detect_case(compare[index], 'l')) || \
@@ -46,6 +33,16 @@ bool
 		string[index] == (compare[index])))
 		++index;
 	if (!compare[index] && !string[index])
-		return (true);
-	return (false);
+		return (1);
+	return (0);
+}
+
+extern __inline__ char
+	detect_case(register char compare, register char command)
+{
+	if ((command == 'l') && (compare >= 'A') && (compare <= 'Z'))
+		return (32);
+	if ((command == 'U') && (compare >= 'a') && (compare <= 'z'))
+		return (-32);
+	return (0);
 }

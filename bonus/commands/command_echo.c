@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:56:55 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 15:56:56 by hdeniz           ###   ########.fr       */

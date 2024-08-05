@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_outpend_syntax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:30:19 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:30:20 by hdeniz           ###   ########.fr       */

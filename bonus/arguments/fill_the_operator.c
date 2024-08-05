@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   fill_the_operator.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:41:29 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 23:41:30 by hdeniz           ###   ########.fr       */

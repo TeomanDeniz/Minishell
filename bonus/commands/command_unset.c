@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:56:06 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:56:09 by hdeniz           ###   ########.fr       */

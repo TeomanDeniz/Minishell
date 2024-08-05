@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   direct_variable_creation.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:01:51 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 17:01:52 by hdeniz           ###   ########.fr       */

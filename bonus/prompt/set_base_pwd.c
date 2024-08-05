@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_base_pwd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:55:35 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 16:55:36 by hdeniz           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_set_quote.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:57:37 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:57:39 by hdeniz           ###   ########.fr       */
@@ -15,7 +15,7 @@
 #typedef t_operator;
 #   void set_double_quote(t_operator);
 #   void set_single_quote(t_operator);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   env_to_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:25:09 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:25:10 by hdeniz           ###   ########.fr       */

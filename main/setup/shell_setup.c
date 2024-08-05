@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   shell_setup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:07:49 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:07:50 by hdeniz           ###   ########.fr       */
@@ -12,16 +12,16 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define CMD42_PS1;
-# define CMD42_PS2;
-# define CMD42_PS3;
-# define CMD42_PS4;
-# define CMD42_NAME;
-# define CMD42_VERSION;
-# define CMD42_PATH;
-# define PATH_MAX;
-# define FAILED_HOME;
-# define FAILED_TO_BACK;
+# define CMD42_PS1
+# define CMD42_PS2
+# define CMD42_PS3
+# define CMD42_PS4
+# define CMD42_NAME
+# define CMD42_VERSION
+# define CMD42_PATH
+# define PATH_MAX
+# define FAILED_HOME
+# define FAILED_TO_BACK
 # struct s_operator;
 #  union u_converter;
 #typedef t_shell;
@@ -35,41 +35,39 @@
 #   char *get_variable(char *, t_shell);
 #   void set_variable(char *, char *, t_shell);
 #   void handle_sigint(int);
-#   bool set_readline_history(t_shell);
+#    int set_readline_history(t_shell);
 #   char *get_certain_home(t_shell);
 #   void remove_variable(char *, t_shell);
 #   void edit_history_file(t_shell);
-#*/
+#        */
 #include <unistd.h> /*
-# define STDOUT_FILENO;
+# define STDOUT_FILENO
 #   char *getcwd(char *, size_t);
 #    int dup(int);
 #    int chdir(char *);
-#*/
+#        */
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>
-#*/
+#        */
 #include <readline/readline.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
 @ |FLAG| | -lreadline |
 @ +----+ +------------+
 #typedef rl_getc_function();
-#*/
-#include <stdbool.h> /*
-# define false;
-*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_atoi(char *);
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	check_and_set(const char *name, const char *value, t_shell shell);
-static void	shell_setup_env(t_shell shell, char **env);
-static void	send_t_shell_address(t_shell shell);
+extern __inline__ void	check_and_set(const char *name, const char *value, \
+t_shell shell);
+extern __inline__ void	shell_setup_env(t_shell shell, char **env);
+extern __inline__ void	send_t_shell_address(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -78,30 +76,30 @@ void
 	send_t_shell_address(shell);
 	getcwd(shell->pwd, PATH_MAX);
 	shell->original_rl_getc_function = rl_getc_function;
-	shell->env = NULL;
+	shell->env = ((void *)0);
 	shell->index = 0;
-	shell->variable = NULL;
-	shell->prompt = NULL;
-	shell->input = NULL;
-	shell->arg = NULL;
-	shell->execute_program = NULL;
+	shell->variable = ((void *)0);
+	shell->prompt = ((void *)0);
+	shell->input = ((void *)0);
+	shell->arg = ((void *)0);
+	shell->execute_program = ((void *)0);
 	shell->errorlevel = 0U;
 	shell->last_pid = 0;
 	shell->history_number_of_commands = 0;
 	shell->history_number_of_commands_in_file = 0;
 	shell->std_out_fd = dup(STDOUT_FILENO);
 	if (shell->std_out_fd < 0)
-		error_shell(shell, NULL, (__LINE__ - 2), "dup()");
-	shell->i_am_a_fork = false;
-	shell->fork_job = false;
-	shell->command_not_found = false;
-	shell->fix_extra_fucking_newline = false;
-	shell->operator = (struct s_operator){false, false, false};
+		error_shell(shell, ((void *)0), (__LINE__ - 2), "dup()");
+	shell->i_am_a_fork = 0;
+	shell->fork_job = 0;
+	shell->command_not_found = 0;
+	shell->fix_extra_fucking_newline = 0;
+	shell->operator = (struct s_operator){0, 0, 0};
 	shell_setup_env(shell, env);
 	update_row_and_col_variables(0);
 }
 
-static void
+extern __inline__ void
 	shell_setup_env(t_shell shell, char **env)
 {
 	shell->home = get_certain_home(shell);
@@ -117,7 +115,7 @@ static void
 	set_variable("PS5", CMD42_PS5, shell);
 	set_variable("CMD42_NAME", CMD42_NAME, shell);
 	set_variable("CMD42_VERSION", CMD42_VERSION, shell);
-	set_variable("OLDPWD", NULL, shell);
+	set_variable("OLDPWD", ((void *)0), shell);
 	check_and_set("SHLVL", "1", shell);
 	check_and_set("HOME", shell->home, shell);
 	if (ft_strboolcmp(get_variable("PATH", shell), ""))
@@ -127,7 +125,7 @@ static void
 		edit_history_file(shell);
 }
 
-static void
+extern __inline__ void
 	check_and_set(const char *name, const char *value, t_shell shell)
 {
 	t_variable	event_variable;
@@ -142,7 +140,7 @@ static void
 	set_variable(name, value, shell);
 }
 
-static void
+extern __inline__ void
 	send_t_shell_address(t_shell shell)
 {
 	union u_converter	converter;

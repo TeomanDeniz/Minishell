@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_var_by_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:02:18 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 17:02:18 by hdeniz           ###   ########.fr       */
@@ -14,11 +14,11 @@
 #include "../main.h" /*
 #typedef t_shell;
 #   void set_variable(char *, char *, t_shell);
-#*/
+#        */
 #include "../../libft/libft.h" /*
-# define END_OF_NUMBER_INDEX;
-#   char ft_numindex(long long, short);
-#*/
+# define END_OF_NUMBER_INDEX
+#   char ft_numindex(long, ushort);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

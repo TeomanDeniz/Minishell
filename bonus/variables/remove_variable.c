@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   remove_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:54:30 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 17:54:31 by hdeniz           ###   ########.fr       */

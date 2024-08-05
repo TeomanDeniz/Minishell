@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_execute_arguments.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:46:40 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 17:46:41 by hdeniz           ###   ########.fr       */
@@ -12,29 +12,30 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define MALLOC_ERROR;
+# define MALLOC_ERROR
 #typedef t_shell;
 #   void error_shell(t_shell, char *, int, char *);
-#   bool check_next_syntax(char *);
-#   bool check_heredoc_syntax(char *);
-#   bool check_outpend_syntax(char *);
-#   bool is_executable(char *, t_shell);
-#*/
+#    int check_next_syntax(char *);
+#    int check_heredoc_syntax(char *);
+#    int check_outpend_syntax(char *);
+#    int is_executable(char *, t_shell);
+#        */
 #include <stdlib.h> /*
 #   void *malloc(size_t);
 #   void free(void *);
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
+#    int ft_strboolcmp(char *, char *);
 #   char *ft_strdup(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	calculate_index(t_shell shell);
-static int	prepare_first_arg(char ***result, t_shell shell, int *arg_index);
-static void	prepare_arg_event(t_shell shell, char **result, int index, \
-char *this);
+extern __inline__ int	calculate_index(t_shell shell);
+extern __inline__ int	prepare_first_arg(char ***result, t_shell shell, \
+int *arg_index);
+extern __inline__ void	prepare_arg_event(t_shell shell, char **result, \
+register int index, const char *const this);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 char
@@ -62,11 +63,11 @@ char
 		++arg_index;
 		++index;
 	}
-	result[index] = NULL;
+	result[index] = ((void *)0);
 	return (result);
 }
 
-static int
+extern __inline__ int
 	calculate_index(t_shell shell)
 {
 	register int	index;
@@ -89,7 +90,7 @@ static int
 	return (result);
 }
 
-static int
+extern __inline__ int
 	prepare_first_arg(char ***result, t_shell shell, int *arg_index)
 {
 	while (shell->arg[*arg_index].operator && (\
@@ -104,15 +105,16 @@ static int
 	if (!*result[0])
 	{
 		free(*result);
-		*result = NULL;
-		error_shell(shell, MALLOC_ERROR, (__LINE__ - 3), "ft_strdup()");
+		*result = ((void *)0);
+		error_shell(shell, MALLOC_ERROR, (__LINE__ - 5), "ft_strdup()");
 	}
 	*arg_index += 1;
 	return (1);
 }
 
-static void
-	prepare_arg_event(t_shell shell, char **result, int index, char *this)
+extern __inline__ void
+	prepare_arg_event(t_shell shell, char **result, register int index, \
+const char *const this)
 {
 	result[index] = ft_strdup(this);
 	if (!result[index])

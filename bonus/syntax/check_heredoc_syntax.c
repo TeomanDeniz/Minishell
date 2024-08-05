@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_heredoc_syntax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:31:31 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:31:31 by hdeniz           ###   ########.fr       */

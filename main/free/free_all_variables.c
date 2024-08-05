@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_variables.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:21:10 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:21:11 by hdeniz           ###   ########.fr       */
@@ -14,13 +14,13 @@
 #include "../main.h" /*
 #typedef t_variable;
 #typedef t_shell;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_safe_free(char **);
-#*/
+#    int ft_safe_free(char **);
+#        */
 #include <stdlib.h> /*
 #   void free(void *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
@@ -38,5 +38,5 @@ void
 		free(event_variable);
 		event_variable = next_variable;
 	}
-	shell->variable = NULL;
+	shell->variable = ((void *)0);
 }

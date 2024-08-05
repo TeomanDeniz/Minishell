@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   quote_here_doc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:44:36 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:44:37 by hdeniz           ###   ########.fr       */
@@ -12,26 +12,26 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
-# define MALLOC_ERROR;
-# define UNEX_TOKEN;
+# define MALLOC_ERROR
+# define UNEX_TOKEN
 # struct s_operator;
 #typedef t_shell;
 #   void here_doc_just_one_char(t_shell, char);
 #   void reset_here_doc_operator(char *, t_operator);
 #   void prompt_preparer(t_shell, char *);
 #   void cancel_here_doc(t_shell, struct s_operator);
-#   bool dollar_is_valid(char *);
+#    int dollar_is_valid(char *);
 #   void replace_dollar_with_value(char **, t_shell);
 #   void set_here_doc_operator(char *, t_operator);
 #   void handle_sigint(int);
 #   void error_shell(t_shell, char *, int, char *);
-#   bool char_whitespace(char);
+#    int char_whitespace(char);
 #   void werror_shell(t_shell, char *, int, char *);
-#*/
+#        */
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>
-#*/
+#        */
 #include <readline/readline.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
@@ -39,29 +39,25 @@
 @ +----+ +------------+
 #typedef rl_getc_function();
 #   char *readline(char *);
-#*/
+#        */
 #include "../../../libft/libft.h" /*
-#   bool ft_safe_free(char **);
+#    int ft_safe_free(char **);
 #   char *ft_strdup(char *);
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
 #   char *ft_strjoinfree(char *, char *);
-#*/
+#        */
 #include <signal.h> /*
-# define SIGINT;
-#sigh... signal(int, sighandler_t); ((sighandler_t))
-#*/
-#include <stdbool.h> /*
-# define true;
-#typedef bool;
-#*/
+# define SIGINT
+#   void (*signal(int, void (*)(int)))(int);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	join_here_doc(t_shell shell, struct s_operator operator);
-static bool	input_err(t_shell shell, struct s_operator operator);
-static bool	if_loop(struct s_operator operator);
-static char	next_doc(struct s_operator operator);
+extern __inline__ void	join_here_doc(t_shell shell, struct s_operator operator);
+extern __inline__ int	input_err(t_shell shell, struct s_operator operator);
+extern __inline__ int	if_loop(struct s_operator operator);
+extern __inline__ char	next_doc(struct s_operator operator);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -94,10 +90,10 @@ void
 	signal(SIGINT, handle_sigint);
 }
 
-static void
+extern __inline__ void
 	join_here_doc(t_shell shell, struct s_operator operator)
 {
-	bool			any_operator;
+	register int	any_operator;
 	char			*temp;
 	register int	index;
 	register int	input_index;
@@ -123,13 +119,13 @@ static void
 	shell->org_input = shell->input;
 }
 
-static bool
+extern __inline__ int
 	input_err(t_shell shell, struct s_operator operator)
 {
 	register int	index;
 
 	if (!shell->quote_here_doc)
-		return (false);
+		return (0);
 	index = -1;
 	while (++index, !!shell->quote_here_doc[index])
 	{
@@ -141,23 +137,23 @@ static bool
 				error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), \
 					"ft_strfreejoin()");
 			shell->org_input = (join_here_doc(shell, operator), shell->input);
-			return (true);
+			return (1);
 		}
 		if (!char_whitespace(shell->quote_here_doc[index]))
-			return (false);
+			return (0);
 	}
-	return (false);
+	return (0);
 }
 
-static bool
+extern __inline__ int
 	if_loop(struct s_operator operator)
 {
 	if (operator.pipe || operator.single_quote || operator.double_quote)
-		return (true);
-	return (false);
+		return (1);
+	return (0);
 }
 
-static char
+extern __inline__ char
 	next_doc(struct s_operator operator)
 {
 	if (operator.pipe)

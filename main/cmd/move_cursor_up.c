@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   move_cursor_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:04:29 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 18:04:30 by hdeniz           ###   ########.fr       */
@@ -12,47 +12,42 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-#   bool check_term_env_exist(void);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define true;
-# define false;
-*/
+#    int check_term_env_exist(void);
+#        */
 #include <term.h> /*
 @ +----+ +-----------+
 @ |FLAG| | -lncurses |
 @ +----+ +-----------+
 #   char *tgetstr(char [2], char **);
 #    int tputs(char *, int, int (*)(int));
-#*/
+#        */
 #include <stdlib.h> /*
 #   char *getenv(char *);
-#*/
+#        */
 #include <unistd.h> /*
-# define STDOUT_FILENO;
+# define STDOUT_FILENO
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	ft_putchar(int character);
+extern __inline__ int	ft_putchar(int character);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
-bool
+int
 	move_cursor_up(void)
 {
 	char	*up;
 
 	if (!check_term_env_exist())
-		return (false);
-	up = tgetstr("up", NULL);
+		return (0);
+	up = tgetstr("up", ((void *)0));
 	if (!!up)
 		tputs(up, 1, ft_putchar);
-	return (true);
+	return (1);
 }
 
-static int
+extern __inline__ int
 	ft_putchar(int character)
 {
 	write(STDOUT_FILENO, &character, 1);

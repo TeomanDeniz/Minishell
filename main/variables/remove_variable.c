@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   remove_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:54:30 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 17:54:31 by hdeniz           ###   ########.fr       */
@@ -14,14 +14,14 @@
 #include "../main.h" /*
 #typedef t_shell;
 #typedef t_variable;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
-#   bool ft_safe_free(char **);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#    int ft_safe_free(char **);
+#        */
 #include <stdlib.h> /*
 #   void free(void *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
@@ -31,7 +31,7 @@ void
 	t_variable	event_variable;
 
 	event_variable = shell->variable;
-	prior = NULL;
+	prior = ((void *)0);
 	while (!!event_variable)
 	{
 		if (ft_strboolcmp(event_variable->name, name))

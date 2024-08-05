@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   print_header.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:12 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/06 13:53:14 by hdeniz           ###   ########.fr       */
@@ -34,16 +34,14 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 # include "../main.h" /*
 # typedef t_shell;
-*/
+#         */
 /* **************************** [^] INCLUDES [^] **************************** */
-
 /* ************************* [v] HEADER COLORS [v] ************************** */
 # define COLOR_A "11"
 # define COLOR_B "4"
 # define COLOR_C "13"
 # define COLOR_D "4"
 /* ************************* [^] HEADER COLORS [^] ************************** */
-
 /* *************************** [v] FUNCTIONS [v] **************************** */
 extern void	write_color_f(int fd, char *text, char *color);
 extern void	a(t_shell shell, int len);

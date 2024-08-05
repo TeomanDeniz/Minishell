@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_here_doc_operator.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:52:50 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:52:51 by hdeniz           ###   ########.fr       */
@@ -15,16 +15,12 @@
 #typedef t_operator;
 #   void set_double_quote(t_operator);
 #   void set_single_quote(t_operator);
-#   bool char_whitespace(char);
-#*/
-#include <stdbool.h> /*
-# define true;
-# define false;
-#*/
+#    int char_whitespace(char);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	pipe_doc(char *input, t_operator operator);
+extern __inline__ void	pipe_doc(char *input, t_operator operator);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -33,7 +29,7 @@ void
 	char	*org_input;
 
 	if (!!input && !!*input && operator->pipe)
-		operator->pipe = false;
+		operator->pipe = 0;
 	org_input = input;
 	while (!!*input)
 	{
@@ -49,7 +45,7 @@ void
 	input = org_input;
 }
 
-static void
+extern __inline__ void
 	pipe_doc(char *input, t_operator operator)
 {
 	char	*check_input;
@@ -61,7 +57,7 @@ static void
 			continue ;
 		return ;
 	}
-	operator->pipe = true;
-	operator->double_quote = false;
-	operator->single_quote = false;
+	operator->pipe = 1;
+	operator->double_quote = 0;
+	operator->single_quote = 0;
 }

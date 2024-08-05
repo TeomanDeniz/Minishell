@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_arrow_syntax.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:28:46 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:28:46 by hdeniz           ###   ########.fr       */

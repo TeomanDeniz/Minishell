@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_readline_history.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:07:49 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:07:50 by hdeniz           ###   ########.fr       */
@@ -12,9 +12,9 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define HOME_FAILED;
-# define CMD42_HISFILE;
-# define MALLOC_ERROR;
+# define HOME_FAILED
+# define CMD42_HISFILE
+# define MALLOC_ERROR
 #typedef t_shell;
 #   void error_shell(t_shell, char *, int, char *);
 #   void werror_shell(t_shell, char *, int, char *);
@@ -23,66 +23,61 @@
 #   char *get_variable(char *, t_shell);
 #   void set_variable(char *, char *, t_shell);
 #   void set_history(t_shell);
-#*/
+#        */
 #include <unistd.h> /*
-# define F_OK;
-# define R_OK;
-# define X_OK;
+# define F_OK
+# define R_OK
+# define X_OK
 #    int access(char *, int);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define false;
-# define true;
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #   char *get_next_line(int);
 #   void *ft_calloc(uint, uint);
 #    int ft_strlen(char *);
-#*/
+#        */
 #include <fcntl.h> /*
-# define O_RDONLY;
+# define O_RDONLY
 #    int open(char *, int, ...);
-#*/
+#        */
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>
 #    int printf(char *, ...);
-#*/
+#        */
 #include <readline/history.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
 @ |FLAG| | -lreadline |
 @ +----+ +------------+
 #   void add_history(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static char	*prepare_cmd42_histfile(char *home);
-static bool	fix_home_variable(t_shell shell);
-static void	ft_stradd(char *string, const char *add);
-static void	prepare_history(t_shell shell, char *histfile);
+extern __inline__ char	*prepare_cmd42_histfile(char *home);
+extern __inline__ int	fix_home_variable(t_shell shell);
+extern __inline__ void	ft_stradd_srh(char *string, const char *add);
+extern __inline__ void	prepare_history(t_shell shell, char *histfile);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
-bool
+int
 	set_readline_history(t_shell shell)
 {
-	shell->histfile = NULL;
+	shell->histfile = ((void *)0);
 	if (!get_variable_direct_value("HOME", shell) || \
 		access(get_variable("HOME", shell), F_OK | X_OK | R_OK) != 0)
 		if (!fix_home_variable(shell))
-			return (false);
+			return (0);
 	shell->histfile = prepare_cmd42_histfile(get_variable("HOME", shell));
 	if (!shell->histfile)
 		error_shell(shell, MALLOC_ERROR, 2, "prepare_cmd42_histfile()");
 	if (access(shell->histfile, F_OK) != 0)
 		close(open(shell->histfile, O_RDWR | O_CREAT | O_TRUNC, 0600));
 	prepare_history(shell, shell->histfile);
-	return (true);
+	return (1);
 }
 
-static void
+extern __inline__ void
 	prepare_history(t_shell shell, char *histfile)
 {
 	char	*line;
@@ -107,7 +102,7 @@ static void
 	}
 }
 
-static char
+extern __inline__ char
 	*prepare_cmd42_histfile(char *home)
 {
 	char	*result;
@@ -115,27 +110,27 @@ static char
 	result = (char *) ft_calloc(sizeof(char), \
 		(ft_strlen(home) + ft_strlen(CMD42_HISFILE) + 2));
 	if (!result)
-		return (NULL);
-	ft_stradd(result, home);
-	ft_stradd(result, "/");
-	ft_stradd(result, CMD42_HISFILE);
+		return ((void *)0);
+	ft_stradd_srh(result, home);
+	ft_stradd_srh(result, "/");
+	ft_stradd_srh(result, CMD42_HISFILE);
 	return (result);
 }
 
-static bool
+extern __inline__ int
 	fix_home_variable(t_shell shell)
 {
 	if (!shell->home || access(shell->home, F_OK | X_OK | R_OK) != 0)
 	{
 		werror_shell(shell, HOME_FAILED, 0, "shell->home");
-		return (false);
+		return (0);
 	}
 	set_variable("HOME", shell->home, shell);
-	return (true);
+	return (1);
 }
 
-static void
-	ft_stradd(char *string, const char *add)
+extern __inline__ void
+	ft_stradd_srh(char *string, const char *add)
 {
 	register int	index;
 

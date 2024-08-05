@@ -146,6 +146,10 @@ MAIN_SRC	=	$(LIBFT_SRC) \
 					./main/variables/variable_setup.c \
 					./main/variables/variable_to_env.c \
 					./main/variables/set_and_free_variable.c \
+					./main/variables/first_creating_variable.c \
+					./main/variables/existing_variable.c \
+					./main/variables/prepare_name.c \
+					./main/variables/prepare_value.c \
 					./main/print_header/print_header.c \
 					./main/print_header/write_color_f.c \
 					./main/print_header/header_elemans/a.c \
@@ -362,7 +366,7 @@ all: files_n_calculator $(NAME)
 $(NAME): $(MAIN) $(MAIN_OBJ)
 	@ar rc $(NAME) $(MAIN_OBJ) 2>/dev/null && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(NAME) is ready! $(C_RESET)\n"
-	@$(CC) $(MAIN_FLAGS) $(MAIN) $(NAME) -o "./$(MAIN_EXE)" && \
+	@$(CC) $(MAIN) $(NAME) -o "./$(MAIN_EXE)" $(MAIN_FLAGS) && \
 	echo "\n\n $(C_BLINK)$(B2F15) $(MAIN_EXE) is ready! $(C_RESET)\n"
 
 $(BONUS_NAME): $(BONUS) $(BONUS_OBJ)

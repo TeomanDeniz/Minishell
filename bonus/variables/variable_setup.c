@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   variable_setup.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:16:35 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:16:35 by hdeniz           ###   ########.fr       */

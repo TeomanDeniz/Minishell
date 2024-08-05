@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   tilda_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:56:03 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:56:03 by hdeniz           ###   ########.fr       */

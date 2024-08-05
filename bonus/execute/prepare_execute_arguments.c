@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_execute_arguments.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:46:40 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 17:46:41 by hdeniz           ###   ########.fr       */

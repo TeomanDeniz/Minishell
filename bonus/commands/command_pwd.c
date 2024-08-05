@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:15:48 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:15:49 by hdeniz           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   error_shell.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 14:42:32 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 14:42:33 by hdeniz           ###   ########.fr       */

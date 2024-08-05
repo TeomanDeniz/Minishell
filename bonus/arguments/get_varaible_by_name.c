@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_varaible_by_name.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:51:42 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:51:43 by hdeniz           ###   ########.fr       */

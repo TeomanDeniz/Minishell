@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   execute_recursive.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 13:48:19 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 13:48:20 by hdeniz           ###   ########.fr       */
@@ -12,33 +12,28 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 #include "../main.h" /*
 #typedef t_shell;
-#   bool check_if_semicolon(t_shell);
+#    int check_if_semicolon(t_shell);
 #   void error_shell(t_shell, char *, int, char *);
-#   bool check_pipe_doc(t_shell, int [2], int [2]);
-#   bool do_the_event(t_shell, int [2], int [2]);
+#    int check_pipe_doc(t_shell, int [2], int [2]);
+#    int do_the_event(t_shell, int [2], int [2]);
 #   void parent_process(int [2], int [2], int [2]);
 #   void return_execve_status(t_shell);
-#   bool check_next_syntax(char *);
+#    int check_next_syntax(char *);
 #   void reset_content_pipe(int [2]);
-#*/
+#        */
 #include <unistd.h> /*
 #    int pipe(int [2]);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define false;
-# define true;
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	skip_till_pipe(t_shell shell);
-static void	skip_this_execute(t_shell shell, int arg_pipe[2]);
-static void	fix_std_out(t_shell shell);
+extern __inline__ void	skip_till_pipe(t_shell shell);
+extern __inline__ void	skip_this_execute(t_shell shell, int arg_pipe[2]);
+extern __inline__ void	fix_std_out(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -57,7 +52,7 @@ void
 		return ;
 	}
 	if (pipe(current_pipe) == -1)
-		error_shell(shell, NULL, (__LINE__ - 1), "pipe()");
+		error_shell(shell, ((void *)0), (__LINE__ - 1), "pipe()");
 	if (!check_pipe_doc(shell, arg_pipe, current_pipe) && \
 		(skip_this_execute(shell, arg_pipe), 1))
 		return ;
@@ -71,7 +66,7 @@ void
 	return_execve_status(shell);
 }
 
-static void
+extern __inline__ void
 	skip_till_pipe(t_shell shell)
 {
 	while (!!shell->arg[shell->index].this && \
@@ -83,7 +78,7 @@ static void
 		shell->index++;
 }
 
-static void
+extern __inline__ void
 	skip_this_execute(t_shell shell, int arg_pipe[2])
 {
 	reset_content_pipe(arg_pipe);
@@ -94,10 +89,10 @@ static void
 	execute_recursive(shell, arg_pipe);
 }
 
-static void
+extern __inline__ void
 	fix_std_out(t_shell shell)
 {
 	close(STDOUT_FILENO);
 	if (dup2(shell->std_out_fd, STDOUT_FILENO) == -1)
-		error_shell(shell, NULL, (__LINE__ - 1), "dup2()");
+		error_shell(shell, ((void *)0), (__LINE__ - 1), "dup2()");
 }

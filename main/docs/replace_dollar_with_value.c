@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   replace_dollar_with_value.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:09:06 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 18:09:07 by hdeniz           ###   ########.fr       */
@@ -12,25 +12,27 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define MALLOC_ERROR;
+# define MALLOC_ERROR
 #typedef t_shell;
 #   char *get_varaible_by_name(char *, t_shell, int);
 #   void error_shell(t_shell, char *, int, char *);
-#   bool dollar_is_valid(char *);
-#*/
+#    int dollar_is_valid(char *);
+#        */
 #include "../../libft/libft.h" /*
-# define END_OF_NUMBER_INDEX;
+# define END_OF_NUMBER_INDEX
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
-#   bool ft_safe_free(char **);
+#    int ft_safe_free(char **);
 #   char ft_numindex(long long , Ushort);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	skip_variable_name(char **input, register int ecx1);
-static int	replace_variable(char **input, t_shell shell, char *value);
-static char	*get_return_value(unsigned int errorlevel, char result[4]);
+extern __inline__ int	skip_variable_name(char **input, register int ecx1);
+extern __inline__ int	replace_variable(char **input, t_shell shell, \
+char *value);
+extern __inline__ char	*get_return_value(unsigned int errorlevel, \
+char result[4]);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -43,7 +45,7 @@ void
 	index = -1;
 	while (++index, !!input && !!*input && !!(*input)[index])
 	{
-		value = NULL;
+		value = ((void *)0);
 		error_level[0] = 0;
 		if ((*input)[index] == '$' && (*input)[index + 1] == '?')
 			value = get_return_value(shell->errorlevel, error_level);
@@ -54,7 +56,7 @@ void
 	}
 }
 
-static int
+extern __inline__ int
 	skip_variable_name(char **input, register int ecx1)
 {
 	register char	save_char;
@@ -73,7 +75,7 @@ static int
 	return (ecx1);
 }
 
-static int
+extern __inline__ int
 	replace_variable(char **input, t_shell shell, char *value)
 {
 	char			*result;
@@ -102,7 +104,7 @@ static int
 	return (ecx2);
 }
 
-static char
+extern __inline__ char
 	*get_return_value(unsigned int errorlevel, char result[4])
 {
 	register char	number;

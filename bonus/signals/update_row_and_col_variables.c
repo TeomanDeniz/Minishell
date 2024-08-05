@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   update_row_and_col_variables.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:00:37 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:00:38 by hdeniz           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:04:14 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:04:15 by hdeniz           ###   ########.fr       */

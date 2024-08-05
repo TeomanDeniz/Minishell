@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   perror_shell.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 14:45:02 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 14:45:03 by hdeniz           ###   ########.fr       */
@@ -14,17 +14,17 @@
 #include "../../libft/libft.h" /*
 #   void ft_putnbr_fd(int, int);
 #    int ft_strlen(char *);
-#*/
+#        */
 #include "../main.h" /*
 #typedef t_shell;
 #   char *get_variable(char *, t_shell);
-#*/
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 #include <stdio.h> /*
 #   void perror(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

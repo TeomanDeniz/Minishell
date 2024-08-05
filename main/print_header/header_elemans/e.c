@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   e.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:00:34 by hdeniz            #+#    #+#             */
 /*   Updated: 2023/11/12 18:00:35 by hdeniz           ###   ########.fr       */
@@ -12,11 +12,11 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
-#typedef t_shell;
-#*/
+#typedef t_shell
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

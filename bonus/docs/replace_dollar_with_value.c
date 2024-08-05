@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   replace_dollar_with_value.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:09:06 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 18:09:07 by hdeniz           ###   ########.fr       */

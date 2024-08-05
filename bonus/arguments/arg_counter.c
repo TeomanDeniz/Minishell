@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_counter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:59:05 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:59:06 by hdeniz           ###   ########.fr       */

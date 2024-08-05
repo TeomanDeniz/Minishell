@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   operate_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:44:36 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:44:37 by hdeniz           ###   ########.fr       */

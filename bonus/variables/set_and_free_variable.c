@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_and_free_variable.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:53:55 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 20:53:56 by hdeniz           ###   ########.fr       */

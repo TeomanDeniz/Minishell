@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   handle_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:51:47 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:51:48 by hdeniz           ###   ########.fr       */
@@ -12,19 +12,20 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-#GLOBAL# sig_atomic_t g_signal;
+G >>>>>> (sig_atomic_t)
+G ^^^^^^ g_signal;
 #typedef t_shell;
 #typedef t_converter;
 #   char *get_variable(char *, t_shell);
-#   bool move_cursor_up(void);
-#*/
+#    int move_cursor_up(void);
+#        */
 #include <signal.h> /*
-# define SIGINT;
+# define SIGINT
 #*/
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>
-#*/
+#        */
 #include <readline/readline.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
@@ -32,23 +33,23 @@
 @ +----+ +------------+
 #   void rl_replace_line(char *, int);
 #   void rl_redisplay(void);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-#*/
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static t_shell	save_shell_struct(char counter, int signal);
+extern __inline__ t_shell	save_shell_struct(char counter, int signal);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
 	handle_sigint(int signal)
 {
-	static t_shell	shell = NULL;
+	static t_shell	shell = ((void *)0);
 	static char		counter = 0;
 
 	if (counter < 2)
@@ -72,7 +73,7 @@ void
 	g_signal = signal;
 }
 
-static t_shell
+extern __inline__ t_shell
 	save_shell_struct(char counter, int signal)
 {
 	t_converter				converter;
@@ -82,7 +83,7 @@ static t_shell
 	{
 		struct_address = signal;
 		struct_address = struct_address << 32;
-		return (NULL);
+		return ((void *)0);
 	}
 	else
 	{

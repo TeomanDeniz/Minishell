@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_tilda.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:54:20 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 16:54:21 by hdeniz           ###   ########.fr       */

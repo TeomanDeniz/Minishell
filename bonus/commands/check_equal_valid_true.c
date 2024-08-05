@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_equal_valid_true.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:21:25 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 23:21:26 by hdeniz           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_operator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:15:48 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:15:50 by hdeniz           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:46:14 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:46:14 by hdeniz           ###   ########.fr       */
@@ -12,27 +12,27 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define EXPORT_OUT;
+# define EXPORT_OUT
 #typedef t_shell;
 #typedef t_variable;
-#   bool skip_docs(t_shell);
-#   bool check_next_syntax(char *);
-#   bool check_equal_valid(t_shell, char *);
+#    int skip_docs(t_shell);
+#    int check_next_syntax(char *);
+#    int check_equal_valid(t_shell, char *);
 #   char *get_variable_direct_value(char *, t_shell);
 #   void command_set_varible(t_shell);
-#*/
+#        */
 #include <unistd.h> /*
-# define STDOUT_FILENO;
+# define STDOUT_FILENO
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	export_with_parameter(t_shell shell);
-static void	print_variable(t_variable event_varaible);
+extern __inline__ void	export_with_parameter(t_shell shell);
+extern __inline__ void	print_variable(t_variable event_varaible);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -55,7 +55,7 @@ void
 		print_variable(event_varaible);
 }
 
-static void
+extern __inline__ void
 	export_with_parameter(t_shell shell)
 {
 	if (check_equal_valid(shell, "export"))
@@ -64,7 +64,7 @@ static void
 	shell->index++;
 }
 
-static void
+extern __inline__ void
 	print_variable(t_variable event_varaible)
 {
 	while (!!event_varaible)

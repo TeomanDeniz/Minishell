@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_certain_home.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 00:51:51 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/19 00:51:52 by hdeniz           ###   ########.fr       */
@@ -12,40 +12,35 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define PATH_MAX;
-# define MALLOC_ERROR;
+# define PATH_MAX
+# define MALLOC_ERROR
 #typedef t_shell;
 #   void error_shell(t_shell, char *, int, char *);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #   void ft_bzero(char *, int);
-#   bool ft_strboolcmp(char *, char *);
+#    int ft_strboolcmp(char *, char *);
 #   char *ft_strdup(char *);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define false;
-# define true;
-#*/
+#        */
 #include <dirent.h> /*
-# define DT_DIR; [DIRECTORY]
+# define DT_DIR
 # struct dirent;
 #typedef DIR;
 #Sdirent *readdir(DIR *);
 #    DIR *opendir(char *);
 #    int closedir(DIR *);
-#*/
+#        */
 #include <unistd.h> /*
-# define F_OK;
-# define R_OK;
-# define X_OK;
+# define F_OK
+# define R_OK
+# define X_OK
 #    int access(char *, int);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static char	*remove_desktop(char *home_directory, t_shell shell);
-static void	ft_stradd(char string[PATH_MAX], const char *add);
+extern __inline__ char	*remove_desktop(char *home_directory, t_shell shell);
+extern __inline__ void	ft_stradd_gch(char string[PATH_MAX], const char *add);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 char
@@ -56,28 +51,28 @@ char
 	DIR				*dir;
 
 	dir = opendir("/Users/");
-	if (dir == NULL)
-		return (NULL);
+	if (dir == ((void *)0))
+		return ((void *)0);
 	entry = readdir(dir);
-	while (ft_bzero(home_directory, PATH_MAX), entry != NULL)
+	while (ft_bzero(home_directory, PATH_MAX), entry != ((void *)0))
 	{
 		if (entry->d_type == DT_DIR && !ft_strboolcmp(entry->d_name, ".") && \
 			!ft_strboolcmp(entry->d_name, "..") && \
 			!ft_strboolcmp(entry->d_name, "Shared"))
 		{
-			ft_stradd(home_directory, "/Users/");
-			ft_stradd(home_directory, entry->d_name);
-			ft_stradd(home_directory, "/Desktop");
+			ft_stradd_gch(home_directory, "/Users/");
+			ft_stradd_gch(home_directory, entry->d_name);
+			ft_stradd_gch(home_directory, "/Desktop");
 			if (access(home_directory, F_OK | R_OK | X_OK) == 0)
 				return (closedir(dir), remove_desktop(home_directory, shell));
 		}
 		entry = readdir(dir);
 	}
 	closedir(dir);
-	return (NULL);
+	return ((void *)0);
 }
 
-static char
+extern __inline__ char
 	*remove_desktop(char *home_directory, t_shell shell)
 {
 	register int	index;
@@ -102,8 +97,8 @@ static char
 	return (result);
 }
 
-static void
-	ft_stradd(char string[PATH_MAX], const char *add)
+extern __inline__ void
+	ft_stradd_gch(char string[PATH_MAX], const char *add)
 {
 	register int	index;
 

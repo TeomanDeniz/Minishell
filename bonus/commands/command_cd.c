@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:26 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:08:28 by hdeniz           ###   ########.fr       */

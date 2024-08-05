@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_strlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:21:08 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 00:21:09 by hdeniz           ###   ########.fr       */
@@ -15,26 +15,23 @@
 # struct s_operator;
 #typedef t_shell;
 #   void skip_whitespaces(char **, t_operator);
-#   bool char_quote_o(char, struct s_operator);
+#    int char_quote_o(char, struct s_operator);
 #   void arg_set_quote(char, t_operator);
-#   bool char_whitespace_o(char, t_operator);
-#   bool char_operator_o(char, struct s_operator);
-#   bool tilda_valid(t_shell, t_operator, int);
+#    int char_whitespace_o(char, t_operator);
+#    int char_operator_o(char, struct s_operator);
+#    int tilda_valid(t_shell, t_operator, int);
 #   char *get_variable(char *, t_shell);
-#   bool dollar_valid(t_shell, int);
+#    int dollar_valid(t_shell, int);
 #   char *get_varaible_by_name(char *, t_shell, int);
-#*/
-#include <stdbool.h> /*
-# define false;
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-# Ushort ft_numlen(long long);
-#*/
+#  short ft_numlen(long);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	caluclate_variable_size(char *input, t_shell shell);
+extern __inline__ int	caluclate_variable_size(char *input, t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 int
@@ -67,14 +64,14 @@ int
 	return (result);
 }
 
-static int
+extern __inline__ int
 	caluclate_variable_size(char *input, t_shell shell)
 {
 	register int		index;
 	int					result;
 	struct s_operator	operator;
 
-	operator = (struct s_operator){false, false, false};
+	operator = (struct s_operator){0, 0, 0};
 	result = 1;
 	index = 0;
 	while (input[index])

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_variable_len.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:52:47 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 17:52:48 by hdeniz           ###   ########.fr       */
@@ -14,11 +14,11 @@
 #include "../main.h" /*
 #typedef t_shell;
 #typedef t_variable;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
+#    int ft_strboolcmp(char *, char *);
 #    int ft_strlen(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 int

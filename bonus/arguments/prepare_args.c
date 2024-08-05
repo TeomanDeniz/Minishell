@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:31:17 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 23:31:18 by hdeniz           ###   ########.fr       */

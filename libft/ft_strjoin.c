@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 21:44:58 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 21:45:01 by hdeniz           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 #include "libft.h" /*
 #    int ft_strlen(char *);
 #   char *ft_strdup(char *);
-*/
+#        */
 #include <stdlib.h> /*
 #   void *malloc(size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 char

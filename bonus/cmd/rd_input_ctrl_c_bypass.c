@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rd_input_ctrl_c_bypass.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:14:11 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 18:14:11 by hdeniz           ###   ########.fr       */

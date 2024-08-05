@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   do_the_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:18:38 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 15:18:39 by hdeniz           ###   ########.fr       */

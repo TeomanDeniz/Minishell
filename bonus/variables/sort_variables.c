@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sort_variables.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:21:53 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:21:54 by hdeniz           ###   ########.fr       */

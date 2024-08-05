@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   reset_content_pipe.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:48:58 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 18:48:58 by hdeniz           ###   ########.fr       */
@@ -13,11 +13,11 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 #include "../main.h" /*
-# define PIPE_READ;
-# define PIPE_WRITE;
-#*/
+# define PIPE_READ
+# define PIPE_WRITE
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

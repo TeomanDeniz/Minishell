@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sort_variables.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:21:53 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:21:54 by hdeniz           ###   ########.fr       */
@@ -14,40 +14,35 @@
 #include "../main.h" /*
 #typedef t_shell;
 #typedef t_variable;
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define true;
-# define false;
-*/
+#        */
 #include "../../libft/libft.h" /*
 #   char ft_strcmp(char *, char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	swap_variables(t_variable *variable);
+extern __inline__ void	swap_variables(t_variable *variable);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
 	sort_variables(t_shell shell)
 {
-	bool		swapped;
-	t_variable	*ptr;
-	t_variable	last;
+	register int	swapped;
+	t_variable		*ptr;
+	t_variable		last;
 
-	last = NULL;
-	swapped = true;
+	last = ((void *)0);
+	swapped = 1;
 	while (swapped)
 	{
-		swapped = false;
+		swapped = 0;
 		ptr = &(shell->variable);
 		while (!!(*ptr) && (*ptr)->next != last)
 		{
 			if (ft_strcmp((*ptr)->name, (*ptr)->next->name) > 0)
 			{
 				swap_variables(ptr);
-				swapped = true;
+				swapped = 1;
 			}
 			if (!!(*ptr)->next)
 				ptr = &((*ptr)->next);
@@ -58,12 +53,12 @@ void
 	}
 }
 
-static void
+extern __inline__ void
 	swap_variables(t_variable *variable)
 {
 	t_variable	temp;
 
-	if (*variable == NULL || (*variable)->next == NULL)
+	if (*variable == ((void *)0) || (*variable)->next == ((void *)0))
 		return ;
 	temp = (*variable)->next;
 	(*variable)->next = temp->next;

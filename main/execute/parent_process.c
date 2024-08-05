@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parent_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:16:36 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 18:16:37 by hdeniz           ###   ########.fr       */
@@ -12,12 +12,12 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define PIPE_READ;
-# define PIPE_WRITE;
-#*/
+# define PIPE_READ
+# define PIPE_WRITE
+#        */
 #include <unistd.h> /*
 #    int close(int);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

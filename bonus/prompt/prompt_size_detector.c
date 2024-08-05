@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_size_detector.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:56:51 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 16:56:52 by hdeniz           ###   ########.fr       */

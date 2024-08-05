@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_execute_program.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:38:49 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 17:38:50 by hdeniz           ###   ########.fr       */

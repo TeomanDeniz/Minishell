@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   suppress_cat_io.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:20:20 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 18:20:21 by hdeniz           ###   ########.fr       */
@@ -23,34 +23,31 @@
 \****************************************************************************/
 
 /* **************************** [v] INCLUDES [v] **************************** */
-#include <stdbool.h> /*
-#typedef bool;
-#*/
 #include <termios.h> /*
-# define ECHOCTL;
-# define TCSANOW;
+# define ECHOCTL
+# define TCSANOW
 # struct termios;
 #    int tcsetattr(int, int, struct termios *);
 #    int tcgetattr(int, struct termios *);
-*/
+#        */
 #include <unistd.h> /*
-# define STDOUT_FILENO;
+# define STDOUT_FILENO
 #ssize_t write(int, void *, size_t);
 #    int dup(int);
-#*/
+#        */
 #include "../main.h" /*
-# define CMD42_NAME;
-#*/
+# define CMD42_NAME
+#        */
 #include <stdio.h> /*
 #   void perror(char *);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
-	suppress_cat_io(bool echo_ctrl_character)
+	suppress_cat_io(register int echo_ctrl_character)
 {
 	static int		fd = 0;
 	struct termios	termios_p;

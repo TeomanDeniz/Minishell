@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:19:07 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:19:08 by hdeniz           ###   ########.fr       */

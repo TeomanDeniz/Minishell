@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:19:07 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:19:08 by hdeniz           ###   ########.fr       */
@@ -14,14 +14,14 @@
 #include "../main.h" /*
 #typedef t_shell;
 #typedef t_variable;
-#*/
+#        */
 #include <unistd.h> /*
-# define STDOUT_FILENO;
+# define STDOUT_FILENO
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
@@ -31,7 +31,7 @@ void
 
 	shell->errorlevel = 0U;
 	org_variable = shell->variable;
-	while (shell->variable != NULL)
+	while (shell->variable != ((void *)0))
 	{
 		if (shell->variable->value)
 		{

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   just_handle_signal.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:06:41 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 16:06:42 by hdeniz           ###   ########.fr       */
@@ -12,8 +12,9 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-#GLOBAL# sig_atomic_t g_signal;
-#*/
+G >>>>>> (sig_atomic_t)
+G ^^^^^^ g_signal;
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

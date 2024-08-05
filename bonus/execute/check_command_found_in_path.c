@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_command_found_in_path.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:34:56 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 15:34:58 by hdeniz           ###   ########.fr       */

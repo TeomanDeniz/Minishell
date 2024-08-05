@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_counter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:59:05 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:59:06 by hdeniz           ###   ########.fr       */
@@ -14,25 +14,24 @@
 #include "../main.h" /*
 # struct s_operator;
 #typedef t_shell;
-#   bool char_whitespace_o(char, t_operator);
-#   bool char_quote_o(char, struct s_operator);
-#   bool char_whitespace(char);
+#    int char_whitespace_o(char, t_operator);
+#    int char_quote_o(char, struct s_operator);
+#    int char_whitespace(char);
 #   void set_double_quote(t_operator);
 #   void set_single_quote(t_operator);
-#   bool char_operator_o(char, struct s_operator);
-#*/
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
+#    int char_operator_o(char, struct s_operator);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	skip_whitespaces_index(const char *const input, int index);
-static int	arg_counter_quote(int index, char *input, t_operator operator);
-static void	arg_counter_event(t_shell shell, int *index, t_operator operator);
-static bool	arg_operator_event(t_shell shell, int *index, t_operator operator);
+extern __inline__ int	skip_whitespaces_index(const char *const input, \
+int index);
+extern __inline__ int	arg_counter_quote(int index, char *input, \
+t_operator operator);
+extern __inline__ void	arg_counter_event(t_shell shell, int *index, \
+t_operator operator);
+extern __inline__ int	arg_operator_event(t_shell shell, int *index, \
+t_operator operator);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 int
@@ -44,7 +43,7 @@ int
 
 	index = 0;
 	result = 0;
-	operator = (struct s_operator){false, false, false};
+	operator = (struct s_operator){0, 0, 0};
 	while (!!shell->input[index])
 	{
 		if (char_whitespace_o(shell->input[index], &operator))
@@ -61,7 +60,7 @@ int
 	return (result);
 }
 
-static int
+extern __inline__ int
 	skip_whitespaces_index(const char *const input, int index)
 {
 	while (!!input[index] && char_whitespace(input[index]))
@@ -69,7 +68,7 @@ static int
 	return (index);
 }
 
-static int
+extern __inline__ int
 	arg_counter_quote(int index, char *input, t_operator operator)
 {
 	if (input[index] == '\"' && !operator->single_quote)
@@ -85,7 +84,7 @@ static int
 	return (index);
 }
 
-static void
+extern __inline__ void
 	arg_counter_event(t_shell shell, int *index, t_operator operator)
 {
 	while (!!shell->input[*index] && \
@@ -98,7 +97,7 @@ static void
 	}
 }
 
-static bool
+extern __inline__ int
 	arg_operator_event(t_shell shell, int *index, t_operator operator)
 {
 	register char	operator_character;
@@ -111,7 +110,7 @@ static bool
 		while (char_operator_o(shell->input[*index], *operator) && \
 			shell->input[*index] == operator_character)
 			++(*index);
-		return (true);
+		return (1);
 	}
-	return (false);
+	return (0);
 }

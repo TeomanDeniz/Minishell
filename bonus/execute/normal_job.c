@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   normal_job.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:17:55 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 17:17:56 by hdeniz           ###   ########.fr       */

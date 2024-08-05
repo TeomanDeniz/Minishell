@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_certain_home.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 00:51:51 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/19 00:51:52 by hdeniz           ###   ########.fr       */

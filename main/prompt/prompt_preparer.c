@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_preparer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:59:38 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 13:59:39 by hdeniz           ###   ########.fr       */
@@ -12,7 +12,7 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define MALLOC_ERROR;
+# define MALLOC_ERROR
 #typedef t_shell;
 #    int prompt_size_detector(t_shell, char *);
 #   void error_shell(t_shell, char *, int, char *);
@@ -21,21 +21,23 @@
 #   void set_term_name_prompt(t_shell, int *, char **);
 #   void set_history_prompt(t_shell, int *, char **);
 #   void set_return_status_prompt(t_shell, int *, char **);
-#   int prompt_tilda(char * , t_shell, int *);
-#*/
+#    int prompt_tilda(char * , t_shell, int *);
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_safe_free(char **);
+#    int ft_safe_free(char **);
 #   void *ft_calloc(Uint, Uint);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	prompt_preparer_slash(t_shell shell, int *prompt_index, char **ps);
-static void	prompt_preparer_percent(t_shell shell, int *prompt_index, char \
-**ps);
-static void	set_one_prompt(t_shell shell, int *prompt_index, char **ps);
-static void	set_var_prompt(t_shell shell, int *prompt_index, char *var, \
+extern __inline__ void	prompt_preparer_slash(t_shell shell, \
+int *prompt_index, char **ps);
+extern __inline__ void	prompt_preparer_percent(t_shell shell, \
+int *prompt_index, char **ps);
+extern __inline__ void	set_one_prompt(t_shell shell, int *prompt_index, \
 char **ps);
+extern __inline__ void	set_var_prompt(t_shell shell, int *prompt_index, \
+char *var, char **ps);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -63,7 +65,7 @@ void
 	shell->prompt[prompt_index] = 0;
 }
 
-static void
+extern __inline__ void
 	prompt_preparer_slash(t_shell shell, int *prompt_index, char **ps)
 {
 	if ((*ps)[1] == 'w')
@@ -81,7 +83,7 @@ static void
 		set_one_prompt(shell, prompt_index, ps);
 }
 
-static void
+extern __inline__ void
 	prompt_preparer_percent(t_shell shell, int *prompt_index, char **ps)
 {
 	if ((*ps)[1] == 'd' || (*ps)[1] == '/')
@@ -101,7 +103,7 @@ static void
 		set_one_prompt(shell, prompt_index, ps);
 }
 
-static void
+extern __inline__ void
 	set_one_prompt(t_shell shell, int *prompt_index, char **ps)
 {
 	shell->prompt[*prompt_index] = **ps;
@@ -109,7 +111,7 @@ static void
 	*ps += 1;
 }
 
-static void
+extern __inline__ void
 	set_var_prompt(t_shell shell, int *prompt_index, char *var, char **ps)
 {
 	register int	index;

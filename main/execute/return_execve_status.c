@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   return_execve_status.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:30:55 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:30:56 by hdeniz           ###   ########.fr       */
@@ -17,30 +17,26 @@
 #   void suppress_cat_io(bool);
 #   void signals_setup(void);
 #   char *get_variable(char *, t_shell);
-#*/
-#include <stdbool.h> /*
-# define true;
-# define false;
-#*/
+#        */
 #include <unistd.h> /*
 #    int close(int);
 #    int dup2(int, int);
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 #include <sys/wait.h> /*
+# define WIFEXITED(stat_val)
+# define WEXITSTATUS(stat_val)
 #  pid_t waitpid(pid_t, int *, int);
-# define WIFEXITED(stat_val);
-# define WEXITSTATUS(stat_val);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	handle_return_status(t_shell shell, int wait_status);
-static void	warn_segmentation_error(t_shell shell);
-static void	warn_interrupt_error(t_shell shell);
+extern __inline__ void	handle_return_status(t_shell shell, int wait_status);
+extern __inline__ void	warn_segmentation_error(t_shell shell);
+extern __inline__ void	warn_interrupt_error(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -48,26 +44,26 @@ void
 {
 	register int	wait_status;
 
-	if (shell->fork_job == false)
+	if (shell->fork_job == 0)
 	{
 		close(STDOUT_FILENO);
 		if (dup2(shell->std_out_fd, STDOUT_FILENO) == -1)
-			error_shell(shell, NULL, (__LINE__ - 1), "dup2()");
+			error_shell(shell, ((void *)0), (__LINE__ - 1), "dup2()");
 		return ;
 	}
-	if (shell->last_pid == 0 && wait(NULL))
+	if (shell->last_pid == 0 && wait((void *)0))
 		return ;
-	suppress_cat_io(true);
+	suppress_cat_io(1);
 	wait_status = 0;
 	handle_return_status(shell, wait_status);
 	signals_setup();
 	close(STDOUT_FILENO);
 	shell->last_pid = 0;
 	if (dup2(shell->std_out_fd, STDOUT_FILENO) == -1)
-		error_shell(shell, NULL, (__LINE__ - 1), "dup2");
+		error_shell(shell, ((void *)0), (__LINE__ - 1), "dup2");
 }
 
-static void
+extern __inline__ void
 	handle_return_status(t_shell shell, int wait_status)
 {
 	register int	status;
@@ -80,7 +76,7 @@ static void
 			shell->errorlevel = 0X80 + status;
 		else
 			shell->errorlevel = status;
-		shell->status_actknowledge = true;
+		shell->status_actknowledge = 1;
 	}
 	else
 		shell->errorlevel = 0X80 + wait_status;
@@ -90,7 +86,7 @@ static void
 		warn_interrupt_error(shell);
 }
 
-static void
+extern __inline__ void
 	warn_segmentation_error(t_shell shell)
 {
 	char	*cmd42_name;
@@ -104,7 +100,7 @@ static void
 	write(shell->std_out_fd, "' [11]", 6);
 }
 
-static void
+extern __inline__ void
 	warn_interrupt_error(t_shell shell)
 {
 	char	*cmd42_name;

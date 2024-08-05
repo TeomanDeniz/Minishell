@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:00:49 by hdeniz            #+#    #+#             */
 /*   Updated: 2023/11/12 18:00:52 by hdeniz           ###   ########.fr       */
@@ -14,7 +14,7 @@
 |*                                  NOTES                                   *|
 |****************************************************************************|
 |*                                                                          *|
-|* - THe project must be compile with "-lreadline -lncurses" flahs.         *|
+|* - The project must be compile with "-lreadline -lncurses" flags.         *|
 |*                                                                          *|
 |* - If "cat" returns "^M" while pressing ENTER key, then run command       *|
 |* "stty sane" and try again. It's a Terminal issue.                        *|
@@ -52,8 +52,7 @@
 \****************************************************************************/
 
 #ifndef MAIN_H
-# define MAIN_H 202401
-
+# define MAIN_H 202408
 /* ************************* [v] ERROR MESSAGES [v] ************************* */
 # define INCORRECT_COMMAND "Command not found!"
 # define UNEX_EOF_MATCH "-%s: unexpected EOF while looking for matching `%c'\n"
@@ -83,17 +82,14 @@ unexisting HOME variable. Whops -\\_(\"/)_/-"
 # define HOW_THE_FUCK_CD_FAILED "cd: error retrieving current directory: \
 getcwd: cannot access parent directories"
 /* ************************* [^] ERROR MESSAGES [^] ************************* */
-
 /* ************************* [v] EXPORT OUTPUTS [v] ************************* */
 # define EXPORT_OUT "declare -x "
 /* ************************* [^] EXPORT OUTPUTS [^] ************************* */
-
 /* ****************************** [v] PIPE [v] ****************************** */
 # define CHILD_PROCESS 0
 # define PIPE_READ 0
 # define PIPE_WRITE 1
 /* ****************************** [^] PIPE [^] ****************************** */
-
 /* *********************** [v] BUILT IN VARIABLES [v] *********************** */
 # define CMD42_PS1 "[%?]> "
 # define CMD42_PS2 "dquote> "
@@ -108,31 +104,26 @@ getcwd: cannot access parent directories"
 # define CMD42_HISFILE ".cmd42_history"
 # define HISTFILE_LIMIT 500
 /* *********************** [^] BUILT IN VARIABLES [^] *********************** */
-
 /* **************************** [v] INCLUDES [v] **************************** */
 # include <stdio.h> /*
 # typedef FILE;
-# */
-# include <stdbool.h> /*
-# typedef bool;
-# */
+#         */
 # include <unistd.h> /*
 # typedef pid_t;
-# */
+#         */
 # include <signal.h> /*
 # typedef sig_atomic_t;
-# */
+#         */
 # ifdef __APPLE__ /* MACOS */
 #  include <sys/syslimits.h> /*
 #   define PATH_MAX
-# */
+#         */
 # else
 #  ifndef PATH_MAX
 #   define PATH_MAX 1024
 #  endif /* PATH_MAX */
 # endif /* __APPLE__ */
 /* **************************** [^] INCLUDES [^] **************************** */
-
 /* *************************** [v] STRUCTURES [v] *************************** */
 typedef union u_converter
 {
@@ -145,20 +136,20 @@ typedef struct s_execute
 	char	*file;
 	char	**arg;
 	char	**env;
-	bool	operator;
+	int		operator;
 }	*t_execute;
 
 typedef struct s_operator
 {
-	bool	double_quote;
-	bool	single_quote;
-	bool	pipe;
+	int	double_quote;
+	int	single_quote;
+	int	pipe;
 }	*t_operator;
 
 struct s_arg
 {
 	char	*this;
-	bool	operator;
+	int		operator;
 };
 
 typedef struct s_variable
@@ -188,12 +179,12 @@ typedef struct s_shell
 	int					histfile_fd;
 	unsigned int		index;
 	unsigned int		errorlevel;
-	bool				status_actknowledge;
-	bool				i_am_a_fork;
-	bool				fork_job;
-	bool				fix_extra_fucking_newline;
-	bool				command_not_found;
-	bool				fucking_filedock_happend;
+	int					status_actknowledge;
+	int					i_am_a_fork;
+	int					fork_job;
+	int					fix_extra_fucking_newline;
+	int					command_not_found;
+	int					fucking_filedock_happend;
 	pid_t				last_pid;
 	t_variable			variable;
 	struct s_arg		*arg;
@@ -201,20 +192,19 @@ typedef struct s_shell
 	void				*original_rl_getc_function;
 }	*t_shell;
 /* *************************** [^] STRUCTURES [^] *************************** */
-
+/* ************************ [v] GLOBAL VARIABLES [v] ************************ */
 extern volatile sig_atomic_t	g_signal;
-
+/* ************************ [^] GLOBAL VARIABLES [^] ************************ */
 /* ************************* [v] ./print_header [v] ************************* */
 extern void	print_header(t_shell shell);
 /* ************************* [^] ./print_header [^] ************************* */
-
 /* *************************** [^] ./execute [^] **************************** */
 extern void	execute(t_shell shell);
 extern void	execute_recursive(t_shell shell, int arg_pipe[2]);
 extern void	return_execve_status(t_shell shell);
-extern bool	check_pipe_doc(t_shell shell, int arg_pipe[2], int current_pipe[2]);
-extern bool	do_the_event(t_shell shell, int current_pipe[2], int arg_pipe[2]);
-extern bool	check_command_found_in_path(t_shell shell);
+extern int	check_pipe_doc(t_shell shell, int arg_pipe[2], int current_pipe[2]);
+extern int	do_the_event(t_shell shell, int current_pipe[2], int arg_pipe[2]);
+extern int	check_command_found_in_path(t_shell shell);
 extern void	normal_job(t_shell shell, int arg_pipe[2]);
 extern void	fork_job(t_shell shell, int current_pipe[2], int arg_pipe[2]);
 extern char	*prepare_execute_program(t_shell shell);
@@ -223,17 +213,15 @@ extern void	parent_process(int next_pipe[2], int current_pipe[2], \
 int arg_pipe[2]);
 extern void	child_process(t_shell shell, int current_p[2], int arg_p[2], \
 char **arg);
-extern bool	check_next_pipe(t_shell shell);
-extern bool	check_if_semicolon(t_shell shell);
-extern bool	is_executable(char *command, t_shell shell);
+extern int	check_next_pipe(t_shell shell);
+extern int	check_if_semicolon(t_shell shell);
+extern int	is_executable(char *command, t_shell shell);
 /* *************************** [^] ./execute [^] **************************** */
-
 /* **************************** [v] ./error [v] ***************************** */
 extern void	error_shell(t_shell shell, char *note, int line, char *from);
 extern void	perror_shell(t_shell shell, char *note, int line, char *from);
 extern void	werror_shell(t_shell shell, char *note, int line, char *from);
 /* **************************** [^] ./error [^] ***************************** */
-
 /* ***************************** [v] ./free [v] ***************************** */
 extern void	free_shell(t_shell shell);
 extern void	free_all_variables(t_shell shell);
@@ -241,20 +229,17 @@ extern void	reset_pipe(t_shell shell, int pipe_fd[2]);
 extern void	free_arg(t_shell shell);
 extern void	reset_content_pipe(int arg_pipe[2]);
 /* ***************************** [^] ./free [^] ***************************** */
-
 /* **************************** [v] ./setup [v] ***************************** */
 extern void	signals_setup(void);
 extern void	shell_setup(t_shell shell, char **env);
 extern char	*get_certain_home(t_shell shell);
 /* **************************** [^] ./setup [^] ***************************** */
-
 /* *************************** [v] ./signals [v] **************************** */
 extern void	handle_sigint(int signal);
 extern void	ignore_sigint_for_child(int signal);
 extern void	update_row_and_col_variables(int signal);
 extern void	just_handle_signal(int signal);
 /* *************************** [^] ./signals [^] **************************** */
-
 /* ************************** [v] ./variables [v] *************************** */
 extern void	variable_setup(t_shell shell);
 extern void	sort_variables(t_shell shell);
@@ -267,61 +252,64 @@ extern int	get_variable_len(const char *name, t_shell shell);
 extern void	remove_variable(const char *name, t_shell shell);
 extern void	variable_to_env(t_shell shell);
 extern void	set_and_free_variable(char *name, char *value, t_shell shell);
+extern int	first_creating_variable(const char *name, const char *value, \
+t_shell shell, register int check_if_value_null);
+extern int	existing_variable(const char *name, const char *value, \
+t_shell shell, register int check_value_null);
+extern void	prepare_name(char **name, const char *const env);
+extern void	prepare_value(char **value, char *env);
 /* ************************** [^] ./variables [^] *************************** */
-
 /* ***************************** [v] ./cmd [v] ****************************** */
-extern bool	check_term_env_exist(void);
-extern bool	move_cursor_up(void);
+extern int	check_term_env_exist(void);
+extern int	move_cursor_up(void);
 extern int	rd_input_ctrl_c_bypass(FILE *stream);
-extern void	suppress_cat_io(bool echo_ctrl_character);
-extern bool	check_syntax_error(t_shell shell);
+extern void	suppress_cat_io(register int echo_ctrl_character);
+extern int	check_syntax_error(t_shell shell);
 /* ***************************** [^] ./cmd [^] ****************************** */
-
 /* *************************** [v] ./commands [v] *************************** */
 extern void	process_command(t_shell shell);
-extern bool	skip_docs(t_shell shell);
-extern bool	check_direct_variable_creation(t_shell shell);
+extern int	skip_docs(t_shell shell);
+extern int	check_direct_variable_creation(t_shell shell);
 extern void	direct_variable_creation(t_shell shell);
-extern bool	check_equal_valid(t_shell shell, char *command);
-extern bool	check_equal_valid_true(t_shell shell, char *command);
+extern int	check_equal_valid(t_shell shell, char *command);
+extern int	check_equal_valid_true(t_shell shell, char *command);
 extern void	command_echo(t_shell shell);
 extern void	command_exit(t_shell shell);
 extern void	command_cd(t_shell shell);
-extern bool	command_pwd(t_shell shell);
+extern int	command_pwd(t_shell shell);
 extern void	command_env(t_shell shell);
 extern void	command_export(t_shell shell);
 extern void	command_unset(t_shell shell);
 extern void	command_set_varible(t_shell shell);
 extern void	command_not_found(t_shell shell);
-extern bool	command_if_builtin(char *command);
-extern bool	not_a_valid_identifier(t_shell shell, char *command);
+extern int	command_if_builtin(char *command);
+extern int	not_a_valid_identifier(t_shell shell, char *command);
 /* *************************** [^] ./commands [^] *************************** */
-
 /* ************************** [v] ./arguments [v] *************************** */
 extern void	prepare_args(t_shell shell);
-extern void	fill_the_operator(t_shell shell, int index);
+extern void	fill_the_operator(t_shell shell, register int index);
 extern void	fill_the_argument(t_shell shell, int arg_index);
-extern bool	operate_job(t_shell shell, int arg_index, int *string_index, \
+extern int	operate_job(t_shell shell, int arg_index, int *string_index, \
 t_operator op);
 extern int	arg_strlen(t_shell shell, char *org_input);
-extern char	*get_varaible_by_name(char *input, t_shell shell, int index);
-extern int	variable_name_len(char *input, int index);
-extern bool	dollar_valid(t_shell shell, int index);
-extern bool	tilda_valid(t_shell shell, t_operator op, int index);
+extern char	*get_varaible_by_name(char *input, t_shell shell, \
+register int index);
+extern int	variable_name_len(char *input, register int index);
+extern int	dollar_valid(t_shell shell, register int index);
+extern int	tilda_valid(t_shell shell, t_operator op, register int index);
 extern void	arg_set_quote(register char input, t_operator operator);
 extern int	arg_counter(t_shell shell);
-extern bool	char_quote_o(register char character, struct s_operator operator);
+extern int	char_quote_o(register char character, struct s_operator operator);
 /* ************************** [^] ./arguments [^] *************************** */
-
 /* ***************************** [v] ./docs [v] ***************************** */
 extern void	set_here_doc_operator(char *input, t_operator operator);
 extern void	reset_here_doc_operator(char *input, t_operator operator);
 extern char	*prepare_here_doc(t_shell shell, t_operator operator);
 extern void	cancel_here_doc(t_shell shell, struct s_operator operator);
-extern bool	dollar_is_valid(char *input);
+extern int	dollar_is_valid(const char *const input);
 extern void	replace_dollar_with_value(char **input, t_shell shell);
 /* ************************ [v] ./docs/file_doc [v] ************************* */
-extern void	arg_file_document(t_shell shell, int index);
+extern void	arg_file_document(t_shell shell, register int index);
 extern void	prepare_arg_file_doc(t_shell shell);
 extern void	prepare_filedoc(char **this, int fd, char *file, t_shell shell);
 /* ************************ [^] ./docs/file_doc [^] ************************* */
@@ -332,10 +320,9 @@ extern void	prepare_arg_here_doc(t_shell shell);
 /* ************************ [v] ./docs/quate_doc [v] ************************ */
 extern void	quote_here_doc(t_shell shell);
 extern void	here_doc_just_one_char(t_shell shell, char character);
-extern bool	check_quate_here_doc(t_shell shell);
+extern int	check_quate_here_doc(t_shell shell);
 /* ************************ [^] ./docs/quate_doc [^] ************************ */
 /* ***************************** [^] ./docs [^] ***************************** */
-
 /* **************************** [v] ./prompt [v] **************************** */
 extern void	prompt_preparer(t_shell shell, char *ps);
 extern void	set_return_status_prompt(t_shell shell, int *prompt_index, \
@@ -346,29 +333,26 @@ extern int	prompt_tilda(char *var, t_shell shell, int *prompt_index);
 extern void	set_base_pwd(t_shell shell, int *prompt_index, char **ps);
 extern int	prompt_size_detector(t_shell shell, char *ps);
 /* **************************** [^] ./prompt [^] **************************** */
-
 /* **************************** [v] ./syntax [v] **************************** */
-extern bool	arg_operator(const struct s_arg arg);
-extern bool	char_operator_o(register char character, \
+extern int	arg_operator(const struct s_arg arg);
+extern int	char_operator_o(register char character, \
 struct s_operator operator);
-extern bool	char_operator(register char character);
+extern int	char_operator(register char character);
 extern void	skip_whitespaces(char **input, t_operator operator);
-extern bool	char_whitespace_o(register char character, t_operator operator);
-extern bool	char_whitespace(register char character);
+extern int	char_whitespace_o(register char character, t_operator operator);
+extern int	char_whitespace(register char character);
 extern void	set_double_quote(t_operator operator);
 extern void	set_single_quote(t_operator operator);
-extern bool	check_next_syntax(const char *const input);
-extern bool	check_arrow_syntax(const char *const input);
-extern bool	check_outpend_syntax(const char *const input);
-extern bool	check_heredoc_syntax(const char *const input);
-extern bool	there_is_slash_on_command(const char *const command);
-extern bool	file_checker(char *command, bool debug, t_shell shell);
+extern int	check_next_syntax(const char *const input);
+extern int	check_arrow_syntax(const char *const input);
+extern int	check_outpend_syntax(const char *const input);
+extern int	check_heredoc_syntax(const char *const input);
+extern int	there_is_slash_on_command(const char *const command);
+extern int	file_checker(char *command, register int debug, t_shell shell);
 /* **************************** [^] ./syntax [^] **************************** */
-
 /* *************************** [v] ./history [v] **************************** */
-extern bool	set_readline_history(t_shell shell);
+extern int	set_readline_history(t_shell shell);
 extern void	set_history(t_shell shell);
 extern void	edit_history_file(t_shell shell);
 /* *************************** [^] ./history [^] **************************** */
-
 #endif /* MAIN_H */

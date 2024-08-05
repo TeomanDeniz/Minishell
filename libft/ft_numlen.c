@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 21:41:23 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 21:41:26 by hdeniz           ###   ########.fr       */
+/*   Created: 2023/09/03 18:10:11 by hdeniz            #+#    #+#             */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned short
-	ft_numlen(register long long number)
+short
+	ft_numlen(register long number)
 {
-	unsigned short	result;
+	int	result;
 
-	if (number < 0LL)
-		number = ((~number) + 1LL);
-	if (number == 0LL)
-		return ((short)1);
+	if (number < (long)0)
+		number = ((~number) + (long)1);
+	if (number < (long)10)
+		return (1);
 	result = -1;
-	while (++result, !!number)
-		number = number / 10LL;
+	while (++result, number)
+		number /= (long)10;
 	return (result);
 }

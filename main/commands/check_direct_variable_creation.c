@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_direct_variable_creation.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:59:41 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:59:41 by hdeniz           ###   ########.fr       */
@@ -13,21 +13,16 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
 #typedef t_shell;
-#   bool skip_docs(t_shell);
-#   bool check_next_syntax(char *);
-#*/
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
+#    int skip_docs(t_shell);
+#    int check_next_syntax(char *);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	check_variable_valid(char *arg);
+extern __inline__ int	check_variable_valid(char *arg);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
-bool
+int
 	check_direct_variable_creation(t_shell shell)
 {
 	register int	index;
@@ -40,26 +35,26 @@ bool
 		if (!check_variable_valid(shell->arg[index].this))
 		{
 			shell->index += index - shell->index;
-			return (false);
+			return (0);
 		}
 		index++;
 	}
-	return (true);
+	return (1);
 }
 
-static bool
+extern __inline__ int
 	check_variable_valid(char *arg)
 {
 	if (*arg != '_' && !(*arg >= 'a' && *arg <= 'z') && \
 		!(*arg >= 'A' && *arg <= 'Z'))
-		return (false);
+		return (0);
 	while (++arg, !!*arg && *arg != '=')
 	{
 		if (*arg != '=' && *arg != '_' && !(*arg >= 'a' && *arg <= 'z') && \
 			!(*arg >= 'A' && *arg <= 'Z') && !(*arg >= '0' && *arg <= '9'))
-			return (false);
+			return (0);
 	}
 	if (*arg == '=')
-		return (true);
-	return (false);
+		return (1);
+	return (0);
 }

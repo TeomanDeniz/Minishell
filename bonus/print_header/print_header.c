@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   print_header.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:52:50 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/06 13:52:53 by hdeniz           ###   ########.fr       */

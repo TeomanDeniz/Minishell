@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ignore_sigint_for_child.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:59:54 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:59:55 by hdeniz           ###   ########.fr       */

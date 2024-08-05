@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   process_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:54:47 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 15:54:47 by hdeniz           ###   ########.fr       */
@@ -16,21 +16,21 @@
 #   void command_echo(t_shell);
 #   void command_exit(t_shell);
 #   void command_cd(t_shell);
-#   bool command_pwd(t_shell);
+#    int command_pwd(t_shell);
 #   void command_env(t_shell);
 #   void command_export(t_shell);
 #   void command_unset(t_shell);
-#   bool check_direct_variable_creation(t_shell);
+#    int check_direct_variable_creation(t_shell);
 #   void direct_variable_creation(t_shell);
 #   void command_not_found(t_shell);
 #   void free_shell(t_shell);
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strcasecmp(char *, char *);
-#*/
+#    int ft_strcasecmp(char *, char *);
+#        */
 #include <stdlib.h> /*
 #   void exit(int);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

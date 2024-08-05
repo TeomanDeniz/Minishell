@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   is_executable.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 22:20:49 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 22:20:50 by hdeniz           ###   ########.fr       */

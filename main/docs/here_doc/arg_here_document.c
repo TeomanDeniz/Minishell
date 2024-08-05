@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_here_document.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:22:58 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 18:22:59 by hdeniz           ###   ########.fr       */
@@ -12,27 +12,28 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
-#GLOBAL# sig_atomic_t g_signal;
-# define MALLOC_ERROR;
+# define MALLOC_ERROR
+G >>>>>> (sig_atomic_t)
+G ^^^^^^ g_signal;
 # struct s_operator;
 #typedef t_shell;
 #   void error_shell(t_shell, char *, int, char *);
 #   void prompt_preparer(t_shell, char *);
 #   char *prepare_here_doc(t_shell, t_operator);
-#   bool dollar_is_valid(char *);
+#    int dollar_is_valid(char *);
 #   void replace_dollar_with_value(char **, t_shell);
-#*/
+#        */
 #include "../../../libft/libft.h" /*
 #   char *ft_strdup(char *);
-#   bool ft_safe_free(char **);
+#    int ft_safe_free(char **);
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 #include <stdio.h> /*
 #typedef FILE;
 ^------> <readline/readline.h>
-#*/
+#        */
 #include <readline/readline.h> /*
 @ <----- <stdio.h> REQUIRED
 @ +----+ +------------+
@@ -40,21 +41,17 @@
 @ +----+ +------------+
 #typedef rl_getc_function();
 #   char *readline(char *);
-#*/
+#        */
 #include <signal.h> /*
-# define SIGINT;
-#sigh... signal(int, sighandler_t); ((sighandler_t))
-#*/
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
+# define SIGINT
+#   void (*signal(int, void (*)(int)))(int);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	join_heredoc(char **this, char *input);
-static bool	arg_here_document_loop(t_shell shell, char **heredoc, int index);
+extern __inline__ int	join_heredoc(char **this, char *input);
+extern __inline__ int	arg_here_document_loop(t_shell shell, char **heredoc, \
+register int index);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -78,7 +75,7 @@ void
 	signal(SIGINT, handle_sigint);
 }
 
-static bool
+extern __inline__ int
 	join_heredoc(char **this, char *input)
 {
 	char			*temp;
@@ -87,14 +84,14 @@ static bool
 
 	temp = ft_strdup(*this);
 	if (!temp)
-		return (false);
+		return (0);
 	ft_safe_free(this);
 	(*this) = (char *) ft_calloc(sizeof(char), ft_strlen(temp) + \
 		ft_strlen(input) + 1);
 	if (!(*this))
 	{
 		(*this) = temp;
-		return (false);
+		return (0);
 	}
 	index = -1;
 	input_index = -1;
@@ -104,26 +101,26 @@ static bool
 	while (++input_index, ++index, !!input[index])
 		(*this)[input_index] = input[index];
 	(*this)[input_index] = 0;
-	return (true);
+	return (1);
 }
 
-static bool
-	arg_here_document_loop(t_shell shell, char **heredoc, int index)
+extern __inline__ int
+	arg_here_document_loop(t_shell shell, char **heredoc, register int index)
 {
 	char	*input;
 
 	prompt_preparer(shell, prepare_here_doc(shell, \
-		&(struct s_operator){false, false, false}));
+		&(struct s_operator){0, 0, 0}));
 	input = readline(shell->prompt);
 	if (!input || g_signal == SIGINT)
 	{
-		cancel_here_doc(shell, (struct s_operator){false, false, false});
+		cancel_here_doc(shell, (struct s_operator){0, 0, 0});
 		return (!ft_safe_free(&input));
 	}
 	if (ft_strboolcmp(input, *heredoc))
 	{
 		ft_safe_free(&input);
-		return (false);
+		return (0);
 	}
 	if (dollar_is_valid(input))
 		replace_dollar_with_value(&input, shell);
@@ -134,5 +131,5 @@ static bool
 		ft_safe_free(heredoc) && ft_safe_free(&input))
 		error_shell(shell, MALLOC_ERROR, (__LINE__ - 2), "join_heredoc()");
 	ft_safe_free(&input);
-	return (true);
+	return (1);
 }

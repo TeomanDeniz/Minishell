@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   werror_shell.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:00:52 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:00:53 by hdeniz           ###   ########.fr       */
@@ -14,14 +14,14 @@
 #include "../../libft/libft.h" /*
 #   void ft_putnbr_fd(int, int);
 #    int ft_strlen(char *);
-#*/
+#        */
 #include "../main.h" /*
 #typedef t_shell;
 #   char *get_variable(char *, t_shell);
-#*/
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

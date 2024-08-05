@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_size_detector.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:56:51 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 16:56:52 by hdeniz           ###   ########.fr       */
@@ -14,16 +14,19 @@
 #include "../main.h" /*
 #typedef t_shell;
 #    int get_variable_len(char *, t_shell);
-#*/
+#        */
 #include "../../libft/libft.h" /*
-# Ushort ft_numlen(long long);
-#*/
+#  short ft_numlen(long);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	set_prompt_size(int *result, int result_add, int return_add);
-static void	detect_slash_commands(t_shell shell, int *result, char **ps);
-static void	detect_percent_commands(t_shell shell, int *result, char **ps);
+extern __inline__ int	set_prompt_size(int *result, int result_add, \
+int return_add);
+extern __inline__ void	detect_slash_commands(t_shell shell, int *result, \
+char **ps);
+extern __inline__ void	detect_percent_commands(t_shell shell, int *result, \
+char **ps);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 int
@@ -44,14 +47,14 @@ int
 	return (result);
 }
 
-static int
+extern __inline__ int
 	set_prompt_size(int *result, int result_add, int return_add)
 {
 	*result += result_add;
 	return (return_add);
 }
 
-static void
+extern __inline__ void
 	detect_slash_commands(t_shell shell, int *result, char **ps)
 {
 	if ((*ps)[1] == 'w' || (*ps)[1] == 'W')
@@ -74,7 +77,7 @@ static void
 		*ps += ((*result)++, 1);
 }
 
-static void
+extern __inline__ void
 	detect_percent_commands(t_shell shell, int *result, char **ps)
 {
 	if ((*ps)[1] == '/' || (*ps)[1] == 'd' || (*ps)[1] == '~')

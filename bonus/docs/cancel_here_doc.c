@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cancel_here_doc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:02:01 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 18:02:02 by hdeniz           ###   ########.fr       */

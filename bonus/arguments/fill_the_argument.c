@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   fill_the_argument.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:45:01 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 23:45:02 by hdeniz           ###   ########.fr       */

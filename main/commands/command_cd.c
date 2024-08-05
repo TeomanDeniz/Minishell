@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:26 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:08:28 by hdeniz           ###   ########.fr       */
@@ -12,40 +12,36 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define PATH_MAX;
-# define FILE_NAME_LONG;
+# define PATH_MAX
+# define FILE_NAME_LONG
 #typedef t_shell;
-#   bool skip_docs(t_shell);
+#    int skip_docs(t_shell);
 #   void set_variable(char *, char *, t_shell);
 #   char *get_variable_direct_value(char *, t_shell);
 #   void werror_shell(t_shell, char *, int, char *);
 #   void perror_shell(t_shell, char *, int, char *);
 #   char *get_variable(char *, t_shell);
-#   bool command_pwd(t_shell);
-#*/
+#    int command_pwd(t_shell);
+#        */
 #include "../../libft/libft.h" /*
 #   void ft_bzero(char *, int);
-#   bool ft_strboolcmp(char *, char *);
+#    int ft_strboolcmp(char *, char *);
 #    int ft_strlen(char *);
-#*/
+#        */
 #include <unistd.h> /*
-# define F_OK;
+# define F_OK
 #   char *getcwd(char *, size_t);
 #    int access(char *, int);
 #    int chdir(char *);
 #ssize_t write(int, void *, size_t);
-#*/
-#include <stdbool.h> /*
-# define true;
-#typedef bool;
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	cd_home(t_shell shell);
-static void	set_new_dir(char new_dir[PATH_MAX], char *other_char);
-static bool	cd_error(t_shell shell, char *file);
-static bool	check_currenct_dir(t_shell shell);
+extern __inline__ int	cd_home(t_shell shell);
+extern __inline__ void	set_new_dir(char new_dir[PATH_MAX], char *other_char);
+extern __inline__ int	cd_error(t_shell shell, char *file);
+extern __inline__ int	check_currenct_dir(t_shell shell);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -55,7 +51,7 @@ void
 
 	shell->errorlevel = (shell->index++, 0U);
 	(skip_docs(shell), ft_bzero(new_dir, PATH_MAX));
-	if ((shell->arg[shell->index].this == NULL && cd_home(shell)) || \
+	if ((shell->arg[shell->index].this == ((void *)0) && cd_home(shell)) || \
 		(ft_strboolcmp(shell->arg[shell->index].this, "-") && \
 		command_pwd(shell)) || !check_currenct_dir(shell))
 		return ;
@@ -78,7 +74,7 @@ void
 	(getcwd(shell->pwd, PATH_MAX), set_variable("PWD", shell->pwd, shell));
 }
 
-static bool
+extern __inline__ int
 	check_currenct_dir(t_shell shell)
 {
 	char	current_dir[PATH_MAX];
@@ -86,21 +82,21 @@ static bool
 	ft_bzero(current_dir, PATH_MAX);
 	if (!getcwd(current_dir, PATH_MAX))
 	{
-		perror_shell(shell, NULL, 0, HOW_THE_FUCK_CD_FAILED);
+		perror_shell(shell, ((void *)0), 0, HOW_THE_FUCK_CD_FAILED);
 		if (chdir("/") != 0)
 		{
 			cd_error(shell, "/");
-			return (false);
+			return (0);
 		}
 		getcwd(shell->pwd, PATH_MAX);
-		set_variable("OLDPWD", NULL, shell);
+		set_variable("OLDPWD", ((void *)0), shell);
 		set_variable("PWD", shell->pwd, shell);
-		return (false);
+		return (0);
 	}
-	return (true);
+	return (1);
 }
 
-static bool
+extern __inline__ int
 	cd_home(t_shell shell)
 {
 	char	*home;
@@ -109,25 +105,25 @@ static bool
 	home = get_variable_direct_value("HOME", shell);
 	if (!home)
 	{
-		shell->errorlevel = 1U;
+		shell->errorlevel = (unsigned int)1;
 		werror_shell(shell, HOME_NOT_SET, 0, "cd");
-		return (true);
+		return (1);
 	}
 	if (access(home, F_OK) != -1)
 		chdir(home);
 	else
 	{
-		shell->errorlevel = 1U;
+		shell->errorlevel = (unsigned int)1;
 		perror_shell(shell, home, 0, "cd");
-		return (true);
+		return (1);
 	}
 	getcwd(new_dir, PATH_MAX);
 	getcwd(shell->pwd, PATH_MAX);
 	set_variable("PWD", shell->pwd, shell);
-	return (true);
+	return (1);
 }
 
-static void
+extern __inline__ void
 	set_new_dir(char new_dir[PATH_MAX], char *other_char)
 {
 	register int	len;
@@ -140,12 +136,12 @@ static void
 	new_dir[len] = 0;
 }
 
-static bool
+extern __inline__ int
 	cd_error(t_shell shell, char *file)
 {
 	char	*cmd42_name;
 
-	shell->errorlevel = 1U;
+	shell->errorlevel = (unsigned int)1;
 	cmd42_name = get_variable("CMD42_NAME", shell);
 	write(shell->std_out_fd, "-", 1);
 	write(shell->std_out_fd, cmd42_name, ft_strlen(cmd42_name));
@@ -157,5 +153,5 @@ static bool
 		write(shell->std_out_fd, "'", 1);
 	}
 	perror("");
-	return (true);
+	return (1);
 }

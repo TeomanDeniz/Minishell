@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_brackets.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:00:04 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/30 17:00:05 by hdeniz           ###   ########.fr       */

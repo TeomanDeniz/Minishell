@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   signals_setup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:43:37 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:43:38 by hdeniz           ###   ########.fr       */

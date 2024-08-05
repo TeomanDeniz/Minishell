@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   not_a_valid_identifier.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:32:11 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 19:32:13 by hdeniz           ###   ########.fr       */

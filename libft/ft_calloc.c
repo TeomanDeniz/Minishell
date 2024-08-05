@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:36:15 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 18:36:17 by hdeniz           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* **************************** [v] INCLUDES [v] **************************** */
-#include "libft.h" /*
-#   void ft_bzero(char *, int);
-#*/
 #include <stdlib.h> /*
 #   void *malloc(size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void
@@ -28,7 +25,8 @@ void
 	total_memory_size = type_size * size;
 	result = malloc(total_memory_size);
 	if (!result)
-		return (NULL);
-	ft_bzero(result, total_memory_size);
+		return ((void *)0);
+	while (--total_memory_size)
+		((char *)result)[total_memory_size] = 0;
 	return (result);
 }

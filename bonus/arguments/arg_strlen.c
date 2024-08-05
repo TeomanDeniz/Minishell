@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   arg_strlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:21:08 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 00:21:09 by hdeniz           ###   ########.fr       */

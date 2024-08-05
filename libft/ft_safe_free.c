@@ -3,29 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_safe_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:41:00 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 18:41:02 by hdeniz           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include <stdlib.h> /*
 #   void free(void *);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define true;
-*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
-bool
+int
 	ft_safe_free(char **variable)
 {
 	if (!variable || !*variable)
-		return (true);
+		return (1);
 	free(*variable);
-	*variable = NULL;
-	return (true);
+	*variable = (char *)0;
+	return (1);
 }

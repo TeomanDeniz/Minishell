@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   return_execve_status.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:30:55 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 15:30:56 by hdeniz           ###   ########.fr       */

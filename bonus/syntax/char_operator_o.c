@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   char_operator_o.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:20:15 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:20:16 by hdeniz           ###   ########.fr       */

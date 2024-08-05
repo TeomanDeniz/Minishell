@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   skip_whitespaces.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:22:42 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:22:42 by hdeniz           ###   ########.fr       */
@@ -13,8 +13,8 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
 #typedef t_operator;
-#   bool char_whitespace_o(char, t_operator);
-#*/
+#    int char_whitespace_o(char, t_operator);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

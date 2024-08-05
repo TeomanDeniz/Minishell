@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   there_is_slash_on_command.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:32:15 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:32:16 by hdeniz           ###   ########.fr       */

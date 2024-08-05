@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_valid.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:54:38 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:54:39 by hdeniz           ###   ########.fr       */

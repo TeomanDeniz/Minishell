@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:04:14 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 16:04:15 by hdeniz           ###   ########.fr       */
@@ -12,37 +12,32 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define EXIT_TOO_MANY;
-# define EXIT_ARGUMENT;
+# define EXIT_TOO_MANY
+# define EXIT_ARGUMENT
 #typedef t_shell;
-#   bool skip_docs(t_shell);
+#    int skip_docs(t_shell);
 #   void werror_shell(t_shell, char *, int, char *);
 #   void free_shell(t_shell);
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_atoi(char *);
 #    int ft_strlen(char *);
-#*/
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
 #include <stdlib.h> /*
 #   void exit(int);
-#*/
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
+#        */
 #include <limits.h> /*
-# define INT_MAX;
-#*/
+# define INT_MAX
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static void	its_over(t_shell shell);
-static bool	check_if_number(const char *const number);
-static bool	check_int_max(const char *const number);
+extern __inline__ void	its_over(t_shell shell);
+extern __inline__ int	check_if_number(const char *const number);
+extern __inline__ int	check_int_max(const char *const number);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -58,7 +53,7 @@ void
 			!!shell->arg[shell->index + 1].this)
 		{
 			werror_shell(shell, EXIT_TOO_MANY, 0, "exit");
-			shell->errorlevel = 1U;
+			shell->errorlevel = (unsigned int)1;
 			while (shell->arg[shell->index].this)
 				shell->index++;
 			return ;
@@ -69,12 +64,12 @@ void
 	else
 	{
 		werror_shell(shell, EXIT_ARGUMENT, 0, shell->arg[shell->index].this);
-		shell->errorlevel = 255U;
+		shell->errorlevel = (unsigned int)255;
 	}
 	its_over(shell);
 }
 
-static void
+extern __inline__ void
 	its_over(t_shell shell)
 {
 	if (!shell->i_am_a_fork)
@@ -83,22 +78,22 @@ static void
 	exit(shell->errorlevel);
 }
 
-static bool
+extern __inline__ int
 	check_int_max(const char *const number)
 {
 	if (ft_atoi(number) == INT_MAX || ft_strlen(number) > 10)
-		return (false);
-	return (true);
+		return (0);
+	return (1);
 }
 
-static bool
+extern __inline__ int
 	check_if_number(const char *const number)
 {
 	register int	index;
 
 	index = 0;
 	if (!number)
-		return (true);
+		return (1);
 	while (number[index] == ' ' || \
 		number[index] == '\t' || \
 		number[index] == '\v' || \
@@ -116,6 +111,6 @@ static bool
 		number[index] == '\r')
 		++index;
 	if (!!number[index])
-		return (false);
-	return (true);
+		return (0);
+	return (1);
 }

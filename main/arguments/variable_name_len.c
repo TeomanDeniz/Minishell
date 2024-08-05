@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   variable_name_len.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:53:27 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:53:30 by hdeniz           ###   ########.fr       */
@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 int
-	variable_name_len(char *input, int index)
+	variable_name_len(char *input, register int index)
 {
 	register char	save_char;
 	int				result;

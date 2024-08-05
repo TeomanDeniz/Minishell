@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_variable.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:44:43 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 17:44:44 by hdeniz           ###   ########.fr       */
@@ -14,10 +14,10 @@
 #include "../main.h" /*
 #typedef t_shell;
 #typedef t_variable;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 char

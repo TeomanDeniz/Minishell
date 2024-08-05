@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_here_doc_operator.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:52:50 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:52:51 by hdeniz           ###   ########.fr       */

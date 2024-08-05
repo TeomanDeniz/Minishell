@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   variable_to_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 17:57:12 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 17:57:13 by hdeniz           ###   ########.fr       */
@@ -12,25 +12,25 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define MALLOC_ERROR;
+# define MALLOC_ERROR
 #typedef t_shell;
 #typedef t_variable;
 #   void error_shell(t_shell, char *, int, char *);
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_free_matrix(char ***);
+#    int ft_free_matrix(char ***);
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
-#   bool ft_safe_free(char **);
-#*/
+#    int ft_safe_free(char **);
+#        */
 #include <stdlib.h> /*
 #   void *malloc(size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static int	calculate_size(t_shell shell);
-static int	overwrite(char *string, char *add, int *char_index);
+extern __inline__ int	calculate_size(t_shell shell);
+extern __inline__ int	overwrite(char *string, char *add, int *char_index);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -59,10 +59,10 @@ void
 		index -= overwrite(shell->env[index], variable->value, &char_index);
 		variable = variable->next;
 	}
-	shell->env[index] = NULL;
+	shell->env[index] = (void *)0;
 }
 
-static int
+extern __inline__ int
 	calculate_size(t_shell shell)
 {
 	register int	result;
@@ -78,7 +78,7 @@ static int
 	return (result + 1);
 }
 
-static int
+extern __inline__ int
 	overwrite(char *string, char *add, int *char_index)
 {
 	register int	index;

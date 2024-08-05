@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   add_just_one_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:45:40 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:45:41 by hdeniz           ###   ########.fr       */

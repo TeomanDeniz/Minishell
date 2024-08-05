@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   command_not_found.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:05:45 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 17:05:46 by hdeniz           ###   ########.fr       */

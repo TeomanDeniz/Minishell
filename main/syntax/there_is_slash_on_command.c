@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   there_is_slash_on_command.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:32:15 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:32:16 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* **************************** [v] INCLUDES [v] **************************** */
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
-/* **************************** [^] INCLUDES [^] **************************** */
-
-bool
+int
 	there_is_slash_on_command(const char *const command)
 {
 	register int	index;
@@ -26,6 +18,6 @@ bool
 	index = -1;
 	while (++index, !!command && !!command[index])
 		if (command[index] == '/')
-			return (true);
-	return (false);
+			return (1);
+	return (0);
 }

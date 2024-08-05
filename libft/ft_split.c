@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 23:22:15 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 23:22:16 by hdeniz           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,16 @@
 #    int ft_strlen(char *);
 #   char *ft_strdup(char *);
 #   bool ft_free_matrix(char ***);
-#*/
+#        */
 #include <stdlib.h> /*
 #   void *malloc(size_t);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
-static int
-	get_word_count(char *string, int character)
-{
-	register int	index;
-	int				result;
-
-	result = 0;
-	index = -1;
-	while (++index, string[index] && string[index] == character)
-		(void)0;
-	while (string[index])
-	{
-		++result;
-		while (string[index] && string[index] != character)
-			++index;
-		while (string[index] && string[index] == character)
-			++index;
-	}
-	return (result);
-}
-
-static void
-	get_next_word(char **string, char character, int index)
-{
-	if (index != 0)
-	{
-		while (**string && **string != character)
-			(*string)++;
-	}
-	while (**string && **string == character)
-		(*string)++;
-}
+/* *************************** [v] PROTOTYPES [v] *************************** */
+extern __inline__ int	get_word_count(char *string, int character);
+extern __inline__ void	get_next_word(char **string, char character, int index);
+/* *************************** [^] PROTOTYPES [^] *************************** */
 
 char
 	**ft_split(char const *string, char character)
@@ -82,4 +54,37 @@ char
 		}
 	}
 	return (result);
+}
+
+extern __inline__ int
+	get_word_count(char *string, int character)
+{
+	register int	index;
+	int				result;
+
+	result = 0;
+	index = -1;
+	while (++index, string[index] && string[index] == character)
+		(void)0;
+	while (string[index])
+	{
+		++result;
+		while (string[index] && string[index] != character)
+			++index;
+		while (string[index] && string[index] == character)
+			++index;
+	}
+	return (result);
+}
+
+extern __inline__ void
+	get_next_word(char **string, char character, int index)
+{
+	if (index != 0)
+	{
+		while (**string && **string != character)
+			(*string)++;
+	}
+	while (**string && **string == character)
+		(*string)++;
 }

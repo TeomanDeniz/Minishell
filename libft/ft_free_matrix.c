@@ -3,37 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_matrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 21:37:22 by hdeniz            #+#    #+#             */
-/*   Updated: 2024/01/06 21:37:23 by hdeniz           ###   ########.fr       */
+/*   Updated: 2024/08/01 15:17:56 by hdeniz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "libft.h" /*
-#   bool ft_safe_free(char **);
-#*/
+#    int ft_safe_free(char **);
+#        */
 #include <stdlib.h> /*
 #   void free(void *);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define true;
-*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
-bool
+int
 	ft_free_matrix(char ***matrix)
 {
 	register int	y;
 
 	if (!matrix || !*matrix)
-		return (true);
+		return (1);
 	y = -1;
 	while (++y, !!(*matrix)[y])
 		ft_safe_free(&(*matrix)[y]);
 	free(*matrix);
-	*matrix = NULL;
-	return (true);
+	*matrix = (char **)0;
+	return (1);
 }

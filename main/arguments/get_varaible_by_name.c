@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_varaible_by_name.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:51:42 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 12:51:43 by hdeniz           ###   ########.fr       */
@@ -14,11 +14,11 @@
 #include "../main.h" /*
 #typedef t_shell;
 #   char *get_variable(char *, t_shell);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 char
-	*get_varaible_by_name(char *input, t_shell shell, int index)
+	*get_varaible_by_name(char *input, t_shell shell, register int index)
 {
 	char			*result;
 	char			save_char;

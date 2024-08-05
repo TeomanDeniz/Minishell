@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   operate_job.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:54:54 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 23:54:54 by hdeniz           ###   ########.fr       */

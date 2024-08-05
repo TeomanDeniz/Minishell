@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_term_env_exist.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 18:02:36 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/07 18:02:36 by hdeniz           ###   ########.fr       */
@@ -18,26 +18,21 @@
 \****************************************************************************/
 
 /* **************************** [v] INCLUDES [v] **************************** */
-#include <stdbool.h> /*
-#typedef bool;
-# define true;
-# define false;
-#*/
 #include <term.h> /*
 @ +----+ +-----------+
 @ |FLAG| | -lncurses |
 @ +----+ +-----------+
 #    int tgetent(char *, char *);
-#*/
+#        */
 #include <stdlib.h> /*
 #   char *getenv(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
-bool
+int
 	check_term_env_exist(void)
 {
-	if (tgetent(NULL, getenv("TERM")) < 1)
-		return (false);
-	return (true);
+	if (tgetent(((void *)0), getenv("TERM")) < 1)
+		return (0);
+	return (1);
 }

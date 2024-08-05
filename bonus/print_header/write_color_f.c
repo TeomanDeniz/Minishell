@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   write_color_f.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:12 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/06 13:53:14 by hdeniz           ###   ########.fr       */

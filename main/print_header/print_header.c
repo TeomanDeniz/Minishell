@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   print_header.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:52:50 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/06 13:52:53 by hdeniz           ###   ########.fr       */
@@ -17,9 +17,10 @@
 |*                                                                          *|
 \****************************************************************************/
 
+/* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
 #typedef t_shell;
-#*/
+#        */
 #include "print_header.h" /*
 #   void a(t_shell, int);
 #   void b(t_shell, int);
@@ -27,12 +28,20 @@
 #   void d(t_shell, int);
 #   void e(t_shell, int);
 #   void f(t_shell, int);
-#*/
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
-#*/
+#        */
+/* **************************** [^] INCLUDES [^] **************************** */
 
-static void
+/* *************************** [v] PROTOTYPES [v] *************************** */
+extern __inline__ void	send_to_terminal_screen(t_shell shell, \
+void (**x)(t_shell, int), int *len);
+extern __inline__ void	prepare_sizes(t_shell s, void (**x)(t_shell, int));
+extern __inline__ void	print_small_header(t_shell shell);
+/* *************************** [^] PROTOTYPES [^] *************************** */
+
+extern __inline__ void
 	send_to_terminal_screen(t_shell shell, void (**x)(t_shell, int), int *len)
 {
 	register int	index;
@@ -45,7 +54,7 @@ static void
 	}
 }
 
-static void
+extern __inline__ void
 	prepare_sizes(t_shell s, void (**x)(t_shell, int))
 {
 	int	*len;
@@ -70,7 +79,7 @@ static void
 	send_to_terminal_screen(s, x, len);
 }
 
-static void
+extern __inline__ void
 	print_small_header(t_shell shell)
 {
 	register int	fd;

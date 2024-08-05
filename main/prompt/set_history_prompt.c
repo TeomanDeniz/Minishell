@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_history_prompt.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:52:59 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 16:53:00 by hdeniz           ###   ########.fr       */
@@ -13,11 +13,11 @@
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
 #typedef t_shell;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-# define END_OF_NUMBER_INDEX;
-#   char ft_numindex(long long , Ushort);
-#*/
+# define END_OF_NUMBER_INDEX
+#   char ft_numindex(long , ushort);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

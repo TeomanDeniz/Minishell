@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_filedoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:40:57 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:40:58 by hdeniz           ###   ########.fr       */

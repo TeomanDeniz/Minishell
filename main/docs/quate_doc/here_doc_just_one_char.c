@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_just_one_char.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:45:40 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/09 17:45:41 by hdeniz           ###   ########.fr       */
@@ -12,16 +12,16 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../../main.h" /*
-# define MALLOC_ERROR;
+# define MALLOC_ERROR
 #typedef t_shell;
 #   void error_shell(t_shell, char *, int, char *);
-#*/
+#        */
 #include "../../../libft/libft.h" /*
 #   char *ft_strdup(char *);
-#   bool ft_safe_free(char **);
+#    int ft_safe_free(char **);
 #   void *ft_calloc(Uint, Uint);
 #    int ft_strlen(char *);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 void

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   edit_history_file.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 22:37:08 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/21 22:37:11 by hdeniz           ###   ########.fr       */
@@ -12,42 +12,38 @@
 
 /* **************************** [v] INCLUDES [v] **************************** */
 #include "../main.h" /*
-# define HISTFILE_LIMIT;
+# define HISTFILE_LIMIT
 #typedef t_shell;
-#*/
+#        */
 #include "../../libft/libft.h" /*
 #    int ft_strlen(char *);
-#   bool ft_safe_free(char **);
-#   bool ft_free_matrix(char ***);
+#    int ft_safe_free(char **);
+#    int ft_free_matrix(char ***);
 #   char *get_next_line(int);
-#*/
-#include <stdbool.h> /*
-#typedef bool;
-# define false;
-# define true;
-#*/
+#        */
 #include <unistd.h> /*
 #ssize_t write(int, void *, size_t);
 #    int close(int);
-#*/
+#        */
 #include <fcntl.h> /*
 # define O_RDWR;
 # define O_CREAT;
 # define O_TRUNC;
 #    int open(char *, int, ...);
-#*/
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	save_history(t_shell shell, char **history_lines, int fd);
-static void	load_history(t_shell shell, char **history_lines);
+extern __inline__ int	save_history(t_shell shell, char **history_lines, \
+register int fd);
+extern __inline__ void	load_history(t_shell shell, char **history_lines);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
 	edit_history_file(t_shell shell)
 {
-	int		fd;
-	char	*history_lines[HISTFILE_LIMIT];
+	register int	fd;
+	char			*history_lines[HISTFILE_LIMIT];
 
 	if (shell->history_number_of_commands_in_file < HISTFILE_LIMIT)
 		return ;
@@ -60,8 +56,8 @@ void
 	ft_free_matrix((char ***)&history_lines);
 }
 
-static bool
-	save_history(t_shell shell, char **history_lines, int fd)
+extern __inline__ int
+	save_history(t_shell shell, char **history_lines, register int fd)
 {
 	char			*line;
 	register int	index;
@@ -79,11 +75,11 @@ static bool
 		history_lines[index] = line;
 		line = get_next_line(fd);
 	}
-	history_lines[index] = NULL;
-	return (true);
+	history_lines[index] = ((void *)0);
+	return (1);
 }
 
-static void
+extern __inline__ void
 	load_history(t_shell shell, char **history_lines)
 {
 	register int	index;

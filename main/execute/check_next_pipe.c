@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_next_pipe.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 22:17:12 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 22:17:13 by hdeniz           ###   ########.fr       */
@@ -11,20 +11,15 @@
 /* ************************************************************************** */
 
 /* **************************** [v] INCLUDES [v] **************************** */
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
 #include "../main.h" /*
 #typedef t_shell;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
-bool
+int
 	check_next_pipe(t_shell shell)
 {
 	register int	index;
@@ -34,10 +29,10 @@ bool
 	{
 		if (shell->arg[index].operator && \
 			ft_strboolcmp(shell->arg[index].this, "|"))
-			return (true);
+			return (1);
 		if (shell->arg[index].operator && \
 			ft_strboolcmp(shell->arg[index].this, ";"))
-			return (false);
+			return (0);
 	}
-	return (false);
+	return (0);
 }

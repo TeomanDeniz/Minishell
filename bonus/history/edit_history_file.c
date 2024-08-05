@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   edit_history_file.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 22:37:08 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/21 22:37:11 by hdeniz           ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_if_semicolon.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 22:18:57 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 22:18:58 by hdeniz           ###   ########.fr       */
@@ -11,20 +11,15 @@
 /* ************************************************************************** */
 
 /* **************************** [v] INCLUDES [v] **************************** */
-#include <stdbool.h> /*
-# define true;
-# define false;
-#typedef bool;
-#*/
 #include "../main.h" /*
 #typedef t_shell;
-#*/
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
-bool
+int
 	check_if_semicolon(t_shell shell)
 {
 	if (!shell->arg[shell->index].this || (shell->arg[shell->index].operator \
@@ -32,7 +27,7 @@ bool
 	{
 		if (!!shell->arg[shell->index].this)
 			shell->index++;
-		return (true);
+		return (1);
 	}
-	return (false);
+	return (0);
 }

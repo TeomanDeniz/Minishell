@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   fill_the_argument.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdeniz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hdeniz <Discord:@teomandeniz>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 23:45:01 by hdeniz            #+#    #+#             */
 /*   Updated: 2024/01/08 23:45:02 by hdeniz           ###   ########.fr       */
@@ -15,24 +15,21 @@
 # struct s_operator;
 #typedef t_shell;
 #   void skip_whitespaces(char **, t_operator);
-#   bool char_whitespace_o(char, t_operator);
-#   bool operate_job(t_shell, int, int *, t_operator);
-#   bool char_quote_o(char, struct s_operator);
+#    int char_whitespace_o(char, t_operator);
+#    int operate_job(t_shell, int, int *, t_operator);
+#    int char_quote_o(char, struct s_operator);
 #   void arg_set_quote(char, t_operator);
-#   bool char_operator_o(char, struct s_operator);
-#*/
-#include <stdbool.h> /*
-# define false;
-#typedef bool;
-#*/
+#    int char_operator_o(char, struct s_operator);
+#        */
 #include "../../libft/libft.h" /*
-#   bool ft_strboolcmp(char *, char *);
-#*/
+#    int ft_strboolcmp(char *, char *);
+#        */
 /* **************************** [^] INCLUDES [^] **************************** */
 
 /* *************************** [v] PROTOTYPES [v] *************************** */
-static bool	check_prev_arg_is_hereodc(t_shell shell, register int arg_index);
-static bool	check_sub_operator(char *input);
+extern __inline__ int	check_prev_arg_is_hereodc(t_shell shell, \
+register int arg_index);
+extern __inline__ int	check_sub_operator(const char *const input);
 /* *************************** [^] PROTOTYPES [^] *************************** */
 
 void
@@ -41,7 +38,7 @@ void
 	int					string_index;
 	struct s_operator	operator;
 
-	operator = (struct s_operator){false, false, false};
+	operator = (struct s_operator){0, 0, 0};
 	string_index = (skip_whitespaces(&shell->input, &operator), 0);
 	while (!!*shell->input && !char_whitespace_o(*shell->input, &operator))
 	{
@@ -63,22 +60,22 @@ void
 	skip_whitespaces(&shell->input, &operator);
 }
 
-static bool
+extern __inline__ int
 	check_prev_arg_is_hereodc(t_shell shell, register int arg_index)
 {
 	if (!!shell->arg && !!arg_index)
 	{
 		if (ft_strboolcmp(shell->arg[arg_index - 1].this, "<<") && \
 			shell->arg[arg_index - 1].operator)
-			return (true);
+			return (1);
 	}
-	return (false);
+	return (0);
 }
 
-static bool
-	check_sub_operator(char *input)
+extern __inline__ int
+	check_sub_operator(const char *const input)
 {
 	if (*input == '~' || *input == '$')
-		return (true);
-	return (false);
+		return (1);
+	return (0);
 }
